@@ -8,6 +8,7 @@
 /.bundle
 bundle.js
 bundle.js.map
+package-lock.json
 
 # Ignore all logfiles and tempfiles.
 /log/*
