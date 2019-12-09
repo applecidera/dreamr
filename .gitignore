@@ -8,7 +8,7 @@
 /.bundle
 bundle.js
 bundle.js.map
-package-lock.json
+node_modules/
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -16,19 +16,16 @@ package-lock.json
 !/log/.keep
 !/tmp/.keep
 
-# Ignore uploaded files in development.
+# Ignore uploaded files in development
 /storage/*
 !/storage/.keep
+
+/node_modules
+/yarn-error.log
 
 /public/assets
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-
-/public/packs
-/public/packs-test
-/node_modules
-/yarn-error.log
-yarn-debug.log*
-.yarn-integrity
+package-lock.json
