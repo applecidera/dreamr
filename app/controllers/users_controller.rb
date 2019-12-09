@@ -3,9 +3,10 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     if @user.save
-      render json: # TODO users show page or posts index page
+      render :show
+      # TODO users show page or posts index page
     else
-      flash[:error]
+      render json: @user.errors.full_messages, status: 401
     end
   end
 
@@ -13,7 +14,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if @user
-      render json: # TODO users show page
+      render :show
+      # TODO users show page
     else
       flash[:error]
     end
