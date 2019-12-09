@@ -2,9 +2,8 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    if @user.save! 
-      render json: "user created"
-      # TODO redirect to index
+    if @user.save
+      render json: # TODO users show page or posts index page
     else
       flash[:error]
     end
@@ -14,7 +13,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if @user
-      render json: "found user"
+      render json: # TODO users show page
     else
       flash[:error]
     end

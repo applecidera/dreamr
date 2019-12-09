@@ -18,6 +18,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 }
 
   has_many :posts
+  has_many :follows
   
   after_initialize :ensure_session_token
   attr_reader :password
