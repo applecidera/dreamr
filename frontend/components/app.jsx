@@ -4,7 +4,6 @@ const App = () => (
 	<div>
 		<h1>Dreamr</h1>
 		<p>
-			{' '}
 			Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat amet
 			libero neque reiciendis velit minima, saepe impedit molestiae aperiam
 			numquam explicabo dicta animi. Repellendus quaerat aperiam, ab porro iure
