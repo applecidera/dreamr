@@ -16,6 +16,8 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :password_digest, presence: true
   validates :password, length: { minimum: 6 }
+
+  has_many :posts
   
   after_initialize :ensure_session_token
   attr_reader :password
