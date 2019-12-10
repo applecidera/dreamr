@@ -29,32 +29,36 @@ class SignupForm extends React.Component {
 
 	render() {
 		return (
-			<div>
-        <h3>SignUpFormGoesHere</h3>
-				<form>
-					<label htmlFor="username">Username</label>
+			<div className="splash">
+				<div className="content">
+					<p className="logo">dreamr</p>
+					{/* <label htmlFor="username">Username</label> */}
 					<input
 						type="text"
 						id="username"
 						value={this.state.username}
 						onChange={this.handleInput('username')}
+						placeholder="Username"
 					/>
-					<label htmlFor="email">Email</label>
+					{/* <label htmlFor="email">Email</label> */}
 					<input
 						type="email"
 						id="email"
 						value={this.state.email}
 						onChange={this.handleInput('email')}
+						placeholder="Email"
 					/>
-					<label htmlFor="password">Password</label>
+					{/* <label htmlFor="password">Password</label> */}
 					<input
 						type="password"
 						id="password"
 						value={this.state.password}
 						onChange={this.handleInput('password')}
+						placeholder="Password"
 					/>
-					<button onClick={this.handleSubmit}>Sign Up</button>
-				</form>
+					<p className="errors">Username or password was incorrect</p>
+					<button className="signup" onClick={this.handleSubmit}>Sign Up</button>
+				</div>
 			</div>
 		);
 	}

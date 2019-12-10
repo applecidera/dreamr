@@ -9,19 +9,28 @@
 }
 
 .content {
-  display: flex;
+	display: flex;
 	align-items: center;
-  // justify-content: center;
-  flex-direction: column;
-  margin: auto;
-  transform: translate(0%, -15%);
+	// justify-content: center;
+	flex-direction: column;
+	margin: auto;
+	transform: translate(0%, -15%);
+	// opacity: 0;
+	animation: opac 1.2s;
+}
+
+@keyframes opac{
+	from{opacity:0} 
+	to{opacity:1}
 }
 
 .logo {
 	color: whitesmoke;
 	font-size: 48px;
 	font-weight: bold;
+	margin: 0;
 }
+
 .motto {
 	color: whitesmoke;
 	text-align: center;
@@ -35,7 +44,7 @@
 	font-weight: bold;
 	border-radius: 3px;
 	border: none;
-	width: 175px;
+	width: 200px;
 	padding: 8px 0px;
 	margin-bottom: 10px;
 }
@@ -45,17 +54,39 @@
 	font-weight: bold;
 	border-radius: 3px;
 	border: none;
-	width: 175px;
+	width: 200px;
 	padding: 8px 0px;
 	margin-bottom: 10px;
 }
 
 .demo-user {
-  background-color: rgb(0, 195, 255);
+	background-color: rgb(0, 195, 255);
 	color: whitesmoke;
 	font-weight: bold;
 	border-radius: 3px;
 	border: none;
-	width: 175px;
+	width: 200px;
 	padding: 8px 0px;
 }
+
+#username {
+}
+
+#password {
+	margin-bottom: 10px;
+}
+
+#email {
+}
+
+#username,#password,#email {
+	width: 200px;
+	border: none;
+	padding: 5px;
+}
+
+#username::placeholder,#password::placeholder,#email::placeholder{
+	font-size: 10px;
+	color: rgb(184, 178, 178);
+}
+

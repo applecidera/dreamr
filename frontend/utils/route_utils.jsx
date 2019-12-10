@@ -22,5 +22,18 @@ const Protected = ({ loggedIn, path, component: Component }) => (
 	/>
 );
 
+const Splash = ({ component: Component, path, loggedIn }) => (
+  <Route
+    exact path={path}
+    render={props => (
+    loggedIn ? <Redirect to="/" /> : <Component {...props} />
+    )}
+  />
+);
+
 export const AuthRoute = withRouter(connect(msp)(Auth));
 export const ProtectedRoute = withRouter(connect(msp)(Protected));
+export const SplashRoute = withRouter(connect(msp)(Splash));
+
+
+
