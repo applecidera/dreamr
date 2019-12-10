@@ -1,16 +1,24 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
+import Splash from './splash/splash'
+import SignupForm from './session_forms/signup_form_container';
+import LoginForm from './session_forms/login_form_container';
+import Navbar from './navbar/navbar_container';
+import Dashboard from './dashboard/dashboard';
 
+//TODO make spash auth route
+//TODO make signup/login a modal
 const App = () => (
 	<div>
-		<h1>Dreamr</h1>
-		<p>
-			Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat amet
-			libero neque reiciendis velit minima, saepe impedit molestiae aperiam
-			numquam explicabo dicta animi. Repellendus quaerat aperiam, ab porro iure
-			itaque consequatur iste nam atque. Asperiores, dolorem, quasi aut
-			molestias quo non, labore assumenda nam deleniti alias consectetur odit
-			delectus ipsam.
-		</p>
+		
+		<Route path='/' component={Navbar} />
+
+		<Route exact path='/' component={Splash} />
+		
+		<Route exact path='/signup' component={SignupForm} />
+		<Route exact path='/login' component={LoginForm} />
+
+		<Route exact path='/dashboard' component={Dashboard} />
 	</div>
 );
 

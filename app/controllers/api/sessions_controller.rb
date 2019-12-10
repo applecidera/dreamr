@@ -4,16 +4,17 @@ class Api::SessionsController < ApplicationController
     @user = User.find_by_credentials(params[:user][:username], params[:user][:password])
     if @user
       login!(@user)
-      flash[:success]
       # TODO render index page
+      render 'api/posts/index'
     else
-      flash[:error]
+      render json: ['Incorrect credentials, please try again.'], status: 401
     end
   end
 
   def destroy
     logout!
-    # TODO redirect to login screen
+    # redirect to main screen
+    render 'api/posts/index'
   end
 
 end

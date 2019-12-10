@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
-import PostReducer from './post_reducer';
+import postReducer from './post_reducer';
+import sessionReducer from './session_reducer';
 
-const RootReducer = combineReducers(
+const rootReducer = combineReducers(
 	{
 		// TODO add reducers in here
-		posts: PostReducer
+		posts: postReducer,
+		session: sessionReducer
 	}
 );
 
-export default RootReducer;
+export default rootReducer;
