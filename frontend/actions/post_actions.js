@@ -19,17 +19,21 @@ export const removePost = (post) => ({
 	postId: post.id
 });
 
-export const fetchAllPosts = () =>
-	PostApiUtils.fetchAllPosts().then((posts) => dispatch(receieveAllPosts(posts)));
+export const fetchAllPosts = () => (dispatch) =>
+	PostApiUtils.fetchAllPosts().then((posts) =>
+		dispatch(receieveAllPosts(posts))
+	);
 
-export const fetchSinglePost = (postId) =>
-	PostApiUtils.fetchSinglePost(postId).then((post) => dispatch(receievePost(post)));
+export const fetchSinglePost = (postId) => (dispatch) =>
+	PostApiUtils.fetchSinglePost(postId).then((post) =>
+		dispatch(receievePost(post))
+	);
 
-export const createPost = (post) =>
+export const createPost = (post) => (dispatch) =>
 	PostApiUtils.createPost(post).then((post) => dispatch(receievePost(post)));
 
-export const updatePost = (post) =>
+export const updatePost = (post) => (dispatch) =>
 	PostApiUtils.updatePost(post).then((post) => dispatch(receievePost(post)));
 
-export const deletePost = (postId) =>
+export const deletePost = (postId) => (dispatch) =>
 	PostApiUtils.deletePost(postId).then((post) => dispatch(removePost(post)));

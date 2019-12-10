@@ -13,8 +13,8 @@ class Navbar extends React.Component {
 		) : (
 			// user is logged out
 			<div>
-        <Link to="/signup">Sign Up</Link>
-        <Link to="/login">Login</Link>
+        {/* <Link to="/signup"><button>Sign Up</button></Link>
+        <Link to="/login"><button>Login</button></Link> */}
       </div>
 		);
 		return (

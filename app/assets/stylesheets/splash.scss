@@ -1,0 +1,61 @@
+.splash {
+	display: flex;
+	background-image: url("clouds2.jpeg");
+	height: 100vh;
+
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.content {
+  display: flex;
+	align-items: center;
+  // justify-content: center;
+  flex-direction: column;
+  margin: auto;
+  transform: translate(0%, -15%);
+}
+
+.logo {
+	color: whitesmoke;
+	font-size: 48px;
+	font-weight: bold;
+}
+.motto {
+	color: whitesmoke;
+	text-align: center;
+	font-size: 12px;
+	// font-weight: bold;
+}
+
+.signup {
+	background-color: rgb(0, 195, 255);
+	color: whitesmoke;
+	font-weight: bold;
+	border-radius: 3px;
+	border: none;
+	width: 175px;
+	padding: 8px 0px;
+	margin-bottom: 10px;
+}
+
+.login {
+	background-color: white;
+	font-weight: bold;
+	border-radius: 3px;
+	border: none;
+	width: 175px;
+	padding: 8px 0px;
+	margin-bottom: 10px;
+}
+
+.demo-user {
+  background-color: rgb(0, 195, 255);
+	color: whitesmoke;
+	font-weight: bold;
+	border-radius: 3px;
+	border: none;
+	width: 175px;
+	padding: 8px 0px;
+}

@@ -5,7 +5,7 @@ class Api::SessionsController < ApplicationController
     if @user
       login!(@user)
       # TODO render index page
-      render 'api/posts/index'
+      render 'api/users/show'
     else
       render json: ['Incorrect credentials, please try again.'], status: 401
     end
