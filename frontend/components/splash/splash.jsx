@@ -4,13 +4,6 @@ import SignupForm from '../session_forms/signup_form_container';
 import LoginForm from '../session_forms/login_form_container';
 
 class Splash extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			username: 'admin',
-			password: 'password'
-		};
-	}
 
 	render() {
 		return (
@@ -28,7 +21,6 @@ class Splash extends React.Component {
 				<Link to="/login">
 					<button className="login">Login</button>
 				</Link>
-				<button className="demo-user">Demo-User</button>
 				</div>
 			</div>
 		);

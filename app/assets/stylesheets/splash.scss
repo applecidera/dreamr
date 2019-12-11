@@ -69,6 +69,18 @@
 	padding: 8px 0px;
 }
 
+.errors{
+	background-color: rgba($color: #000000, $alpha: .2);
+	color: whitesmoke;
+	font-weight: bold;
+	border-radius: 3px;
+	border: none;
+	width: 200px;
+	padding: 8px 0px;
+	font-size: 10px;
+	text-align: center;
+}
+
 #username {
 }
 
@@ -80,7 +92,7 @@
 }
 
 #username,#password,#email {
-	width: 200px;
+	width: 190px;
 	border: none;
 	padding: 5px;
 }

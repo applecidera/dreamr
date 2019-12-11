@@ -8,7 +8,7 @@ import Dashboard from './dashboard/dashboard';
 import { AuthRoute, ProtectedRoute, SplashRoute } from '../utils/route_utils';
 
 const App = () => (
-	<div>
+	<div className="app-main">
 		<Route path="/" component={Navbar} />
 
 		<SplashRoute  path="/" component={Splash} />

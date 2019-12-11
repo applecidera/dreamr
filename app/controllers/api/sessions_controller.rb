@@ -14,7 +14,7 @@ class Api::SessionsController < ApplicationController
   def destroy
     logout!
     # redirect to main screen
-    render 'api/posts/index'
+    render :show
   end
 
 end

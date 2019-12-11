@@ -1,13 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class LoginForm extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			username: '',
-			password: ''
-    };
-    this.handleSubmit=this.handleSubmit.bind(this);
+			password: '',
+			errors: ''
+		};
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.demoLogin = this.demoLogin.bind(this);
 	}
 
 	handleInput(type) {
@@ -26,12 +29,30 @@ class LoginForm extends React.Component {
 		// redirects on successful creation
 	}
 
+	demoLogin() {
+		const demoUser = {
+			username: 'demo-user',
+			password: 'demo-user-ftw'
+		};
+
+		this.props
+			.createSession(demoUser)
+			.then(() => this.props.history.push('/dashboard'));
+	}
+
 	render() {
+		const errors =
+			this.state.errors != '' ? (
+				<p className="errors">Username or password was incorrect</p>
+			) : (
+				<div />
+			);
 		return (
 			<div className="splash">
-        <div className="content">
+				<Link to="/signup"><button className="redirect-button">Signup</button></Link>
+				<div className="content">
 					<p className="logo">dreamr</p>
-				{/* <form> */}
+					{/* <form> */}
 					{/* <label htmlFor="username">Username</label> */}
 					<input
 						type="text"
@@ -48,8 +69,12 @@ class LoginForm extends React.Component {
 						onChange={this.handleInput('password')}
 						placeholder="Password"
 					/>
-					<button className="signup" onClick={this.handleSubmit}>Login</button>
-				{/* </form> */}
+					{errors}
+					<button className="signup" onClick={this.handleSubmit}>
+						Login
+					</button>
+					<button className="login" onClick={this.demoLogin}>Demo-User</button>
+					{/* </form> */}
 				</div>
 			</div>
 		);

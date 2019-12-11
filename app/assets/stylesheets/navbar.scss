@@ -1,0 +1,27 @@
+.navbar{
+  // background-color: black;
+  display:flex;
+  color: black;
+  position: absolute;
+  
+}
+
+.searchbar{
+  background: rgba($color: #ffffff, $alpha: .2);
+  border: none;
+  top: 5px;
+  left: 200px;
+  position: absolute;
+  padding: 2px;
+  width: 200px;
+}
+
+.nav-logo{
+  // top: 5px;
+  left: 180px;
+  position: absolute;
+  margin: 0;
+  font-weight: bold;
+  font-size: 28px;
+  color: white;
+}

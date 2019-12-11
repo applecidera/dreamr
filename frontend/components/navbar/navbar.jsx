@@ -6,9 +6,9 @@ class Navbar extends React.Component {
 		const renderMe = this.props.currentUser ? (
 			// user is logged in
 			<div>
-        <Link to="/">Back to Main Page</Link>
+        <Link to="/dashboard">Back to Main Page</Link>
         <h3>{`Logged in as ${this.props.currentUser.username}`} </h3>
-        <button onClick={this.props.deleteSession}>Logout</button>
+        <Link to="/"><button onClick={this.props.deleteSession}>Logout</button></Link>
       </div>
 		) : (
 			// user is logged out
@@ -18,8 +18,10 @@ class Navbar extends React.Component {
       </div>
 		);
 		return (
-			<div>
-				{/* <h3>Navbar Goes Here</h3> */}
+			<div className="navbar">
+				<p className="nav-logo">d</
+				p>
+				<input className="searchbar" type="text" placeholder="Search dreamr"></input>
 				{renderMe}
 			</div>
 		);

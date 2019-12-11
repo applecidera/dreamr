@@ -8,7 +8,7 @@ const _nullSession = {
 	currentUser: null
 };
 
-const sessionReducer = (prevState=_nullSession, action) => {
+const sessionReducer = (prevState = _nullSession, action) => {
 	Object.freeze(prevState);
 	let newState = {};
 	switch (action.type) {
