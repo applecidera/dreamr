@@ -4,10 +4,11 @@ class Dashboard extends React.Component {
 
 	componentDidMount(){
 		this.props.fetchAllPosts();
+		debugger
 	}
 
 	render() {
-		// debugger
+		debugger
 		let postFormBar = (<div>Post Form Bar Goes Here</div>);
 		let posts = (<div>Posts Go Here</div>);
 		let featured = (<div>Featured Posts Go Here</div>);

@@ -1,0 +1,1 @@
+json.extract! bench, :id, :title, :text, :content_url, :tags

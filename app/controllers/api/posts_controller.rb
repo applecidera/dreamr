@@ -3,6 +3,7 @@ class Api::PostsController < ApplicationController
     @posts = Posts.all
     # @posts = Posts.all.includes(:likes, :replies)
     # TODO includes to prefetch data, reduce n+1
+    render :index
   end
 
   def show

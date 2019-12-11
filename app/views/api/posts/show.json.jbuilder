@@ -1,1 +1,1 @@
-json.extract! @psot, :title, :text, :contentUrl
+json.extract! @post, :title, :text, :contentUrl

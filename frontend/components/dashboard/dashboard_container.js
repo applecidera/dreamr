@@ -2,10 +2,12 @@ import { connect } from 'react-redux';
 import Dashboard from './dashboard';
 import { fetchAllPosts } from '../../actions/post_actions';
 
-const msp = (state) => ({});
+const msp = (state) => ({
+	posts: Object.values(state.posts)
+});
 
 const mdp = (dispatch) => ({
 	fetchAllPosts: () => dispatch(fetchAllPosts())
 });
 
-export default connect(null, mdp)(Dashboard);
+export default connect(msp, mdp)(Dashboard);
