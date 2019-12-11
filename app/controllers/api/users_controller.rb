@@ -4,7 +4,7 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login!(@user)
-      render 'api/users/show'
+      render 'api/users/dashboard'
     else
       # render json: @user.errors.full_messages, status: 401
       render json: @user.errors.full_messages, status: 422
@@ -15,7 +15,6 @@ class Api::UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user
       render :show
-      # TODO users show page
     else
       render json: ["User does not exist"], status: 404
     end

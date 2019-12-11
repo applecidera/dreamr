@@ -2,8 +2,9 @@ import React from 'react';
 
 class Dashboard extends React.Component {
 	render() {
+		// debugger
 		return (
-			<div>
+			<div className="dashboard">
 				
 			</div>
 		);

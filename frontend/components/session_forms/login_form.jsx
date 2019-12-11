@@ -9,6 +9,7 @@ class LoginForm extends React.Component {
 			password: ''
 		};
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleInput = this.handleInput.bind(this);
 		this.demoLogin = this.demoLogin.bind(this);
 	}
 
@@ -38,7 +39,7 @@ class LoginForm extends React.Component {
 			username: 'demo-user',
 			password: 'demo-user-ftw'
 		};
-
+		
 		this.props
 			.createSession(demoUser)
 			.then(() => this.props.history.push('/dashboard'));

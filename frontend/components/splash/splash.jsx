@@ -8,10 +8,8 @@ class Splash extends React.Component {
 			<div className="splash">
 				<div className="content">
 				<p className="logo">dreamr</p>
-				<p className="motto">
-					Show off your dreams.
-					<br />
-					Experience others.
+				<p className="motto">Show off your dreams.
+												<br />Experience others.
 				</p>
 				<Link to="/signup">
 					<button className="signup">Get Started</button>
