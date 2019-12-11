@@ -50,7 +50,7 @@ class SignupForm extends React.Component {
 			);
 		return (
 			<div className="splash">
-				<Link to="/login"><button className="redirect-button">Login</button></Link>
+				{/* <Link to="/login"><button className="redirect-button">Login</button></Link> */}
 				<div className="content">
 					<p className="logo">dreamr</p>
 					<input

@@ -49,7 +49,7 @@ class LoginForm extends React.Component {
 			);
 		return (
 			<div className="splash">
-				<Link to="/signup"><button className="redirect-button">Signup</button></Link>
+			{/* <Link to="/signup"><button className="redirect-button">Signup</button></Link> */}
 				<div className="content">
 					<p className="logo">dreamr</p>
 					<input

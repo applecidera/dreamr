@@ -1,27 +1,82 @@
 .navbar{
   // background-color: black;
-  display:flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   color: black;
   position: absolute;
-  
+  height: 50px;
+  align-items: center;
 }
 
 .searchbar{
   background: rgba($color: #ffffff, $alpha: .2);
   border: none;
-  top: 5px;
-  left: 200px;
-  position: absolute;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  // top: 5px;
+  // left: 200px;
+  // position: absolute;
   padding: 2px;
-  width: 200px;
+  width: 480px;
+}
+
+.mag-glass{
+  display: flex;
+  align-items: center;
+  background: rgba($color: #ffffff, $alpha: .2);
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  height: 100%;
+  color: black;
+  // width: 50px;
 }
 
 .nav-logo{
   // top: 5px;
-  left: 180px;
-  position: absolute;
+  // left: 180px;
+  // position: absolute;
   margin: 0;
+  margin-right: 20px;
   font-weight: bold;
-  font-size: 28px;
-  color: white;
+  font-size: 35px;
+  color: white;  
 }
+
+.left-side{
+  display: flex;
+  grid-column: 2/3;
+  height: 70%;
+}
+
+.redirect {
+  grid-column: 7/8;
+}
+
+.redirect button{
+  background-color: white;
+	font-weight: bold;
+	border-radius: 3px;
+	border: none;
+	width: 100px;
+	height: 35px;
+	padding: 8px 0px;
+}
+
+.logged-in-nav{
+  grid-column: 7/8;
+}
+
+.logged-in-nav button{
+  background-color: white;
+	font-weight: bold;
+	border-radius: 3px;
+	border: none;
+	width: 100px;
+	height: 35px;
+  padding: 8px 0px;
+  margin-right: 1rem;
+}
+
+// .loggedin-nav{
+//   grid-column: 4/span2;
+// }

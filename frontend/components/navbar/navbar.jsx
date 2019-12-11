@@ -3,26 +3,40 @@ import { Link } from 'react-router-dom';
 
 class Navbar extends React.Component {
 	render() {
-		const renderMe = this.props.currentUser ? (
-			// user is logged in
-			<div>
-        <Link to="/dashboard">Back to Main Page</Link>
-        <h3>{`Logged in as ${this.props.currentUser.username}`} </h3>
-        <Link to="/"><button onClick={this.props.deleteSession}>Logout</button></Link>
-      </div>
-		) : (
-			// user is logged out
-			<div>
-        {/* <Link to="/signup"><button>Sign Up</button></Link>
-        <Link to="/login"><button>Login</button></Link> */}
-      </div>
-		);
+		let redirectButton = (<></>);
+		let loginNav = (<></>);
+		if (this.props.location.pathname === '/signup'){
+			redirectButton = (
+				<Link to="/login" className="redirect"><button>Login</button></Link>
+			)
+		}
+		if (this.props.location.pathname === '/login') {
+			redirectButton = (
+				<Link to="/signup" className="redirect"><button>Signup</button></Link>
+			)
+		}
+		if (this.props.currentUser){
+			loginNav = (
+				<Link 
+					to="/"
+					className="logged-in-nav">
+					<button 
+					onClick={this.props.deleteSession} 
+					>Logout</button></Link>
+			)
+		}
+		
+		// debugger
+			
 		return (
 			<div className="navbar">
-				<p className="nav-logo">d</
-				p>
-				<input className="searchbar" type="text" placeholder="Search dreamr"></input>
-				{renderMe}
+				<div className="left-side">
+					<Link to='/'><p className="nav-logo">d</p></Link>
+					<i className="mag-glass">&#x1F50D;</i>
+					<input className="searchbar" type="text" placeholder="Search Dreamr"></input>
+				</div>
+				{redirectButton}
+				{loginNav}
 			</div>
 		);
 	}

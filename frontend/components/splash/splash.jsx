@@ -13,7 +13,7 @@ class Splash extends React.Component {
 				<p className="motto">
 					Show off your dreams.
 					<br />
-					Experience the dreams of others.
+					Experience others.
 				</p>
 				<Link to="/signup">
 					<button className="signup">Get Started</button>
