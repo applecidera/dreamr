@@ -5,6 +5,7 @@ class Navbar extends React.Component {
 	render() {
 		let redirectButton = (<></>);
 		let loginNav = (<></>);
+		let navbarBorder = (<></>);
 		if (this.props.location.pathname === '/signup'){
 			redirectButton = (
 				<Link to="/login" className="redirect"><button>Login</button></Link>
@@ -14,6 +15,11 @@ class Navbar extends React.Component {
 			redirectButton = (
 				<Link to="/signup" className="redirect"><button>Signup</button></Link>
 			)
+		}
+		if ((this.props.location.pathname != '/login') && 
+		(this.props.location.pathname != '/signup') && 
+		(this.props.location.pathname != '/')){
+			navbarBorder = (<div className="grey-line"></div>);
 		}
 		if (this.props.currentUser){
 			loginNav = (
@@ -30,6 +36,7 @@ class Navbar extends React.Component {
 			
 		return (
 			<div className="navbar">
+				{navbarBorder}
 				<div className="left-side">
 					<Link to='/'><p className="nav-logo">d</p></Link>
 					<i className="mag-glass">&#x1F50D;</i>

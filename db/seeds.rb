@@ -7,4 +7,27 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
-User.create(username: "demo-user", password: "demo-user-ftw", email: "demo@user.com")
+Post.destroy_all
+user1 = User.create(username: "demo-user", password: "demo-user-ftw", email: "demo@user.com")
+user2 = User.create(username: "username", password: "password", email: "username@password.com")
+user3 = User.create(username: "admin", password: "password", email: "very_secure@password")
+
+3.times do 
+  user = User.create(
+    username: Faker::Name.name,
+    password: Faker::Lorem.characters(number: 12),
+    email: Faker::Internet.email
+  )
+  3.times do 
+    post = user.posts.create(
+      title: Faker::Company.industry,
+      text: Faker::Company.bs,
+      tags: Faker::Company.buzzword,
+      content_url: Faker::Internet.url
+    ) 
+  end
+end
+
+
+
+

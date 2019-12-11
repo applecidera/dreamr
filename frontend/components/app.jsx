@@ -4,7 +4,7 @@ import Splash from './splash/splash';
 import SignupForm from './session_forms/signup_form_container';
 import LoginForm from './session_forms/login_form_container';
 import Navbar from './navbar/navbar_container';
-import Dashboard from './dashboard/dashboard';
+import Dashboard from './dashboard/dashboard_container';
 import { AuthRoute, ProtectedRoute, SplashRoute } from '../utils/route_utils';
 
 const App = () => (

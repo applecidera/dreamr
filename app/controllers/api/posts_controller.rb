@@ -1,6 +1,8 @@
 class Api::PostsController < ApplicationController
   def index
     @posts = Posts.all
+    # @posts = Posts.all.includes(:likes, :replies)
+    # TODO includes to prefetch data, reduce n+1
   end
 
   def show
@@ -13,20 +15,20 @@ class Api::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    render :index
   end
 
   def update
     @post = Post.find(params[:id])
     if post.update(user_params)
-      # do something
+      render :index
     else
-      # failed
+      render :index
     end
   end
 
   def destroy
     @post = Post.find(params[:id])
-    
   end
 
   private

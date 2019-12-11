@@ -1,59 +1,68 @@
-.navbar{
-  // background-color: black;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  color: black;
+.navbar {
+	// background-color: black;
+	display: grid;
+	grid-template-columns: .5fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	color: black;
+	position: absolute;
+	height: 50px;
+	align-items: center;
+	// height: 75px;
+}
+
+.grey-line {
   position: absolute;
-  height: 50px;
-  align-items: center;
-}
-
-.searchbar{
-  background: rgba($color: #ffffff, $alpha: .2);
-  border: none;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-  // top: 5px;
-  // left: 200px;
-  // position: absolute;
-  padding: 2px;
-  width: 480px;
-}
-
-.mag-glass{
-  display: flex;
-  align-items: center;
-  background: rgba($color: #ffffff, $alpha: .2);
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
+  width: 100%;
   height: 100%;
-  color: black;
-  // width: 50px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.678);
+  pointer-events: none;
 }
 
-.nav-logo{
-  // top: 5px;
-  // left: 180px;
-  // position: absolute;
-  margin: 0;
-  margin-right: 20px;
-  font-weight: bold;
-  font-size: 35px;
-  color: white;  
+.searchbar {
+	background: rgba($color: #ffffff, $alpha: .2);
+	border: none;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+	// top: 5px;
+	// left: 200px;
+	// position: absolute;
+	padding: 2px;
+	width: 480px;
 }
 
-.left-side{
-  display: flex;
-  grid-column: 2/3;
-  height: 70%;
+.mag-glass {
+	display: flex;
+	align-items: center;
+	background: rgba($color: #ffffff, $alpha: .2);
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+	height: 100%;
+	color: black;
+	// width: 50px;
+}
+
+.nav-logo {
+	// top: 5px;
+	// left: 180px;
+	// position: absolute;
+	margin: 0;
+	margin-right: 20px;
+	font-weight: bold;
+	font-size: 35px;
+	color: white;
+}
+
+.left-side {
+	display: flex;
+	grid-column: 2/3;
+	height: 70%;
 }
 
 .redirect {
-  grid-column: 7/8;
+	grid-column: 7/8;
 }
 
-.redirect button{
-  background-color: white;
+.redirect button {
+	background-color: white;
 	font-weight: bold;
 	border-radius: 3px;
 	border: none;
@@ -62,19 +71,20 @@
 	padding: 8px 0px;
 }
 
-.logged-in-nav{
-  grid-column: 7/8;
+.logged-in-nav {
+	grid-column: 7/8;
 }
 
-.logged-in-nav button{
-  background-color: white;
+.logged-in-nav button {
+	background-color: rgb(0, 195, 255);
+	// color: whitesmoke;
 	font-weight: bold;
 	border-radius: 3px;
 	border: none;
 	width: 100px;
 	height: 35px;
-  padding: 8px 0px;
-  margin-right: 1rem;
+	padding: 8px 0px;
+	margin-right: 1rem;
 }
 
 // .loggedin-nav{
