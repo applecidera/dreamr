@@ -52,8 +52,6 @@ class LoginForm extends React.Component {
 				<Link to="/signup"><button className="redirect-button">Signup</button></Link>
 				<div className="content">
 					<p className="logo">dreamr</p>
-					{/* <form> */}
-					{/* <label htmlFor="username">Username</label> */}
 					<input
 						type="text"
 						id="username"
@@ -61,7 +59,6 @@ class LoginForm extends React.Component {
 						onChange={this.handleInput('username')}
 						placeholder="Username"
 					/>
-					{/* <label htmlFor="password">Password</label> */}
 					<input
 						type="password"
 						id="password"
@@ -74,7 +71,6 @@ class LoginForm extends React.Component {
 						Login
 					</button>
 					<button className="login" onClick={this.demoLogin}>Demo-User</button>
-					{/* </form> */}
 				</div>
 			</div>
 		);

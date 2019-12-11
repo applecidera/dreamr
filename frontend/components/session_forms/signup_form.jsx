@@ -53,7 +53,6 @@ class SignupForm extends React.Component {
 				<Link to="/login"><button className="redirect-button">Login</button></Link>
 				<div className="content">
 					<p className="logo">dreamr</p>
-					{/* <label htmlFor="username">Username</label> */}
 					<input
 						type="text"
 						id="username"
@@ -61,7 +60,6 @@ class SignupForm extends React.Component {
 						onChange={this.handleInput('username')}
 						placeholder="Username"
 					/>
-					{/* <label htmlFor="email">Email</label> */}
 					<input
 						type="email"
 						id="email"
@@ -69,7 +67,6 @@ class SignupForm extends React.Component {
 						onChange={this.handleInput('email')}
 						placeholder="Email"
 					/>
-					{/* <label htmlFor="password">Password</label> */}
 					<input
 						type="password"
 						id="password"
