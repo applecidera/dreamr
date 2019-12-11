@@ -7,7 +7,7 @@ class Api::UsersController < ApplicationController
       render 'api/users/show'
     else
       # render json: @user.errors.full_messages, status: 401
-      render 'api/sessions/errors', status: 401
+      render json: @user.errors.full_messages, status: 422
     end
   end
 
@@ -17,7 +17,7 @@ class Api::UsersController < ApplicationController
       render :show
       # TODO users show page
     else
-      render json: @user.errors.full_messages, status: 401
+      render json: ["User does not exist"], status: 404
     end
   end
 

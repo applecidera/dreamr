@@ -5,6 +5,7 @@ import Root from './components/root';
 
 document.addEventListener('DOMContentLoaded', () => {
 	let preloadedState = undefined;
+	const store = configureStore(preloadedState);
 	if (window.currentUser) {
 		preloadedState = {
 			session: {
@@ -13,7 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 
-	const store = configureStore(preloadedState);
+	// ! remove these later
+	window.getState = store.getState;
+	// ! remove these later
+
 	ReactDOM.render(<Root store={store} />, document.getElementById('root'));
 });
 

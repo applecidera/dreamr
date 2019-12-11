@@ -82,9 +82,12 @@
 	border: none;
 	width: 300px;
 	height: 45px;
-	padding: 8px 0px;
-	font-size: 10px;
+	font-size: 12px;
 	text-align: center;
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 #username {

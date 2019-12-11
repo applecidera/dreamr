@@ -17,3 +17,4 @@ export const deleteSession = () =>
 		method: 'DELETE',
 		url: '/api/session'
 	});
+

@@ -7,7 +7,7 @@ class SignupForm extends React.Component {
 		this.state = {
 			username: '',
 			email: '',
-			password: '',
+			password: ''
 		};
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.demoLogin = this.demoLogin.bind(this);
@@ -24,6 +24,11 @@ class SignupForm extends React.Component {
 			.then(() => this.props.history.push('/dashboard'));
 	}
 
+	componentDidMount(){
+		// debugger
+		this.props.clearSessionErrors();
+	}
+
 	handleInput(type) {
 		return (e) => {
 			this.setState({
@@ -35,32 +40,48 @@ class SignupForm extends React.Component {
 	handleSubmit(e) {
 		e.preventDefault();
 		const errors = () => {
-			switch(""){
+			switch ('') {
 				case this.state.username:
-					return (this.setState({ errors: "Please enter a username" }))
+					return this.setState({ errors: 'Please enter a username' });
 				case this.state.email:
-					return (this.setState({ errors: "Please enter a email" }))
+					return this.setState({ errors: 'Please enter a email' });
 				case this.state.password:
-					return (this.setState({ errors: "Please enter a password" }))
+					return this.setState({ errors: 'Please enter a password' });
 				default:
-					return (this.setState({ errors: "Invalid entry, please try again." }))
-			}	
-		}
+					return this.setState({ errors: 'Invalid entry, please try again.' });
+			}
+		};
 		this.props
 			.createUser(this.state)
-			.then(() => this.props.history.push('/dashboard'))
-			.fail(() => errors());
+			.then(() => this.props.history.push('/dashboard'));
+		// .fail(() => errors());
 		// redirects on successful creation
 		// render error message on failure
 	}
 
 	render() {
-		let errors = (<></>);
-		if (this.state.errors) {
+		// let errors = (<></>);
+		// if (this.state.errors) {
+		// 	errors = (
+		// 		<div className="errors">{this.state.errors}</div>
+		// 	)
+		// };
+
+		let errors = null;
+		if (this.props.errors.length > 0) {
 			errors = (
-				<div className="errors">{this.state.errors}</div>
-			)
-		};
+				// single error message
+				// <div className="errors">{this.props.errors[0]}</div>
+				// multiple error messages
+				
+				<ul className="errors">
+					{this.props.errors.map((error, i) => (
+						<li key={`error-${i}`}>{error}</li>
+					))}
+				</ul>
+			);
+		}
+		// debugger
 		return (
 			<div className="splash">
 				{/* <Link to="/login"><button className="redirect-button">Login</button></Link> */}
@@ -74,7 +95,8 @@ class SignupForm extends React.Component {
 						placeholder="Username"
 					/>
 					<input
-						type="email" required
+						type="email"
+						required
 						id="email"
 						value={this.state.email}
 						onChange={this.handleInput('email')}

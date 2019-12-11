@@ -6,8 +6,7 @@ class LoginForm extends React.Component {
 		super(props);
 		this.state = {
 			username: '',
-			password: '',
-			errors: null
+			password: ''
 		};
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.demoLogin = this.demoLogin.bind(this);
@@ -28,8 +27,8 @@ class LoginForm extends React.Component {
 		}))
 		this.props
 			.createSession(this.state)
-			.then(() => this.props.history.push('/dashboard'))
-			.fail(() => errors());
+			.then(() => this.props.history.push('/dashboard'));
+			// .fail(() => errors());
 		// redirects on successful login
 		// renders error message on failure
 	}
@@ -45,11 +44,26 @@ class LoginForm extends React.Component {
 			.then(() => this.props.history.push('/dashboard'));
 	}
 
+	componentDidMount(){
+		// debugger
+		this.props.clearSessionErrors();
+	}
+
 	render() {
-		let errors =(<></>);
-		if (this.state.errors){ errors = (
-			<div className="errors">{this.state.errors}</div>
-		)};
+		let errors = null;
+		if (this.props.errors.length > 0) {
+			errors = (
+				// single error message
+				// <div className="errors">{this.props.errors[0]}</div>
+				// multiple error messages
+				<ul className="errors">
+					{this.props.errors.map((error, i) => (
+						<li key={`error-${i}`}>{error}</li>
+					))}
+				</ul>
+			);
+		}
+
 		return (
 			<div className="splash">
 			{/* <Link to="/signup"><button className="redirect-button">Signup</button></Link> */}
