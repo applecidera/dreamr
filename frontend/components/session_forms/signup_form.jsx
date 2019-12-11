@@ -8,7 +8,6 @@ class SignupForm extends React.Component {
 			username: '',
 			email: '',
 			password: '',
-			errors: ''
 		};
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.demoLogin = this.demoLogin.bind(this);
@@ -35,23 +34,37 @@ class SignupForm extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
+		const errors = () => {
+			switch(""){
+				case this.state.username:
+					return (this.setState({ errors: "Please enter a username" }))
+				case this.state.email:
+					return (this.setState({ errors: "Please enter a email" }))
+				case this.state.password:
+					return (this.setState({ errors: "Please enter a password" }))
+				default:
+					return (this.setState({ errors: "Invalid entry, please try again." }))
+			}	
+		}
 		this.props
 			.createUser(this.state)
-			.then(() => this.props.history.push('/dashboard'));
+			.then(() => this.props.history.push('/dashboard'))
+			.fail(() => errors());
 		// redirects on successful creation
+		// render error message on failure
 	}
 
 	render() {
-		const errors =
-			this.state.errors != '' ? (
-				<p className="errors">Invalid entry</p>
-			) : (
-				<div />
-			);
+		let errors = (<></>);
+		if (this.state.errors) {
+			errors = (
+				<div className="errors">{this.state.errors}</div>
+			)
+		};
 		return (
 			<div className="splash">
 				{/* <Link to="/login"><button className="redirect-button">Login</button></Link> */}
-				<div className="content">
+				<form className="content">
 					<p className="logo">dreamr</p>
 					<input
 						type="text"
@@ -61,7 +74,7 @@ class SignupForm extends React.Component {
 						placeholder="Username"
 					/>
 					<input
-						type="email"
+						type="email" required
 						id="email"
 						value={this.state.email}
 						onChange={this.handleInput('email')}
@@ -81,7 +94,7 @@ class SignupForm extends React.Component {
 					<button className="login" onClick={this.demoLogin}>
 						Demo-User
 					</button>
-				</div>
+				</form>
 			</div>
 		);
 	}

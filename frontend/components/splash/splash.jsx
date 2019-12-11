@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SignupForm from '../session_forms/signup_form_container';
-import LoginForm from '../session_forms/login_form_container';
 
 class Splash extends React.Component {
 

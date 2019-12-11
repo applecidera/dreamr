@@ -7,14 +7,18 @@ class Api::SessionsController < ApplicationController
       # TODO render index page
       render 'api/posts/index'
     else
-      render json: ['Incorrect credentials, please try again.'], status: 401
+      # render :json @user.errors.full_messages, status: 401
+      render 'api/sessions/errors', status: 401
     end
+  end
+
+  def errors
   end
 
   def destroy
     logout!
     # redirect to main screen
-    render :show
+    render 'api/sessions/logout'
   end
 
 end

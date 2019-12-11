@@ -7,7 +7,7 @@ class LoginForm extends React.Component {
 		this.state = {
 			username: '',
 			password: '',
-			errors: ''
+			errors: null
 		};
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.demoLogin = this.demoLogin.bind(this);
@@ -23,10 +23,15 @@ class LoginForm extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
+		const errors=()=>(this.setState({
+			errors: "Incorrect username or password."
+		}))
 		this.props
 			.createSession(this.state)
-			.then(() => this.props.history.push('/dashboard'));
-		// redirects on successful creation
+			.then(() => this.props.history.push('/dashboard'))
+			.fail(() => errors());
+		// redirects on successful login
+		// renders error message on failure
 	}
 
 	demoLogin() {
@@ -41,12 +46,10 @@ class LoginForm extends React.Component {
 	}
 
 	render() {
-		const errors =
-			this.state.errors != '' ? (
-				<p className="errors">Username or password was incorrect</p>
-			) : (
-				<div />
-			);
+		let errors =(<></>);
+		if (this.state.errors){ errors = (
+			<div className="errors">{this.state.errors}</div>
+		)};
 		return (
 			<div className="splash">
 			{/* <Link to="/signup"><button className="redirect-button">Signup</button></Link> */}
