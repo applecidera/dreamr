@@ -6,7 +6,7 @@ class Api::SessionsController < ApplicationController
       login!(@user)
       render 'api/users/dashboard'
     else
-      render json: ["Wong username or password"], status: 401
+      render json: ["Your email or password were incorrect."], status: 401
     end
   end
 

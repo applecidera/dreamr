@@ -2,11 +2,23 @@
 	display: grid;
 	grid-template-columns: 85px 540px;
 	padding: 0.5rem;
-	// margin-top: 20px;
+	z-index: 5;
+	// margin-top: 55px;
 	// margin-bottom: 10px;
 }
 
+.post-avatar {
+    // grid-column: 1, 2;
+    height: 64px;
+    width: 64px;
+		background-color: rgb(115, 183, 214);
+		display: flex;
+		margin-bottom: 56px;
+		// margin-right: 5px;
+}
+
 .post-form-bar {
+	// grid-column: 2, 3;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 	background-color: whitesmoke;
@@ -24,6 +36,14 @@
 
 .text-box {
 	grid-row: 1, 2;
+	// height: 100%;
+	// width: 100%;
+	// background-color: pink;
+	// z-index: 10;
+	display: grid;
+	grid-template-rows: 1fr 1fr;
+	// justify-content: center;
+	// flex-direction: column;
 }
 
 .photo-box {

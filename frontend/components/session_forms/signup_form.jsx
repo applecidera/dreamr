@@ -39,18 +39,24 @@ class SignupForm extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-		const errors = () => {
-			switch ('') {
-				case this.state.username:
-					return this.setState({ errors: 'Please enter a username' });
-				case this.state.email:
-					return this.setState({ errors: 'Please enter a email' });
-				case this.state.password:
-					return this.setState({ errors: 'Please enter a password' });
-				default:
-					return this.setState({ errors: 'Invalid entry, please try again.' });
-			}
-		};
+		// const errors = () => {
+		// 	switch ('') {
+		// 		case this.state.username:
+		// 			return this.setState({ errors: 'Please enter a username' });
+		// 		case this.state.email:
+		// 			return this.setState({ errors: 'Please enter a email' });
+		// 		case this.state.password:
+		// 			return this.setState({ errors: 'Please enter a password' });
+		// 		default:
+		// 			return this.setState({ errors: 'Invalid entry, please try again.' });
+		// 	}
+		// };
+
+		// TODO conditional errors
+		// Don't forget your email address!
+		// if (this.state.username:)
+		// You forgot to enter your password!
+
 		this.props
 			.createUser(this.state)
 			.then(() => this.props.history.push('/dashboard'));

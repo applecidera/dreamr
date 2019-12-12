@@ -37,6 +37,8 @@
 	text-align: center;
 	font-size: 18px;
 	font-family: Arial, Helvetica, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
 	// font-weight: bold;
 }
 
@@ -50,6 +52,8 @@
 	height: 45px;
 	padding: 8px 0px;
 	margin-bottom: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
 }
 
 .login {
@@ -61,6 +65,8 @@
 	height: 45px;
 	padding: 8px 0px;
 	margin-bottom: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
 }
 
 .demo-user {
@@ -72,17 +78,20 @@
 	width: 300px;
 	height: 45px;
 	padding: 8px 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
 }
 
 .errors{
 	background-color: rgba($color: #000000, $alpha: .2);
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
 	color: whitesmoke;
-	font-weight: bold;
 	border-radius: 3px;
 	border: none;
-	width: 300px;
-	height: 45px;
-	font-size: 12px;
+	width: 280px;
+	padding: 10px;
+	height: 24px;
 	text-align: center;
 	list-style: none;
 	display: flex;
@@ -101,16 +110,19 @@
 }
 
 #username,#password,#email {
-	width: 290px;
+	width: 280px;
+	padding: 10px;
+	height: 24px;
 	border: none;
-	padding: 5px;
-	height: 45px;
 	border-radius: 3px;
-	font-size: 14px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
 }
 
 #username::placeholder,#password::placeholder,#email::placeholder{
 	font-size: 12px;
 	color: rgb(184, 178, 178);
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
 }
 

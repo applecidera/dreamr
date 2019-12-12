@@ -1,0 +1,37 @@
+.post-form-container {
+  display: grid;
+  grid-template-columns: 85px 540px;
+  // padding: 0.5rem;
+  grid-row: 2,3;
+  margin-top: 55px;
+}
+
+.post-form-top-block {
+
+}
+
+.formData{
+  display: flex;
+  flex-direction: column;
+}
+
+
+.post-form-bottom-block {
+
+}
+
+#input-title{
+  border: none;
+  padding: 10px;
+  
+}
+
+#input-body{
+  border: none;
+  padding: 10px;
+}
+
+#input-tags{
+  border: none;
+  padding: 10px;
+}

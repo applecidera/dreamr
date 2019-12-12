@@ -1,20 +1,22 @@
 .navbar {
 	// background-color: black;
 	display: grid;
-	grid-template-columns: .5fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-template-columns: .25fr 1fr 1fr 1fr 1fr 1fr 1fr;
 	color: black;
 	position: absolute;
 	height: 50px;
 	align-items: center;
-	// height: 75px;
+	z-index: 2;
 }
 
 .grey-line {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.678);
-  pointer-events: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-bottom: 1px solid rgba(128, 128, 128, 0.678);
+	pointer-events: none;
+	background-color: rgb(26, 0, 63);
+	z-index: -2;
 }
 
 .searchbar {
@@ -27,6 +29,13 @@
 	// position: absolute;
 	padding: 2px;
 	width: 480px;
+	font-size: 15px;
+	// z-index: 1;
+}
+
+.searchbar::placeholder {
+	color: lightgray;
+	font-size: 15px;
 }
 
 .mag-glass {
@@ -36,19 +45,50 @@
 	border-top-left-radius: 3px;
 	border-bottom-left-radius: 3px;
 	height: 100%;
-	color: black;
+	color: lightgray;
+	padding: 0px 7px;
+	font-size: 15px;
+	// z-index: 1;
 	// width: 50px;
 }
 
 .nav-logo {
-	// top: 5px;
-	// left: 180px;
-	// position: absolute;
 	margin: 0;
 	margin-right: 20px;
 	font-weight: bold;
 	font-size: 35px;
 	color: white;
+}
+
+.nav-logo:hover {
+	margin: 0;
+	margin-right: 20px;
+	font-weight: bold;
+	font-size: 35px;
+	background: linear-gradient(
+		to right,
+		red,
+		orange,
+		yellow,
+		green,
+		blue,
+		indigo,
+		purple
+	);
+	background-size: 1600% 1600%;
+	-webkit-background-clip: text;
+	color: transparent;
+	animation: rainbow_animation 2s ease-in-out infinite;
+}
+
+@keyframes rainbow_animation {
+	0%,
+	100% {
+		background-position: 0 0;
+	}
+	50% {
+		background-position: 100% 0;
+	}
 }
 
 .left-side {
@@ -73,6 +113,14 @@
 
 .logged-in-nav {
 	grid-column: 7/8;
+	// z-index: 1;
+}
+
+.dropdown-button {
+	grid-column: 6/7;
+	color: whitesmoke;
+	background: transparent;
+	border: none;
 }
 
 .logged-in-nav button {
@@ -85,6 +133,7 @@
 	height: 35px;
 	padding: 8px 0px;
 	margin-right: 1rem;
+	// z-index: 1;
 }
 
 // .loggedin-nav{

@@ -23,6 +23,29 @@
    background-color: rgb(26, 0, 63);
  }
 
+ .modal-background {
+  display: grid;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  grid-template-columns: 1fr 625px 320px 1fr;
+	grid-template-rows: 100px 120px 1fr;
+  background-color: rgb(26, 0, 63, .9);
+  
+  z-index: 10;
+}
+
+.modal-child {
+  margin: 0;
+  padding: 0;
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+}
+
 /* .app-main {
   display: flex;
 } */
