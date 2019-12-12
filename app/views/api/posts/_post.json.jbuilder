@@ -1,1 +1,1 @@
-json.extract! bench, :id, :title, :text, :content_url, :tags
+json.extract! post, :id, :title, :text, :content_url, :tags

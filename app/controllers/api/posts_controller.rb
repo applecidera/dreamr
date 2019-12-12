@@ -1,9 +1,10 @@
 class Api::PostsController < ApplicationController
+
   def index
-    @posts = Posts.all
+    @posts = Post.all
     # @posts = Posts.all.includes(:likes, :replies)
     # TODO includes to prefetch data, reduce n+1
-    render :index
+    # render :index
   end
 
   def show

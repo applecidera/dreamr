@@ -5,6 +5,6 @@ const msp = (state) => ({
   post: state.post
 });
 
-const msp = (dispatch) => ({});
+const mdp = (dispatch) => ({});
 
-export default connect(msp, mdp)(Post);
+export default connect(null, null)(Post);

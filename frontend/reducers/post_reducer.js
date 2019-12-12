@@ -3,7 +3,7 @@ import {
 	RECEIVE_POST,
 	REMOVE_POST
 } from '../actions/post_actions';
-import merge from 'lodash';
+import {merge} from 'lodash';
 
 const postReducer = (prevState = {}, action) => {
 	Object.freeze(prevState);
@@ -12,8 +12,9 @@ const postReducer = (prevState = {}, action) => {
 		default:
 			return prevState;
 		case RECEIVE_ALL_POSTS:
-			debugger
+			// debugger
 			newState = merge({}, prevState, action.posts);
+			// debugger
 			return newState;
 		case RECEIVE_POST:
 			newState = merge({}, prevState);

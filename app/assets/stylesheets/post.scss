@@ -1,0 +1,32 @@
+.post-container {
+	display: grid;
+    grid-template-columns: 85px 540px;
+    padding: 0.5rem;
+}
+
+.avatar {
+    grid-column: 1, 2;
+    height: 64px;
+    width: 64px;
+    background-color: rgb(115, 183, 214);
+}
+.postbox {
+    grid-column: 2, 3;
+    display: grid;
+    grid-template-rows: 30px 1fr;
+    background-color: whitesmoke;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.title {
+}
+
+.text {
+}
+
+.content-url {
+}
+
+.tags {
+}
