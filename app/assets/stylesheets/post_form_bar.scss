@@ -1,0 +1,43 @@
+.post-form-bar-container {
+	display: grid;
+	grid-template-columns: 85px 540px;
+	padding: 0.5rem;
+	// margin-top: 20px;
+	// margin-bottom: 10px;
+}
+
+.post-form-bar {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	background-color: whitesmoke;
+	border-radius: 3px;
+	height: 100px;
+	margin-bottom: 20px;
+}
+
+#post-form-button {
+	text-align: center;
+	height: 100%;
+	width: 1px;
+	background-image: linear-gradient(white, rgb(155, 155, 155), white);
+}
+
+.text-box {
+	grid-row: 1, 2;
+}
+
+.photo-box {
+	grid-row: 2, 3;
+}
+
+.quote-box {
+	grid-row: 3, 4;
+}
+
+.audio-box {
+	grid-row: 4, 5;
+}
+
+.video-box {
+	grid-row: 5, 6;
+}

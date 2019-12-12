@@ -1,5 +1,6 @@
 import React from 'react';
 import Post from '../posts/posts_container';
+import PostFormBar from '../post_forms/post_form_bar';
 
 class Dashboard extends React.Component {
 
@@ -9,7 +10,7 @@ class Dashboard extends React.Component {
 
 	render() {
 		
-		let postFormBar = (<div>Post Form Bar Goes Here</div>);
+		// let postFormBar = (<div>Post Form Bar Goes Here</div>);
 		// let posts = (<div>Posts Go Here</div>);
 		let posts = this.props.posts.map((post, idx)=>(
 			<Post key={idx} post={post} />
@@ -20,7 +21,8 @@ class Dashboard extends React.Component {
 		
 		return (
 			<div className="dashboard">
-				<div className = "post-form-bar">{postFormBar}</div>
+				<PostFormBar />
+				{/* <div className = "post-form-bar">{postFormBar}</div> */}
 				<div className ="left-col">{posts}</div>
 				<div className="right-col">{featured}</div>
 			</div>

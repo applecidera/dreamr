@@ -1,13 +1,13 @@
 .dashboard {
 	display: grid;
 	grid-template-columns: 1fr 625px 320px 1fr;
-	grid-template-rows: 100px 100px 1fr;
+	grid-template-rows: 100px 120px 1fr;
 	height: 100vh;
 	width: 100%;
 	overflow: scroll;
 }
 
-.post-form-bar {
+.post-form-bar-container{
 	grid-column-start: 2;
 	grid-column-end: 3;
 	grid-row-start: 2;
