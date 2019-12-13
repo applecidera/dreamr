@@ -2,9 +2,9 @@ import { connect } from 'react-redux';
 import Post from './post';
 
 const msp = (state) => ({
-  post: state.post
+  currentUser: state.session.currentUser
 });
 
 const mdp = (dispatch) => ({});
 
-export default connect(null, null)(Post);
+export default connect(msp, null)(Post);

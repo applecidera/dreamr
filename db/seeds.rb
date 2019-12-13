@@ -12,13 +12,14 @@ user1 = User.create(username: "demo-user", password: "demo-user-ftw", email: "de
 user2 = User.create(username: "username", password: "password", email: "username@password.com")
 user3 = User.create(username: "admin", password: "password", email: "very_secure@password")
 
-3.times do 
+5.times do 
   user = User.create(
     username: Faker::Name.name,
     password: Faker::Lorem.characters(number: 12),
-    email: Faker::Internet.email
+    email: Faker::Internet.email,
+    avatar: Faker::Avatar.image
   )
-  3.times do 
+  2.times do 
     post = user.posts.create(
       title: Faker::Company.industry,
       text: Faker::Company.bs,

@@ -9,6 +9,7 @@ class LoginForm extends React.Component {
 			password: ''
 		};
 		this.handleInput = this.handleInput.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 		this.demoLogin = this.demoLogin.bind(this);
 	}
 
@@ -67,7 +68,7 @@ class LoginForm extends React.Component {
 		return (
 			<div className="splash">
 			{/* <Link to="/signup"><button className="redirect-button">Signup</button></Link> */}
-				<div className="content">
+				<form className="content">
 					<p className="logo">dreamr</p>
 					<input
 						type="text"
@@ -86,7 +87,7 @@ class LoginForm extends React.Component {
 					{errors}
 					<button className="signup" onClick={this.handleSubmit}>Login</button>
 					<button className="login" onClick={this.demoLogin}>Demo-User</button>
-				</div>
+				</form>
 			</div>
 		);
 	}

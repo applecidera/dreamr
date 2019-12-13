@@ -26,12 +26,6 @@ class User < ApplicationRecord
 
   attr_reader :password
 
-  def avatar=(string)
-    self.avatar=string
-    self.save!
-    self.avatar
-  end
-
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64(16)
   end

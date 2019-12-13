@@ -19,19 +19,58 @@
     grid-template-rows: 30px 1fr;
     background-color: whitesmoke;
     padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
     border-radius: 3px;
 }
 
+.post-top {
+    margin: 0 0 0 0;
+    span{
+        font-size: 13px;
+        color: gray;
+    }
+}
+
 .title {
+    font-size: 36px;
 }
 
 .text {
+    font-size: 14px;
 }
 
 .content-url {
 }
 
+.photos{
+    
+}
+
 .tags {
+    font-size: 13px;
+}
+
+.post-bottom{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.post-bottom-left{
+    font-size: 13px;
+    color: gray;
+}
+.post-bottom-right{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    button {
+        height: 24px;
+        width: 24px;
+        background: transparent;
+        font-size: 18px;
+        border: none;
+    }
 }
 
 

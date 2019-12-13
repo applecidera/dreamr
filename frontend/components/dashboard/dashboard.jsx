@@ -1,5 +1,5 @@
 import React from 'react';
-import Post from '../posts/posts_container';
+import Post from '../posts/post_container';
 import PostFormBar from '../post_forms/post_form_bar_container';
 
 class Dashboard extends React.Component {
