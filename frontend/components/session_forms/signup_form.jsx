@@ -7,7 +7,8 @@ class SignupForm extends React.Component {
 		this.state = {
 			username: '',
 			email: '',
-			password: ''
+			password: '',
+			errors: null
 		};
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.demoLogin = this.demoLogin.bind(this);
@@ -19,12 +20,10 @@ class SignupForm extends React.Component {
 			password: 'demo-user-ftw'
 		};
 
-		this.props
-			.createSession(demoUser)
-			.then(() => this.props.history.push('/dashboard'));
+		this.props.createSession(demoUser).then(() => this.props.history.push('/dashboard'));
 	}
 
-	componentDidMount(){
+	componentDidMount() {
 		// debugger
 		this.props.clearSessionErrors();
 	}
@@ -39,30 +38,18 @@ class SignupForm extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-		// const errors = () => {
-		// 	switch ('') {
-		// 		case this.state.username:
-		// 			return this.setState({ errors: 'Please enter a username' });
-		// 		case this.state.email:
-		// 			return this.setState({ errors: 'Please enter a email' });
-		// 		case this.state.password:
-		// 			return this.setState({ errors: 'Please enter a password' });
-		// 		default:
-		// 			return this.setState({ errors: 'Invalid entry, please try again.' });
-		// 	}
-		// };
+		const that=this;
 
 		// TODO conditional errors
-		// Don't forget your email address!
-		// if (this.state.username:)
-		// You forgot to enter your password!
 
-		this.props
-			.createUser(this.state)
-			.then(() => this.props.history.push('/dashboard'));
-		// .fail(() => errors());
-		// redirects on successful creation
-		// render error message on failure
+		if (this.state.email === '') {
+			this.setState({ errors: "Don't forget your email address!" });
+		} else if (this.state.password === '') {
+			this.setState({ errors: 'You forgot to enter your password!' });
+		} else {
+			this.props.createUser(this.state).then(() => this.props.history.push('/dashboard'));
+		}
+		
 	}
 
 	render() {
@@ -79,13 +66,12 @@ class SignupForm extends React.Component {
 				// single error message
 				// <div className="errors">{this.props.errors[0]}</div>
 				// multiple error messages
-				
-				<ul className="errors">
-					{this.props.errors.map((error, i) => (
-						<li key={`error-${i}`}>{error}</li>
-					))}
-				</ul>
+
+				<ul className="errors">{this.props.errors.map((error, i) => <li key={`error-${i}`}>{error}</li>)}</ul>
 			);
+		}
+		if (this.state.errors) {
+			errors = <span className="errors">{this.state.errors}</span>;
 		}
 		// debugger
 		return (

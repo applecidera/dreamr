@@ -16,12 +16,25 @@
 	margin: auto;
 	transform: translate(0%, -15%);
 	// opacity: 0;
-	animation: opac 1.2s;
+	animation: fade 1.2s, slide 0.5s;
 }
 
-@keyframes opac{
-	from{opacity:0} 
-	to{opacity:1}
+@keyframes fade{
+	from{
+		opacity:0;
+	} 
+	to{
+		opacity:1;
+	}
+}
+
+@keyframes slide{
+	from{
+		transform: translateY(-20px);
+	} 
+	to{
+		transform: translateY(-45px);
+	}
 }
 
 .logo {
@@ -97,6 +110,16 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	animation: error-popup 0.2s;
+}
+
+@keyframes error-popup {
+	from {
+		height: 0px;
+	}
+	to {
+		height: 24px;
+	}
 }
 
 #username {

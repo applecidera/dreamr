@@ -55,7 +55,7 @@ class Navbar extends React.Component {
 		if (this.props.currentUser){
 			loginNav = (
 				// <Link 
-				// 	to="/"
+			// 	to="/"
 				// 	className="logged-in-nav">
 				// 	<button 
 				// 	onClick={this.props.deleteSession} 
@@ -81,7 +81,7 @@ class Navbar extends React.Component {
 			<div className="navbar">
 				{navbarBorder}
 				<div className="left-side">
-					<Link to='/dashboard'><p className="nav-logo">d</p></Link>
+					<Link to='/dashboard'><span className="nav-logo">d</span></Link>
 					{/* <i className="mag-glass">&#x1F50D;</i> */}
 					<i className="mag-glass"><i className="fas fa-search"></i></i>
 					{/* <i class="fas fa-search"></i> */}

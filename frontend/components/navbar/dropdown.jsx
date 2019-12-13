@@ -23,7 +23,12 @@ class Dropdown extends React.Component {
 				<i className="fas fa-user-alt" />
 				{this.state.open && (
 					<div className="dropdown-container">
-						<div className="logout-button" onClick={this.props.logout}>Logout</div>
+						<div className="dropdown-top">
+							<div className="account">ACCOUNT</div>
+							{/* <div className="logout-button" onClick={this.props.logout}><span>Logout</span></div> */}
+							<div className="logout-button" onClick={()=>this.props.openModal("logout")}><span>Logout</span></div>
+						</div>
+						
 					</div>
 				)}
 			</button>
