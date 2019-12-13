@@ -3,6 +3,7 @@ import React from 'react';
 class Post extends React.Component {
 	render() {
 		const {currentUser, post} = this.props;
+		// debugger
 		let topBar;
 		let botBar;
 		if (post.user.username===currentUser.username){ // post is current user's

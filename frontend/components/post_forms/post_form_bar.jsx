@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 
 class PostFormBar extends React.Component {
 	render() {
-        // debugger
+        const {currentUser, postType} = this.props;
 		return (
 			<div className="post-form-bar-container">
-				<img className="post-avatar" src={window.avatar} />
+				{/* <img className="post-avatar" src={window.avatar} /> */}
+				<img className="post-avatar" src={currentUser.avatar} />
 				<div className="post-form-bar">
 					<div
 						className="text-box"

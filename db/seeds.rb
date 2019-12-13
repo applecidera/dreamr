@@ -20,7 +20,7 @@ user3 = User.create(username: "admin", password: "password", email: "very_secure
     avatar: Faker::Avatar.image
   )
   2.times do 
-    post = user.posts.create(
+    post = user.posts.create(-
       title: Faker::Company.industry,
       text: Faker::Company.bs,
       tags: Faker::Company.buzzword,

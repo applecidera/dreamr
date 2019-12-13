@@ -12,7 +12,7 @@ class Dashboard extends React.Component {
 		
 		// let postFormBar = (<div>Post Form Bar Goes Here</div>);
 		// let posts = (<div>Posts Go Here</div>);
-		let posts = this.props.posts.reverse().map((post, idx)=>(
+		let posts = this.props.posts.map((post, idx)=>(
 			<Post key={idx} post={post} />
 		))
 	

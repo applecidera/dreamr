@@ -122,16 +122,6 @@
 	}
 }
 
-#username {
-}
-
-#password {
-	margin-bottom: 10px;
-}
-
-#email {
-}
-
 #username,#password,#email {
 	width: 280px;
 	padding: 10px;
@@ -140,6 +130,21 @@
 	border-radius: 3px;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 16px;
+}
+
+#username {
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+#password {
+	margin-bottom: 10px;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+}
+
+#email {
+	border-radius: 0px;
 }
 
 #username::placeholder,#password::placeholder,#email::placeholder{
