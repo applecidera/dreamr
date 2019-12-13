@@ -1,7 +1,8 @@
 class Api::PostsController < ApplicationController
 
   def index
-    @posts = Post.all
+    @posts = Post.order(id: :DESC).limit(10)
+    # debugger
     # @posts = Posts.all.includes(:likes, :replies)
     # TODO includes to prefetch data, reduce n+1
     # render :index
@@ -17,7 +18,13 @@ class Api::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    render :index
+    if @post.save
+      # debugger
+      render :show
+    else 
+      # debugger
+      render json: @user.errors.full_messages, status: 422
+    end
   end
 
   def update
@@ -36,6 +43,6 @@ class Api::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :text, :content_url, :tags) 
+    params.require(:post).permit(:title, :text, :content_url, :tags, :user_id) 
   end
 end

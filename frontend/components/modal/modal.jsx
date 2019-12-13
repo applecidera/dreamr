@@ -9,7 +9,7 @@ class PostModal extends React.Component {
 	render() {
 		const { modal, closeModal } = this.props;
 
-		if (!modal) {
+		if (!modal) { //! checks if state is null
 			return null;
 		}
 
@@ -53,7 +53,7 @@ class PostModal extends React.Component {
 		}
 
 		return (
-				<div className={background}>
+				<div className={background} {clickable}>
 					<div className={container} onClick={(e) => e.stopPropagation()}>
 						{component}
 					</div>

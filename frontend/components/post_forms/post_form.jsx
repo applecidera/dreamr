@@ -3,21 +3,42 @@ import React from 'react';
 class PostForm extends React.Component {
 	constructor(props) {
 		super(props);
-		const { postType } = this.props;
+		const { postType, currentUser } = this.props;
 		this.state = {
+			user_id: currentUser.id,
 			postType: postType,
 			title: '',
 			text: '',
-			contentUrl: '',
+			content_url: '',
 			tags: ''
 		};
 		this.ref = React.createRef();
+		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-	// auto_grow(element) {
-  //   element.style.height = "5px";
-  //   element.style.height = (element.scrollHeight)+"px";
-	// }
+	handleSubmit(){
+
+	}
+	handleInput(inputType){
+		return e=>{
+			this.setState({
+				[inputType]: e.currentTarget.value
+			})
+		}
+	}
+	
+
+	handleSubmit(e) {
+		// debugger
+		e.preventDefault();
+		const closeModalCB = ()=>this.props.closeModal();
+		this.props
+			.createPost(this.state)
+			.then(closeModalCB);
+			// .then(() => this.props.history.push('/dashboard'));
+
+	}
+
 
 	render() {
     const {closeModal, currentUser} = this.props;
@@ -29,15 +50,22 @@ class PostForm extends React.Component {
 				formBlock = (
 					<div className = "formData">
 						<label htmlFor="input-title" />
-						<input type="text" id="input-title" placeholder="Title" />
+						<input 
+							type="text" 
+							id="input-title" 
+							placeholder="Title"
+							onChange={this.handleInput("title")} />
 						<label htmlFor="input-body" />
 						<textarea id="input-body" cols="30" rows="5" 
 							placeholder="Your text here"
-							// onInput={this.auto_grow(this.ref)}
-							elastic
-							></textarea>
+							elastic="true"
+							onChange={this.handleInput("text")}></textarea>
 						<label htmlFor="input-tags" />
-						<input type="text" id="input-tags" placeholder="#tags" />
+						<input 
+							type="text" 
+							id="input-tags" 
+							placeholder="#tags"
+							onChange={this.handleInput("tags")} />
 					</div>
 				);
 				break;
@@ -63,7 +91,7 @@ class PostForm extends React.Component {
 						{formBlock}
 					<div className="post-form-bottom-block">
 						<button onClick={closeModal}>Close</button>
-						<button>Post</button>
+						<button onClick={this.handleSubmit}>Post</button>
 					</div>
 				</div>
 			</>

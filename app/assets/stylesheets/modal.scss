@@ -51,6 +51,36 @@
     grid-template-rows: 1fr 1fr;
     height: 100px;
     width: 360px;
+    animation: logout-fade 1.2s, logout-slide 0.5s;
+}
+
+@keyframes logout-fade{
+	from{
+        opacity:0;
+	} 
+	to{
+		opacity:1;
+	}
+}
+
+@keyframes logout-slide{
+	from{
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+		transform: translateY(-20px);
+	} 
+	to{
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+	}
 }
 
 .logout-message{

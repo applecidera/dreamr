@@ -9,6 +9,7 @@
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  avatar          :string
 #
 
 class User < ApplicationRecord
@@ -24,6 +25,12 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
 
   attr_reader :password
+
+  def avatar=(string)
+    self.avatar=string
+    self.save!
+    self.avatar
+  end
 
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64(16)

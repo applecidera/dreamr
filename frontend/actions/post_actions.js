@@ -31,10 +31,10 @@ export const fetchSinglePost = (postId) => (dispatch) =>
 	);
 
 export const createPost = (post) => (dispatch) =>
-	PostApiUtils.createPost(post).then((post) => dispatch(receievePost(post)));
+	PostApiUtils.createPost(post).then((post) => dispatch(receivePost(post)));
 
 export const updatePost = (post) => (dispatch) =>
-	PostApiUtils.updatePost(post).then((post) => dispatch(receievePost(post)));
+	PostApiUtils.updatePost(post).then((post) => dispatch(receivePost(post)));
 
 export const deletePost = (postId) => (dispatch) =>
 	PostApiUtils.deletePost(postId).then((post) => dispatch(removePost(post)));

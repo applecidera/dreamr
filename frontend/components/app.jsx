@@ -11,7 +11,7 @@ import { AuthRoute, ProtectedRoute, SplashRoute } from '../utils/route_utils';
 
 const App = () => (
 	<div className="app-main">
-
+		
 		<Modal />
 		<Route path="/" component={Navbar} />
 		<SplashRoute  path="/" component={Splash} />
