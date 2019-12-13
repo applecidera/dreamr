@@ -1,39 +1,40 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Dropdown from './dropdown_container';
 
 class Navbar extends React.Component {
-	constructor(props){
-		super(props);
+	// constructor(props){
+	// 	super(props);
 
-		this.state={
-			open: false
-		}
+	// 	this.state={
+	// 		open: false
+	// 	}
 
-		this.openDropdown = this.openDropdown.bind(this);
-		this.closeDropdown = this.closeDropdown.bind(this);
-	}
+		// this.openDropdown = this.openDropdown.bind(this);
+		// this.closeDropdown = this.closeDropdown.bind(this);
+	// }
 
-	openDropdown(){
-		this.setState=({
-			open: true
-		})
-		console.log("open the door");
-	}
+	// openDropdown(){
+	// 	this.setState=({
+	// 		open: true
+	// 	})
+	// 	console.log("open the door");
+	// }
 
-	closeDropdown(){
+	// closeDropdown(){
 		
-		this.setState=({
-			open: false
-		})
-		console.log("close the door");
-	}
+	// 	this.setState=({
+	// 		open: false
+	// 	})
+	// 	console.log("close the door");
+	// }
 
 
 
 	render() {
 		let redirectButton = (<></>);
 		let loginNav = (<></>);
-		let dropDownButton = (<></>);
+		// let dropDownButton = (<></>);
 		let navbarBorder = (<></>);
 		
 		if (this.props.location.pathname === '/signup'){
@@ -53,20 +54,25 @@ class Navbar extends React.Component {
 		}
 		if (this.props.currentUser){
 			loginNav = (
-				<Link 
-					to="/"
-					className="logged-in-nav">
-					<button 
-					onClick={this.props.deleteSession} 
-					>Logout</button></Link>
+				// <Link 
+				// 	to="/"
+				// 	className="logged-in-nav">
+				// 	<button 
+				// 	onClick={this.props.deleteSession} 
+				// 	>Logout</button></Link>
+
+				<div className="logged-in-nav">
+					<Dropdown />
+					<button className="fas fa-pencil-alt nav-post-box"></button>
+				</div>
 			)
-			dropDownButton = (
-				<button 
-					className="dropdown-button" 
-					onBlur={this.closeDropdown} 
-					onFocus={this.openDropdown}><i 
-					className="fas fa-user-alt"></i>
-					</button>)
+			// dropDownButton = (
+			// 	<button 
+			// 		className="dropdown-button" 
+			// 		onBlur={this.closeDropdown} 
+			// 		onFocus={this.openDropdown}><i 
+			// 		className="fas fa-user-alt"></i>
+			// 		</button>)
 		}
 		
 		// debugger
@@ -81,7 +87,6 @@ class Navbar extends React.Component {
 					{/* <i class="fas fa-search"></i> */}
 					<input className="searchbar" type="text" placeholder="Search Dreamr"></input>
 				</div>
-				{dropDownButton}
 				{redirectButton}
 				{loginNav}
 			</div>
