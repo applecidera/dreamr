@@ -1,26 +1,25 @@
 // not clickable
-.post-form-background {
-    display: grid;
+.post-form-from-bar-background {
+    // display: grid;
+    vertical-align: baseline;
     position: fixed;
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
-    grid-template-columns: 1fr 625px 320px 1fr;
-    grid-template-rows: 100px 120px 1fr;
+    // grid-template-columns: 1fr 1fr 625px 320px 1fr;
+    // grid-template-rows: 100px 120px 1fr;
     background-color: rgba(26, 0, 63, .9);
-    
     z-index: 10;
 }
-
   
-.modal-child {
+.center-modal{
     margin: 0;
     padding: 0;
-    /* position: absolute;
+    position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); */
+    transform: translate(-50%, -50%);
 }
 
 .logout-background {
@@ -29,7 +28,6 @@
 	border: 0;
 	font-size: 100%;
 	vertical-align: baseline;
-
     position: fixed;
     top: 0;
     bottom: 0;
@@ -38,7 +36,7 @@
     background-color: rgba(26, 0, 63, .9);
     width: 100%;
     height: 100vh;
-    z-index: 11;
+    z-index: 10;
 }
 
 .logout-modal{

@@ -2,9 +2,17 @@
   display: grid;
   grid-template-columns: 85px 540px;
   // padding: 0.5rem;
-  grid-row: 2,3;
-  margin-top: 55px;
+  // grid-row: 2,3;
+  // margin-top: 55px;
   animation: slide-up 0.5s ease;
+}
+
+.post-form-container{ // modal centered
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 30%;
+  left: 25%;
 }
 
 .post-form-top-block {
@@ -18,7 +26,8 @@
 
 
 .post-form-bottom-block {
-
+  display: flex;
+  justify-content: space-between;
 }
 
 #input-title{
@@ -27,9 +36,15 @@
   
 }
 
-#input-body{
+#input-body{ // text
   border: none;
   padding: 10px;
+  // height: auto;
+  // text-align: start;
+  resize: none;
+  overflow: hidden;
+  min-height: 50px;
+  max-height: 100px;
 }
 
 #input-tags{

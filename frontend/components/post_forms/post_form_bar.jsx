@@ -6,42 +6,47 @@ class PostFormBar extends React.Component {
         // debugger
 		return (
 			<div className="post-form-bar-container">
-				<div className="post-avatar" />
+				<img className="post-avatar" src={window.avatar} />
 				<div className="post-form-bar">
 					<div
 						className="text-box"
 						id="post-form-button"
 						onClick={()=>this.props.openModal('textForm')}
 					>
-						Text
+						<button>Aa</button>
+						<span>Text</span>
 					</div>
 					<div
 						className="photo-box"
 						id="post-form-button"
 						onClick={()=>this.props.openModal('photoForm')}
 					>
-						Photo
+						<button className="fas fa-camera-retro"></button>
+						<span>Photo</span>
 					</div>
 					<div
 						className="quote-box"
 						id="post-form-button"
 						onClick={()=>this.props.openModal('quoteForm')}
 					>
-						Quote
+						<button className="fas fa-quote-left"></button>
+						<span>Quote</span>
 					</div>
 					<div
 						className="audio-box"
 						id="post-form-button"
 						onClick={()=>this.props.openModal('audioForm')}
 					>
-						Audio
+						<button className="fas fa-headphones"></button>
+						<span>Audio</span>
 					</div>
 					<div
 						className="video-box"
 						id="post-form-button"
 						onClick={()=>this.props.openModal('videoForm')}
 					>
-						Video
+						<button className="fas fa-video"></button>
+						<span>Video</span>
 					</div>
 				</div>
 			</div>

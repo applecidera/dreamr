@@ -37,3 +37,8 @@
 /* .app-main {
   display: flex;
 } */
+
+img{
+  max-width: 100%;
+  height: auto;
+}
