@@ -6,7 +6,7 @@ class Post extends React.Component {
 		// debugger
 		let topBar;
 		let botBar;
-		if (post.user.username===currentUser.username){ // post is current user's
+		if (post.user.username===currentUser.username){ //! post is current user's
 			topBar = (<span>{post.user.username}</span>);
 			botBar = (<>
 								<div></div>
@@ -18,7 +18,7 @@ class Post extends React.Component {
 								</>);
 			// TODO no notes on left; reply, reblog, edit on right
 		} else {
-			topBar = (<span>Here's a dream: {post.user.username}</span>); // someone else's post
+			topBar = (<span>Here's a dream: {post.user.username}</span>); // !someone else's post
 			botBar = (<>
 								<div className="post-bottom-left">Karma</div>
 								<div className="post-bottom-right">

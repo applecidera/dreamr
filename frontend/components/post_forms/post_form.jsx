@@ -41,7 +41,9 @@ class PostForm extends React.Component {
 
 
 	render() {
-    const {closeModal, currentUser} = this.props;
+		const {closeModal, currentUser} = this.props;
+		const {title, content_url, text}=this.state;
+		//TODO add more here
     
 
 		let formBlock;
@@ -82,6 +84,9 @@ class PostForm extends React.Component {
 				formBlock = <div />;
 				break;
 		}
+		//TODO add more here
+		let disabled=true;
+		if (content_url!="" || title!="" || text!="") disabled=false;
 
 		return (
 			<>
@@ -90,8 +95,11 @@ class PostForm extends React.Component {
 					<div className="post-form-top-block">{currentUser.username}</div>
 						{formBlock}
 					<div className="post-form-bottom-block">
-						<button onClick={closeModal}>Close</button>
-						<button onClick={this.handleSubmit}>Post</button>
+						<button className="post-close" onClick={closeModal}>Close</button>
+						<button disabled={disabled} className="post-create-post" onClick={this.handleSubmit}>
+							<span>Post</span>
+							<div className="fas fa-chevron-down"></div>
+						</button>
 					</div>
 				</div>
 			</>

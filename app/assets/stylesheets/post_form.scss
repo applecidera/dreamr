@@ -28,6 +28,31 @@
 .post-form-bottom-block {
   display: flex;
   justify-content: space-between;
+  padding-top: 10px;
+  button{
+    border: transparent;
+    color: whitesmoke;
+    display: flex;
+    justify-content: space-evenly;
+    height: 28px;
+    div{
+      width: 25px;
+    }
+  }
+}
+
+.post-close{
+  background-color: gray;
+  width: 51px;
+  height: 30px;
+}
+
+.post-create-post{
+  background-color: rgb(0, 195, 255);
+  width: 73px;
+}
+.down-post{
+  
 }
 
 #input-title{
