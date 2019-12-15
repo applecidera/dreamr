@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 class PostFormBar extends React.Component {
 	render() {
@@ -9,14 +9,14 @@ class PostFormBar extends React.Component {
 				{/* <img className="post-avatar" src={window.avatar} /> */}
 				<img className="post-avatar" src={currentUser.avatar} />
 				<div className="post-form-bar">
-					<div
+					<NavLink style={{ textDecoration: 'none' }} to="/new/text"><div
 						className="text-box"
 						id="post-form-button"
 						onClick={()=>this.props.openModal('textForm')}
 					>
 						<button>Aa</button>
 						<span>Text</span>
-					</div>
+					</div></NavLink>
 					<div
 						className="photo-box"
 						id="post-form-button"

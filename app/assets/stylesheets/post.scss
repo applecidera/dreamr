@@ -1,99 +1,99 @@
 .post-container {
 	display: grid;
-    grid-template-columns: 85px 540px;
-    padding: 0.5rem;
+	grid-template-columns: 85px 540px;
+	padding: 0.5rem;
 }
 
 .avatar {
-    grid-column: 1, 2;
-    height: 64px;
-    width: 64px;
-    background-color: #73b7d6;
-    border-radius: 3px;
-    // position: sticky;
+	grid-column: 1, 2;
+	height: 64px;
+	width: 64px;
+	background-color: #73b7d6;
+	border-radius: 3px;
+	// position: sticky;
 }
 
 .postbox {
-    grid-column: 2, 3;
-    display: grid;
-    grid-template-rows: 30px 1fr;
-    background-color: whitesmoke;
-    // padding: 10px;
-    // padding-left: 20px;
-    // padding-right: 20px;
-    border-radius: 3px;
+	grid-column: 2, 3;
+	display: grid;
+	grid-template-rows: 30px 1fr;
+	background-color: whitesmoke;
+	// padding: 10px;
+	// padding-left: 20px;
+	// padding-right: 20px;
+	border-radius: 3px;
 }
 
 .post-top {
-    margin: 0 0 0 0;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    display: flex;
-    span{
-        font-size: 13px;
-        color: black;
-        justify-content: center;
-    }
+	margin: 0 0 0 0;
+	padding: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	display: flex;
+	span {
+		font-size: 13px;
+		color: black;
+		justify-content: center;
+	}
 }
 
 .title {
-    font-size: 36px;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
+	font-size: 36px;
+	padding: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
 .text {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 14px;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-size: 14px;
+	padding: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
-.image{
-width: 100%;
-height: auto;
+.image {
+	width: 100%;
+	height: auto;
 }
 
 .tags {
-    font-size: 13px;
+	font-size: 13px;
 }
 
-.post-bottom{
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
+.post-bottom {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
 }
-.post-bottom-left{
-    font-size: 13px;
-    color: gray;
+.post-bottom-left {
+	font-size: 13px;
+	color: gray;
 }
-.post-bottom-right{
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    button { // icons
-        height: 24px;
-        width: 24px;
-        background: transparent;
-        font-size: 18px;
-        border: none;
-    }
+.post-bottom-right {
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	button {
+		// icons
+		height: 24px;
+		width: 24px;
+		background: transparent;
+		font-size: 18px;
+		border: none;
+	}
 }
-
 
 @keyframes slide-up {
-  from {
-      opacity: 0;
-      transform: translateY(20px);
-  }
-  to {
-      opacity: 1;
-      transform: translateY(0);
-  }
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }

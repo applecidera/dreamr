@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class PostForm extends React.Component {
 	constructor(props) {
@@ -93,20 +94,25 @@ class PostForm extends React.Component {
 		// if (postType === "imageForm"){
 			// REVIEW Original Input Click
 			// https://medium.com/@650egor/simple-drag-and-drop-file-upload-in-react-2cb409d88929
-			const imageUploadBox=(
-				<input
-				type="file"
-				className="image-upload-box"
-				onChange={this.handleUpload}
-				/>
-			)
-		// }
+
+
 			const imagePreview = this.state.imageUrl ? 	// if
 			(<img className="image-preview" src={this.state.imageUrl}></img>) :	// then
 			null;										// else
 
+			const imageUploadBox=(
+				<div className="image-upload-box">
+					{imagePreview}
+					<input
+					type="file"
+					onChange={this.handleUpload}/>
+				</div>
+			)
+		// }
+
+
 			const textGoesHere=(
-				<textarea cols="30" rows="5" 
+				<textarea cols="30" rows="4" 
 				placeholder="Your text here"
 				className="input-body"
 				elastic="true"
@@ -137,7 +143,6 @@ class PostForm extends React.Component {
 			case 'imageForm':
 				formBlock = (
 					<div className = "formData">
-						{imagePreview}
 						{imageUploadBox}
 						{textGoesHere}
 						{tagsGoesHere}
@@ -168,7 +173,8 @@ class PostForm extends React.Component {
 		}
 		//TODO add more here
 		let disabled=true;
-		if (content_url!="" || title!="" || text!="" || imageFile!="") disabled=false;
+		
+		if (title!="" || text!="" || imageFile!=null) {disabled=false} else {disabled=true};
 
 		return (
 			<>

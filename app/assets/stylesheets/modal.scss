@@ -14,12 +14,14 @@ $button-color: rgb(0, 195, 255);
     grid-template-rows: 100px 120px 1fr;
     background-color: $trans-pruple;
     z-index: 15;
+    overflow-y: auto;
 }
 
 .post-form-container{ 
     display: grid;
     grid-template-columns: 85px 540px;
     margin: 0;
+    margin-top: 9px;
     padding: 0;
     position: absolute;
     top: 0%;
@@ -28,18 +30,25 @@ $button-color: rgb(0, 195, 255);
     grid-row: 2/3;
 }
 
-.post-form-box, .post-form-box > *{
-    animation: open-up 0.5s;
+.post-form-box{
+    animation: open-up 0.35s;
+    background-color: whitesmoke;
+    border-radius: 3px;
 }
 @keyframes open-up {
     from {
-        height: 50%;
+        height: 30%;
         opacity: 0;
     }
     to {
         height: 100%;
         opacity: 1;
     }
+}
+.post-form-box > * {
+    animation: fade 1.2s;
+    // animation-delay: 2s;
+    width: 540px;
 }
 
 .from-bar {

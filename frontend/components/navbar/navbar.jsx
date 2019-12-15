@@ -81,7 +81,7 @@ class Navbar extends React.Component {
 			<div className="navbar">
 				{navbarBorder}
 				<div className="left-side">
-					<Link to='/dashboard'><span className="nav-logo">d</span></Link>
+					<Link style={{ textDecoration: 'none' }} to='/dashboard'><span className="nav-logo">d</span></Link>
 					{/* <i className="mag-glass">&#x1F50D;</i> */}
 					<i className="mag-glass"><i className="fas fa-search"></i></i>
 					{/* <i class="fas fa-search"></i> */}
