@@ -8,6 +8,13 @@ class Dashboard extends React.Component {
 		this.props.fetchAllPosts();
 	}
 
+	componentDidUpdate(prevProps){
+		if (prevProps.posts.length != this.props.posts.length){
+			this.props.fetchAllPosts();
+			// debugger
+		}
+	}
+
 	render() {
 		
 		// let postFormBar = (<div>Post Form Bar Goes Here</div>);

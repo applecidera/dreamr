@@ -14,6 +14,10 @@
  *= require_self
  */
 
+ /* $pruple: rgb(26, 0, 63);
+ $trans-pruple: rgba(26, 0, 63, 0.8);
+ $button-color: rgb(0, 195, 255); */
+
  body, html {
    height: 100%;
    padding: 0;

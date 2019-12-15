@@ -20,7 +20,7 @@ class PostFormBar extends React.Component {
 					<div
 						className="photo-box"
 						id="post-form-button"
-						onClick={()=>this.props.openModal('photoForm')}
+						onClick={()=>this.props.openModal('imageForm')}
 					>
 						<button className="fas fa-camera-retro"></button>
 						<span>Photo</span>

@@ -1,17 +1,57 @@
-// not clickable
-.post-form-from-bar-background {
-    // display: grid;
+$pruple: rgb(26, 0, 63);
+$trans-pruple: rgba(26, 0, 63, 0.8);
+$button-color: rgb(0, 195, 255);
+
+.post-form-background {
+    display: grid;
     vertical-align: baseline;
     position: fixed;
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
-    // grid-template-columns: 1fr 1fr 625px 320px 1fr;
-    // grid-template-rows: 100px 120px 1fr;
-    background-color: rgba(26, 0, 63, .9);
-    z-index: 10;
+    grid-template-columns: 1fr 625px 320px 1fr;
+    grid-template-rows: 100px 120px 1fr;
+    background-color: $trans-pruple;
+    z-index: 15;
 }
+
+.post-form-container{ 
+    display: grid;
+    grid-template-columns: 85px 540px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+
+.post-form-box, .post-form-box > *{
+    animation: open-up 0.5s;
+}
+@keyframes open-up {
+    from {
+        height: 50%;
+        opacity: 0;
+    }
+    to {
+        height: 100%;
+        opacity: 1;
+    }
+}
+
+.from-bar {
+
+}
+
+.from-modal {
+
+}
+
+
+  
   
 .center-modal{
     margin: 0;
@@ -33,7 +73,7 @@
     bottom: 0;
     right: 0;
     left: 0;
-    background-color: rgba(26, 0, 63, .9);
+    background-color: $trans-pruple;
     width: 100%;
     height: 100vh;
     z-index: 10;
@@ -117,7 +157,7 @@
     display: flex;
     border-radius: 3px;
     font-size: 16px;
-    background-color: rgb(0, 195, 255);
+    background-color: $button-color;
     color: whitesmoke;
     border: transparent;
     text-align: center;

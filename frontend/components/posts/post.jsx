@@ -18,7 +18,8 @@ class Post extends React.Component {
 								</>);
 			// TODO no notes on left; reply, reblog, edit on right
 		} else {
-			topBar = (<span>Here's a dream: {post.user.username}</span>); // !someone else's post
+			// topBar = (<span>Here's a dream: {post.user.username}</span>); // !someone else's post ! rando post
+			topBar = (<span>{post.user.username}</span>); // !someone else's post
 			botBar = (<>
 								<div className="post-bottom-left">Karma</div>
 								<div className="post-bottom-right">
@@ -30,12 +31,16 @@ class Post extends React.Component {
 			// TODO notes on left; reply, reblog, like on right
 			// space between
 		}
+		let titleGoesHere=null;
+		if (post.title!="")
+			titleGoesHere = (<div className="title">{post.title}</div>);
 		return (
 			<div key={post.id} className="post-container">
         <img className="avatar" src={post.user.avatar}></img>
 				<div className="postbox">
 					<div className ="post-top">{topBar}</div>
-					<div className="title">{post.title}</div>
+					{titleGoesHere}
+					<img className="image" src={post.imageUrl}></img>
 					<div className="content-url">{post.content_url}</div>
 					<div className="text">{post.text}</div>
 					<div className="tags">{post.tags}</div>

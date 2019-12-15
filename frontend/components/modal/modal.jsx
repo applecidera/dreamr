@@ -20,27 +20,27 @@ class PostModal extends React.Component {
 		switch (modal) {
 			case 'textForm':
 				component = <PostFormContainer postType={modal} />;
-				background = 'post-form-from-bar-background';
+				background = 'post-form-background';
 				container = 'post-form-container';
 				break;
-			case 'photoForm':
+			case 'imageForm':
 				component = <PostFormContainer postType={modal} />;
-				background = 'post-form-from-bar-background';
+				background = 'post-form-background';
 				container = 'post-form-container';
 				break;
 			case 'quoteForm':
 				component = <PostFormContainer postType={modal} />;
-				background = 'post-form-from-bar-background';
+				background = 'post-form-background';
 				container = 'post-form-container';
 				break;
 			case 'audioForm':
 				component = <PostFormContainer postType={modal} />;
-				background = 'post-form-from-bar-background';
+				background = 'post-form-background';
 				container = 'post-form-container';
 				break;
 			case 'videoForm':
 				component = <PostFormContainer postType={modal} />;
-				background = 'post-form-from-bar-background';
+				background = 'post-form-background';
 				container = 'post-form-container';
 				break;
 			case 'logout':
