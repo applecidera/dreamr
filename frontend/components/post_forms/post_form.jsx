@@ -10,9 +10,8 @@ class PostForm extends React.Component {
 			postType: postType,
 			title: '',
 			text: '',
-			content_url: '',
-			imageFile: null,
-			imageUrl: null,
+			imageFiles: null,
+			imageUrls: null,
 			tags: '',
 			errors: null
 		};
@@ -32,35 +31,92 @@ class PostForm extends React.Component {
 	}
 
 	handleUpload(e){
-		// REVIEW filesize must be under 5mb cuz im too poor to afford AWS
-		const file = e.currentTarget.files[0];
-		const fileReader = new FileReader();
+		// filesize must be under 5mb cuz im too poor to afford AWS
 
-		if (file.size > 5000000){
-			this.setState({errors: "Filesize must be under 5 Mb!"});
-			console.log("Filesize must be under 5 Mb!");
-		} else {
-			fileReader.onloadend = ()=> {	// loads fileReader while setting state
-				this.setState({
-					imageFile: file,
-					imageUrl: fileReader.result
-				})
+		//REVIEW Multi Upload
+		// this.setState({	// reset state
+		// 	imageFiles: null,
+		// 	imageUrls: null
+		// })
+		const that = this;
+		let imageFileArray=[];
+		let imageUrlArray=[];
+		// debugger
+		let uploadedImages = e.currentTarget.files;
+		for (let i=0; i < uploadedImages.length; i++){
+			const file = uploadedImages[i];
+			const fileReader = new FileReader();
+	
+			if (file.size > 5000000){
+				that.setState({errors: "Filesize must be under 5 Mb!"});
+			} else {
+				// REVIEW redo this logic with filreader url
+				fileReader.onloadend = ()=> {	// loads fileReader while setting state
+					imageFileArray = imageFileArray.concat(file);
+					imageUrlArray = imageUrlArray.concat(fileReader.result);
+					that.setState({
+						imageFiles: imageFileArray,
+						imageUrls: imageUrlArray
+					})
+				}
 			}
+
+			if (file) fileReader.readAsDataURL(file);	// renders image if file exists
 		}
-		if (file) fileReader.readAsDataURL(file);	// renders image if file exists
+
+
+		// REVIEW Single Upload
+		// const file = e.currentTarget.files[0];
+		// const fileReader = new FileReader();
+
+		// if (file.size > 5000000){
+		// 	this.setState({errors: "Filesize must be under 5 Mb!"});
+		// 	console.log("Filesize must be under 5 Mb!");
+		// } else {
+		// 	fileReader.onloadend = ()=> {	// loads fileReader while setting state
+		// 		this.setState({
+		// 			imageFile: file,
+		// 			imageUrl: fileReader.result
+		// 		})
+		// 	}
+		// }
+		// if (file) fileReader.readAsDataURL(file);	// renders image if file exists
 	}
 	
 
 	handleSubmit(e) {
+		// Single Image Submit
+		// e.preventDefault();
+		// const formData = new FormData();
+		// formData.append('post[title]', this.state.title);
+		// if (this.state.imageFile) {
+		// 	formData.append('post[images]', this.state.imageFile);
+		// }
+		// formData.append('post[text]', this.state.text);
+		// formData.append('post[tags]', this.state.tags);
+
+		// const closeModalCB = ()=>this.props.closeModal();
+		// this.props
+		// 	.createPost(formData)
+		// 	.then(
+		// 		(closeModalCB),
+		// 		(response)=>console.log(response.responseJSON)
+		// 		);
+		// 	// .then(() => this.props.history.push('/dashboard'));
+
+		// Multi Image Submit
 		e.preventDefault();
 		const formData = new FormData();
 		formData.append('post[title]', this.state.title);
-		if (this.state.imageFile) {
-			formData.append('post[image]', this.state.imageFile);
+		let imageFiles = this.state.imageFiles;
+		if (imageFiles) {
+			imageFiles.forEach((image, idx)=>{
+				formData.append('post[images][]', imageFiles[idx]);
+			})
 		}
 		formData.append('post[text]', this.state.text);
 		formData.append('post[tags]', this.state.tags);
-
+		// debugger
 		const closeModalCB = ()=>this.props.closeModal();
 		this.props
 			.createPost(formData)
@@ -77,9 +133,9 @@ class PostForm extends React.Component {
 	render() {
 		
 		const {closeModal, currentUser, postType} = this.props;
-		const {title, content_url, text, imageFile}=this.state;
+		const {title, text, imageFiles}=this.state;
 		
-		//TODO add more here
+		//TODO Destructure Here
 
 		// let titleGoesHere=null;
 		// if (postType === "textForm" || postType === "quoteForm" ){
@@ -96,16 +152,26 @@ class PostForm extends React.Component {
 			// https://medium.com/@650egor/simple-drag-and-drop-file-upload-in-react-2cb409d88929
 
 
-			const imagePreview = this.state.imageUrl ? 	// if
-			(<img className="image-preview" src={this.state.imageUrl}></img>) :	// then
-			null;										// else
+			const imagePreviews = this.state.imageUrls ? 	// if
+			( this.state.imageUrls.map((imageUrl, idx)=>{
+				return (<img key={idx} className="image-preview" src={imageUrl}></img>)
+				})
+			) :	// then
+			null;	// else
 
 			const imageUploadBox=(
 				<div className="image-upload-box">
-					{imagePreview}
-					<input
-					type="file"
-					onChange={this.handleUpload}/>
+					{imagePreviews}
+					<label 
+					htmlFor="upload-box"
+					className="upload-label-box">
+						<input
+						type="file"
+						id="upload-box"
+						className="hidden-upload-button"
+						onChange={this.handleUpload}
+						multiple/>
+					</label>
 				</div>
 			)
 		// }
@@ -174,7 +240,7 @@ class PostForm extends React.Component {
 		//TODO add more here
 		let disabled=true;
 		
-		if (title!="" || text!="" || imageFile!=null) {disabled=false} else {disabled=true};
+		if (title!="" || text!="" || imageFiles!=null) {disabled=false} else {disabled=true};
 
 		return (
 			<>

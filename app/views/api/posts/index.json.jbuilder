@@ -3,6 +3,9 @@
   json.set! post.id do
     json.partial! 'post', post: post
     # debugger
-    json.imageUrl url_for(post.image)
+    if post.images.attached?
+      # debugger
+      json.imageUrls post.images.map {|image| url_for(image) }
+    end
   end
 end

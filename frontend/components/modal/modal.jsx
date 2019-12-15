@@ -9,7 +9,7 @@ class PostModal extends React.Component {
 	render() {
 		const { modal, closeModal } = this.props;
 
-		if (!modal) { //! checks if state is null
+		if (!modal) { //! checks if UI state is null
 			return null;
 		}
 

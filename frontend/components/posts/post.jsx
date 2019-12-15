@@ -34,14 +34,19 @@ class Post extends React.Component {
 		let titleGoesHere=null;
 		if (post.title!="")
 			titleGoesHere = (<div className="title">{post.title}</div>);
+
+		let imagesGoesHere = null;
+		if (post.imageUrls)
+			imagesGoesHere = post.imageUrls.map((imageUrl, idx)=>{
+				return (<img key={idx} className="image" src={imageUrl}></img>)
+				})
 		return (
 			<div key={post.id} className="post-container">
         <img className="avatar" src={post.user.avatar}></img>
 				<div className="postbox">
 					<div className ="post-top">{topBar}</div>
 					{titleGoesHere}
-					<img className="image" src={post.imageUrl}></img>
-					<div className="content-url">{post.content_url}</div>
+					{imagesGoesHere}
 					<div className="text">{post.text}</div>
 					<div className="tags">{post.tags}</div>
 					<div className ="post-bottom">{botBar}</div>

@@ -22,7 +22,16 @@
   display: inline-block;
   // justify-content: center;
   // align-content: center;
+}
 
+.upload-label-box{
+
+}
+
+.hidden-upload-box{
+  height: 0px;
+  width: 0px;
+  z-index: -10;
 }
 
 .image-preview {
@@ -37,7 +46,7 @@
   width: 520px;
 	button {
 		border: transparent;
-		color: lightgray;
+		color: white;
 		display: flex;
 		justify-content: space-evenly;
     height: 28px;
@@ -63,6 +72,9 @@
 .post-create-post:disabled{
   color: lightgray;
   font-weight: bold;
+  :hover{
+    cursor: not-allowed;
+  }
 }
 // .down-post {
 // }
