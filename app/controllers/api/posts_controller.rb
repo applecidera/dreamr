@@ -20,7 +20,7 @@ class Api::PostsController < ApplicationController
     debugger
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    debugger
+    # debugger
     if @post.save
       render :show
     else 

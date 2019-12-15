@@ -18,6 +18,7 @@ class PostForm extends React.Component {
 		this.ref = React.createRef();
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleUpload = this.handleUpload.bind(this);
+		this.deletePreviewImage = this.deletePreviewImage.bind(this);
 	}
 
 	handleInput(inputType){
@@ -41,6 +42,10 @@ class PostForm extends React.Component {
 		const that = this;
 		let imageFileArray=[];
 		let imageUrlArray=[];
+		if (this.state.imageFiles != null){
+			imageFileArray = imageFileArray.concat(this.state.imageFiles);
+			imageUrlArray = imageUrlArray.concat(this.state.imageUrls);
+		}
 		// debugger
 		let uploadedImages = e.currentTarget.files;
 		for (let i=0; i < uploadedImages.length; i++){
@@ -83,7 +88,6 @@ class PostForm extends React.Component {
 		// if (file) fileReader.readAsDataURL(file);	// renders image if file exists
 	}
 	
-
 	handleSubmit(e) {
 		// Single Image Submit
 		// e.preventDefault();
@@ -127,15 +131,19 @@ class PostForm extends React.Component {
 			// .then(() => this.props.history.push('/dashboard'));
 	}
 
+	deletePreviewImage(idx){
+		let index = idx.idx
+		delete this.state.imageUrls[index]
+		delete this.state.imageFiles[index]
+		this.forceUpdate()
+	}
 
 
 
 	render() {
-		
+		//TODO Destructure Props Here
 		const {closeModal, currentUser, postType} = this.props;
 		const {title, text, imageFiles}=this.state;
-		
-		//TODO Destructure Here
 
 		// let titleGoesHere=null;
 		// if (postType === "textForm" || postType === "quoteForm" ){
@@ -148,23 +156,33 @@ class PostForm extends React.Component {
 		// }
 		// let imageUploadBox=null;
 		// if (postType === "imageForm"){
-			// REVIEW Original Input Click
+			
 			// https://medium.com/@650egor/simple-drag-and-drop-file-upload-in-react-2cb409d88929
-
 
 			const imagePreviews = this.state.imageUrls ? 	// if
 			( this.state.imageUrls.map((imageUrl, idx)=>{
-				return (<img key={idx} className="image-preview" src={imageUrl}></img>)
+				return (<div key={idx} className="image-preview-box">
+					<img className="image-preview" src={imageUrl} />
+					<i className="fas fa-times-circle delete-preview"
+						onClick={()=>this.deletePreviewImage({idx})}></i>
+					</div>)
 				})
 			) :	// then
 			null;	// else
 
+			const uploadImageLabelHeight = (this.state.imageFiles != null) ? ("add-more-photos") : ("regular-height")
+			const uploadImageLabelText = (this.state.imageFiles != null) ? ("Add more photos") : ("Upload Photos!")
 			const imageUploadBox=(
 				<div className="image-upload-box">
 					{imagePreviews}
 					<label 
 					htmlFor="upload-box"
-					className="upload-label-box">
+					className="upload-label-box"
+					id={uploadImageLabelHeight}>
+						<div className="camera-icon-text-container">
+							<div className="camera-icon fas fa-camera" />
+							<div>{uploadImageLabelText}</div>
+						</div>
 						<input
 						type="file"
 						id="upload-box"
@@ -176,10 +194,26 @@ class PostForm extends React.Component {
 			)
 		// }
 
-
+			
+			const placeholderText = (postType)=>{
+			switch (postType) {
+				case "textForm":
+					return "Your text here";
+				case "imageForm":
+					return "Add a caption, if you like"
+				case "imageQuote":
+					return " - Source"
+				case "audioForm":
+					return "Add a description, if you like"
+				case "videoForm":
+					return "Add a caption, if you like"
+				default:
+					return "";
+			}}
+			
 			const textGoesHere=(
 				<textarea cols="30" rows="4" 
-				placeholder="Your text here"
+				placeholder={placeholderText(postType)}
 				className="input-body"
 				elastic="true"
 				onChange={this.handleInput("text")}></textarea>
@@ -237,9 +271,9 @@ class PostForm extends React.Component {
 				);
 				break;
 		}
-		//TODO add more here
-		let disabled=true;
 		
+		let disabled=true;
+		// TODO add more conditions that disable Post button
 		if (title!="" || text!="" || imageFiles!=null) {disabled=false} else {disabled=true};
 
 		return (

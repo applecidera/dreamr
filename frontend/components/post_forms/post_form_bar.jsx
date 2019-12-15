@@ -3,20 +3,28 @@ import { NavLink } from 'react-router-dom';
 
 class PostFormBar extends React.Component {
 	render() {
-        const {currentUser, postType} = this.props;
-		return (
+		const {currentUser, postType} = this.props;
+		return (			// TODO add custom routes to create new posts
 			<div className="post-form-bar-container">
 				{/* <img className="post-avatar" src={window.avatar} /> */}
 				<img className="post-avatar" src={currentUser.avatar} />
 				<div className="post-form-bar">
-					<NavLink style={{ textDecoration: 'none' }} to="/new/text"><div
+					{/* <NavLink style={{ textDecoration: 'none' }} to="/new/text"><div
 						className="text-box"
 						id="post-form-button"
 						onClick={()=>this.props.openModal('textForm')}
 					>
 						<button>Aa</button>
 						<span>Text</span>
-					</div></NavLink>
+					</div></NavLink> */}
+					<div
+						className="text-box"
+						id="post-form-button"
+						onClick={()=>this.props.openModal('textForm')}
+					>
+						<button>Aa</button>
+						<span>Text</span>
+					</div>
 					<div
 						className="photo-box"
 						id="post-form-button"

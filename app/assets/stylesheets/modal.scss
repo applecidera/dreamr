@@ -34,6 +34,7 @@ $button-color: rgb(0, 195, 255);
     animation: open-up 0.35s;
     background-color: white;
     border-radius: 3px;
+    // margin-bottom: 200px;
 }
 @keyframes open-up {
     from {
@@ -41,10 +42,12 @@ $button-color: rgb(0, 195, 255);
         opacity: 0;
     }
     to {
+        // height: calc(100%-200px);
         height: 100%;
         opacity: 1;
     }
 }
+
 .post-form-box > * {
     animation: fade 1.2s;
     // animation-delay: 2s;

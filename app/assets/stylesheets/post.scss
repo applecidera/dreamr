@@ -67,14 +67,19 @@
 	justify-content: space-between;
 	padding: 10px;
 	padding-left: 20px;
-	padding-right: 20px;
+	// padding-right: 20px;
 }
 .post-bottom-left {
-	font-size: 13px;
-	color: gray;
+	display: flex;
+	// width: 50%;
+	justify-content: start;
+	span{
+		font-size: 13px;
+		color: gray;
+	}
 }
 .post-bottom-right {
-	width: 100%;
+	// width: 50%;
 	display: flex;
 	justify-content: flex-end;
 	button {
@@ -85,6 +90,11 @@
 		font-size: 18px;
 		border: none;
 	}
+}
+.post-icons{
+    width: 100px;
+    display: flex;
+    justify-content: space-around;
 }
 
 @keyframes slide-up {

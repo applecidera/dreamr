@@ -15,28 +15,59 @@
 .image-upload-box{
   // margin-left: 20px;
   // margin-right: 20px;
-  width: 100%;
-  min-height: 200px;
-  border-top: 3px dashed lightgray;
-  border-bottom: 3px dashed lightgray;
-  display: inline-block;
-  // justify-content: center;
-  // align-content: center;
+  width: 540px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .upload-label-box{
-
+  border-top: 3px dashed lightgray;
+  border-bottom: 3px dashed lightgray;
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 540px;
+  min-height: 200px;
+  margin: auto;
 }
-
-.hidden-upload-box{
+.camera-icon-text-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  div{
+    color: gray;
+  }
+}
+.camera-icon{
+  font-size: 48px;
+}
+#add-more-photos{
+  min-height: 50px;
+}
+.hidden-upload-button{
   height: 0px;
   width: 0px;
+  position: absolute;
   z-index: -10;
 }
 
+.image-preview-box{
+  position: relative;
+}
 .image-preview {
 	width: 100%;
-	height: auto;
+  height: auto;
+}
+.delete-preview{
+  position: absolute;
+  top: -1.5%;
+  right: -2%;
+  color: indianred;
+  font-size: 24px;
+  background-color: white;
+  border-radius: 100%;
 }
 
 .post-form-bottom-block {

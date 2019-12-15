@@ -3,17 +3,19 @@ import React from 'react';
 class Post extends React.Component {
 	render() {
 		const {currentUser, post} = this.props;
-		// debugger
 		let topBar;
 		let botBar;
-		if (post.user.username===currentUser.username){ //! post is current user's
+		// debugger
+		if (post.user.id===currentUser.id){ //! post is current user's
 			topBar = (<span>{post.user.username}</span>);
 			botBar = (<>
 								<div></div>
 								<div className="post-bottom-right">
-									<button className="reply far fa-comment"></button>
-									<button className="reblog fas fa-retweet"></button>
-									<button className="edit far fa-heart"></button>
+									<div className="post-icons">
+										<button className="reply far fa-comment"></button>
+										<button className="reblog fas fa-retweet"></button>
+										<button className="edit fas fa-cog"></button>
+									</div>
 								</div>
 								</>);
 			// TODO no notes on left; reply, reblog, edit on right
@@ -21,11 +23,15 @@ class Post extends React.Component {
 			// topBar = (<span>Here's a dream: {post.user.username}</span>); // !someone else's post ! rando post
 			topBar = (<span>{post.user.username}</span>); // !someone else's post
 			botBar = (<>
-								<div className="post-bottom-left">Karma</div>
+								<div className="post-bottom-left">
+									<span>Karma</span>
+								</div>
 								<div className="post-bottom-right">
-									<button className="reply far fa-comment"></button>
-									<button className="reblog fas fa-retweet"></button>
-									<button className="like far fa-heart"></button>
+									<div className="post-icons">
+										<button className="reply far fa-comment"></button>
+										<button className="reblog fas fa-retweet"></button>
+										<button className="like far fa-heart"></button>
+									</div>
 								</div>
 								</>);
 			// TODO notes on left; reply, reblog, like on right
