@@ -5,7 +5,6 @@ class Post extends React.Component {
 		const {currentUser, post} = this.props;
 		let topBar;
 		let botBar;
-		// debugger
 		if (post.user.id===currentUser.id){ //! post is current user's
 			topBar = (<span>{post.user.username}</span>);
 			botBar = (<>
@@ -45,10 +44,22 @@ class Post extends React.Component {
 		if (post.imageUrls)
 			imagesGoesHere = post.imageUrls.map((imageUrl, idx)=>{
 				return (<img key={idx} className="image" src={imageUrl}></img>)
-				})
+			})
+
+		let className;
+		if (this.props.bringMeDown){
+			className="post-container bring-me-down"
+		} else {
+			className="post-container"
+		}
+
+		// debugger
+
+
+
 		return (
-			<div key={post.id} className="post-container">
-        <img className="avatar" src={post.user.avatar}></img>
+			<div key={post.id} className={className}>
+				<img className="avatar" src={post.user.avatar}></img>
 				<div className="postbox">
 					<div className ="post-top">{topBar}</div>
 					{titleGoesHere}

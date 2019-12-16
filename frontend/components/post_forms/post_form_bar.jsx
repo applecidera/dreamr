@@ -9,22 +9,21 @@ class PostFormBar extends React.Component {
 				{/* <img className="post-avatar" src={window.avatar} /> */}
 				<img className="post-avatar" src={currentUser.avatar} />
 				<div className="post-form-bar">
-					{/* <NavLink style={{ textDecoration: 'none' }} to="/new/text"><div
+					<NavLink style={{ textDecoration: 'none' }} to="/new/text"
+						className="text-box"
+						id="post-form-button"
+					>
+						<button>Aa</button>
+						<span>Text</span>
+					</NavLink>
+					{/* <div
 						className="text-box"
 						id="post-form-button"
 						onClick={()=>this.props.openModal('textForm')}
 					>
 						<button>Aa</button>
 						<span>Text</span>
-					</div></NavLink> */}
-					<div
-						className="text-box"
-						id="post-form-button"
-						onClick={()=>this.props.openModal('textForm')}
-					>
-						<button>Aa</button>
-						<span>Text</span>
-					</div>
+					</div> */}
 					<div className="gray-gradient-border"></div>
 					<div
 						className="photo-box"

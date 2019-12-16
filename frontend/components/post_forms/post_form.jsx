@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class PostForm extends React.Component {
 	constructor(props) {
@@ -23,8 +23,6 @@ class PostForm extends React.Component {
 	}
 
 	handleInput(inputType){
-		let uploadedImage = event.currentTarget.value;
-		
 		return e=>{
 			this.setState({
 				[inputType]: e.currentTarget.value
@@ -36,10 +34,7 @@ class PostForm extends React.Component {
 		// filesize must be under 5mb cuz im too poor to afford AWS
 
 		//REVIEW Multi Upload
-		// this.setState({	// reset state
-		// 	imageFiles: null,
-		// 	imageUrls: null
-		// })
+
 		const that = this;
 		let imageFileArray=[];
 		let imageUrlArray=[];
@@ -56,7 +51,7 @@ class PostForm extends React.Component {
 			if (file.size > 5000000){
 				that.setState({errors: "Filesize must be under 5 Mb!"});
 			} else {
-				// REVIEW redo this logic with filreader url
+				// TODO redo this logic with filreader url
 				fileReader.onloadend = ()=> {	// loads fileReader while setting state
 					imageFileArray = imageFileArray.concat(file);
 					imageUrlArray = imageUrlArray.concat(fileReader.result);
@@ -71,7 +66,7 @@ class PostForm extends React.Component {
 		}
 
 
-		// REVIEW Single Upload
+		// Single Upload
 		// const file = e.currentTarget.files[0];
 		// const fileReader = new FileReader();
 
@@ -126,12 +121,14 @@ class PostForm extends React.Component {
 			formData.append('post[tags]', this.state.tags);
 			// debugger
 			const closeModalCB = ()=>this.props.closeModal();
+			const rerouting = () => this.props.history.push('/dashboard');
+			// debugger
 			this.props
 				.createPost(formData)
 				.then(
-					(closeModalCB),
+					(rerouting),
 					(response)=>console.log(response.responseJSON)
-					);
+				).then(closeModalCB);
 				// .then(() => this.props.history.push('/dashboard'));
 		}
 	}
@@ -235,7 +232,7 @@ class PostForm extends React.Component {
 
 
 		let formBlock;
-		switch (this.state.postType) {
+		switch (this.state.postType || this.props.postBarType) {
 			case 'textForm':
 				formBlock = (
 					<div className = "formData">
@@ -281,23 +278,38 @@ class PostForm extends React.Component {
 		// TODO add more conditions that disable Post button
 		if (title!="" || text!="" || imageFiles!=null) {disabled=false} else {disabled=true};
 
+		let bottomBlock;
+		if (this.props.postBarType){ // Post was instantiated from post-bar
+			bottomBlock=(<div className="post-form-bottom-block">
+				<Link to="/dashboard"><button className="post-close">Close</button></Link>
+				<button disabled={disabled} className="post-create-post" onClick={this.handleSubmit}>
+					<span>Post</span>
+					<div className="fas fa-chevron-down"></div>
+				</button>
+			</div>)
+		} else {		// Post was instantiated from modal
+			bottomBlock=(<div className="post-form-bottom-block">
+				<button className="post-close" onClick={closeModal}>Close</button>
+				<button disabled={disabled} className="post-create-post" onClick={this.handleSubmit}>
+					<span>Post</span>
+					<div className="fas fa-chevron-down"></div>
+				</button>
+			</div>)
+		}
+
+
+
 		return (
 			<>
 				<img className="avatar" />
 				<div className="post-form-box postbox">
 					<div className="post-form-top-block">{currentUser.username}</div>
 						{formBlock}
-					<div className="post-form-bottom-block">
-						<button ref="uploadButton" className="post-close" onClick={closeModal}>Close</button>
-						<button disabled={disabled} className="post-create-post" onClick={this.handleSubmit}>
-							<span>Post</span>
-							<div className="fas fa-chevron-down"></div>
-						</button>
-					</div>
+					{bottomBlock}
 				</div>
 			</>
 		);
 	}
 }
 
-export default PostForm;
+export default withRouter(PostForm);

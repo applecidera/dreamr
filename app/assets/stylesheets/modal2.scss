@@ -41,25 +41,58 @@
         margin-bottom: 20px;
         font-weight: bold;
         font-size: 48px;
+        outline: none;
     }
     span{
         font-size: 18px;
         color: white;
     }
 }
+// .choose-a-form-box:focus{
+//     outline: none;
+//     button{
+//         outline: none;
+//     }
+// }
+@keyframes disappear{
+    from{ opacity: 0;}
+    to{ opacity: 1;}
+}
+@keyframes cute-pop{
+    from{
+        margin-top: 50px;
+        height: 50px;
+        opacity: 0;
+    }
+    to{
+        margin-top: 0px;
+        height: 100px;
+        opacity: 1;
+    }
+}
 
 .text-button{
     background-color: red;
+    // animation: disappear;
+    animation: cute-pop 0.5s -0.4s ease-in;
 }
 .photo-button{
     background-color: orange;
+    // animation: disappear;
+    animation: cute-pop 0.5s -0.3s ease-in;
 }
 .quote-button{
     background-color: greenyellow;
+    // animation: disappear;
+    animation: cute-pop 0.5s -0.2s ease-in;
 }
 .audio-button{
     background-color: blue;
+    // animation: disappear;
+    animation: cute-pop 0.5s -0.1s ease-in;
 }
 .video-button{
     background-color: pink;
+    // animation: disappear;
+    animation: cute-pop 0.5s ease-in;
 }
