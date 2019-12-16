@@ -5,6 +5,7 @@ class Post extends React.Component {
 		const {currentUser, post} = this.props;
 		let topBar;
 		let botBar;
+		// debugger
 		if (post.user.id===currentUser.id){ //! post is current user's
 			topBar = (<span>{post.user.username}</span>);
 			botBar = (<>
@@ -13,7 +14,10 @@ class Post extends React.Component {
 									<div className="post-icons">
 										<button className="reply far fa-comment"></button>
 										<button className="reblog fas fa-retweet"></button>
-										<button className="edit fas fa-cog"></button>
+										<button 
+										className="edit fas fa-cog"
+										onClick={()=>this.props.openModal("delete-confirmation")}
+										value={post.id}></button>
 									</div>
 								</div>
 								</>);

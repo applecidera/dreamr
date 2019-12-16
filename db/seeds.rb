@@ -18,7 +18,7 @@ user6 = User.create(username: "edelgard von hresvelg", password: "fire_nation", 
 user7 = User.create(username: "calvin", password: "hobbes", email: "very_secure4@password.com")
 user8 = User.create(username: "hobbes", password: "calvin", email: "very_secure5@password.com")
  
-user2.posts.create(title: "Your Limitation",text: "It's only your imagination")
+user2.posts.create(title: "Your Limitation",text: "It's only your imagination", post_type: "text")
 
 
 # User.destroy_all

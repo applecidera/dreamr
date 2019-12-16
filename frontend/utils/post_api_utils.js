@@ -1,4 +1,4 @@
-export const fetchAllPosts = () =>
+export const fetchAllPosts = (filters) =>
 	$.ajax({
 		method: 'GET',
 		url: '/api/posts'
@@ -26,8 +26,6 @@ export const updatePost = (post) =>
 		data: { post }
 	});
 
-export const deletePost = (postId) =>
-	$.ajax({
-		method: 'DELETE',
-		url: `/api/posts/${postId}`
-	});
+export const deletePost = (postId) => {
+	return $.ajax({ method: 'DELETE', url: `/api/posts/${postId}` });
+};

@@ -4,7 +4,7 @@ export const OPEN_MODAL2 = "OPEN_MODAL2";
 export const CLOSE_MODAL2 = "CLOSE_MODAL2";
 
 
-export const openModal = modal => {
+export const openModal = (modal) => {
   return {
     type: OPEN_MODAL,
     modal

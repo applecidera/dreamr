@@ -11,9 +11,11 @@
 #  user_id          :integer          not null
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  post_type        :string           not null
 #
 
 class Post < ApplicationRecord
+
   belongs_to :user
   has_many :likes
 

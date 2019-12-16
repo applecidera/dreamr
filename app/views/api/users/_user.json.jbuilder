@@ -1,1 +1,2 @@
-json.extract! user, :username, :id, :email
+json.extract! user, :avatar, :email, :id, :username
+# add followers as well

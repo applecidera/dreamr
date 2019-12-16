@@ -41,7 +41,7 @@ class NewPost extends React.Component{
 
 const msp = (state) => {
 	return {
-        posts: Object.values(state.posts),
+        posts: Object.values(state.entities.posts),
         currentUser: state.session.currentUser
 	}
 };

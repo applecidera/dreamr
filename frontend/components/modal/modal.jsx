@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { closeModal } from '../../actions/modal_actions';
 import PostFormContainer from '../post_forms/post_form_container';
 import LogoutModal from './logout_modal';
-import ChoosePostModal from './choose_post_modal';
+import DeleteModal from '../modal/delete_modal';
 import {deleteSession} from '../../actions/session_actions';
 
 class Modal extends React.Component {
 	render() {
-		const { modal, closeModal } = this.props;
+		const { modal, closeModal, postId } = this.props;
 
 		if (!modal) { //! checks if UI state is null
 			return null;
@@ -49,6 +49,11 @@ class Modal extends React.Component {
 				background = 'logout-background';
 				container = 'logout-modal';
 				break;
+			case 'delete-confirmation':
+				component = <DeleteModal postId={event.target.value} />;
+				background = 'logout-background';
+				container = 'logout-modal';
+				break;
 			default:
 				return null;
 		}
@@ -59,7 +64,6 @@ class Modal extends React.Component {
 						{component}
 					</div>
 				</div>
-
 		);
 	}
 }

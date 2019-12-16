@@ -10,7 +10,6 @@ class PostForm extends React.Component {
 			postType: postType,
 			title: '',
 			text: '',
-			quote: '',
 			imageFiles: null,
 			imageUrls: null,
 			tags: '',
@@ -65,44 +64,9 @@ class PostForm extends React.Component {
 			if (file) fileReader.readAsDataURL(file);	// renders image if file exists
 		}
 
-
-		// Single Upload
-		// const file = e.currentTarget.files[0];
-		// const fileReader = new FileReader();
-
-		// if (file.size > 5000000){
-		// 	this.setState({errors: "Filesize must be under 5 Mb!"});
-		// 	console.log("Filesize must be under 5 Mb!");
-		// } else {
-		// 	fileReader.onloadend = ()=> {	// loads fileReader while setting state
-		// 		this.setState({
-		// 			imageFile: file,
-		// 			imageUrl: fileReader.result
-		// 		})
-		// 	}
-		// }
-		// if (file) fileReader.readAsDataURL(file);	// renders image if file exists
 	}
 	
 	handleSubmit(e) {
-		// Single Image Submit
-		// e.preventDefault();
-		// const formData = new FormData();
-		// formData.append('post[title]', this.state.title);
-		// if (this.state.imageFile) {
-		// 	formData.append('post[images]', this.state.imageFile);
-		// }
-		// formData.append('post[text]', this.state.text);
-		// formData.append('post[tags]', this.state.tags);
-
-		// const closeModalCB = ()=>this.props.closeModal();
-		// this.props
-		// 	.createPost(formData)
-		// 	.then(
-		// 		(closeModalCB),
-		// 		(response)=>console.log(response.responseJSON)
-		// 		);
-		// 	// .then(() => this.props.history.push('/dashboard'));
 
 		// Multi Image Submit
 		if (this.state.allowSubmit){	// prevents multi submit
@@ -119,6 +83,7 @@ class PostForm extends React.Component {
 			}
 			formData.append('post[text]', this.state.text);
 			formData.append('post[tags]', this.state.tags);
+			formData.append('post[post_type]', this.state.post_type);
 			
 			const closeModalCB = ()=>this.props.closeModal();
 			const rerouting = () => this.props.history.push('/dashboard');
@@ -196,22 +161,22 @@ class PostForm extends React.Component {
 
 			
 			const placeholderText = (postType, postBarType)=>{
-				debugger
+				// debugger
 			switch (postType || postBarType) {
 				case "textForm":
-					debugger
+					this.setState({post_type: "text"});
 					return "Your text here";
 				case "imageForm":
-					debugger
+					this.setState({post_type: "image"});
 					return "Add a caption, if you like"
 				case "quoteForm":
-					debugger
+					this.setState({post_type: "quote"});
 					return " - Source"
 				case "audioForm":
-					debugger
+					this.setState({post_type: "audio"});
 					return "Add a description, if you like"
 				case "videoForm":
-					debugger
+					this.setState({post_type: "video"});
 					return "Add a caption, if you like"
 				default:
 					return "";
@@ -238,7 +203,7 @@ class PostForm extends React.Component {
 				type="text" 
 				placeholder="&quot;Quote&quot;"
 				className="input-quote"
-				onChange={this.handleInput("quote")}/>
+				onChange={this.handleInput("title")}/>
 			)
 
 		let formBlock;
@@ -312,8 +277,6 @@ class PostForm extends React.Component {
 				</button>
 			</div>)
 		}
-
-
 
 		return (
 			<>
