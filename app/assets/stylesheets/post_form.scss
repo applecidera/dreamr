@@ -46,11 +46,17 @@
 #add-more-photos{
   min-height: 50px;
 }
-.hidden-upload-button{
-  height: 0px;
-  width: 0px;
+.large-hidden-upload-button, .small-hidden-upload-button{
+  height: 50%;
+  width: 85%;
+  color: white;
   position: absolute;
-  z-index: -10;
+}
+.small-hidden-upload-button{
+  height: 10%;
+}
+input[type=file]{
+    opacity: 0;
 }
 
 .image-preview-box{

@@ -174,6 +174,7 @@ class PostForm extends React.Component {
 
 			const uploadImageLabelHeight = (this.state.imageFiles != null) ? ("add-more-photos") : ("regular-height")
 			const uploadImageLabelText = (this.state.imageFiles != null) ? ("Add more photos") : ("Upload Photos!")
+			const uploadImageHiddenInput = (this.state.imageFiles != null) ? ("small-hidden-upload-button") : ("large-hidden-upload-button")
 			const imageUploadBox=(
 				<div className="image-upload-box">
 					{imagePreviews}
@@ -188,7 +189,7 @@ class PostForm extends React.Component {
 						<input
 						type="file"
 						id="upload-box"
-						className="hidden-upload-button"
+						className={uploadImageHiddenInput}
 						onChange={this.handleUpload}
 						multiple/>
 					</label>

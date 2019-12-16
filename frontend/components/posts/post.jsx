@@ -46,19 +46,13 @@ class Post extends React.Component {
 				return (<img key={idx} className="image" src={imageUrl}></img>)
 			})
 
-		let className;
-		if (this.props.bringMeDown){
-			className="post-container bring-me-down"
-		} else {
-			className="post-container"
-		}
 
 		// debugger
 
 
 
 		return (
-			<div key={post.id} className={className}>
+			<div key={post.id} className="post-container">
 				<img className="avatar" src={post.user.avatar}></img>
 				<div className="postbox">
 					<div className ="post-top">{topBar}</div>

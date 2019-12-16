@@ -17,7 +17,7 @@ class NewText extends React.Component{
         // debugger
         const {currentUser} = this.props;
         let posts = this.props.posts.map((post, idx)=>(
-			<Post key={idx} post={post} currentUser={currentUser} bringMeDown="yes"/>
+			<Post key={idx} post={post} currentUser={currentUser}/>
 		))
 	
 
