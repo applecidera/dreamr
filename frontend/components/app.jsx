@@ -6,6 +6,7 @@ import LoginForm from './session_forms/login_form_container';
 import Navbar from './navbar/navbar_container';
 import Dashboard from './dashboard/dashboard_container';
 import Modal from './modal/modal';
+import Modal2 from './modal/modal2';
 import { AuthRoute, ProtectedRoute, SplashRoute } from '../utils/route_utils';
 
 
@@ -13,6 +14,7 @@ const App = () => (
 	<div className="app-main">
 		
 		<Modal />
+		<Modal2 />
 		<Route path="/" component={Navbar} />
 		<SplashRoute  path="/" component={Splash} />
 		<SplashRoute  path="/register" component={Splash} />

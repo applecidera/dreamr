@@ -3,16 +3,18 @@ import { Link } from 'react-router-dom';
 import Dropdown from './dropdown_container';
 
 class Navbar extends React.Component {
-	// constructor(props){
-	// 	super(props);
+	constructor(props){
+		super(props);
 
-	// 	this.state={
-	// 		open: false
-	// 	}
-
+		this.state={
+			open: false,
+			searchText: "",
+			searchbarFilled: null
+		}
+		this.checkSearchbarFilled=this.checkSearchbarFilled.bind(this);
 		// this.openDropdown = this.openDropdown.bind(this);
 		// this.closeDropdown = this.closeDropdown.bind(this);
-	// }
+	}
 
 	// openDropdown(){
 	// 	this.setState=({
@@ -28,7 +30,17 @@ class Navbar extends React.Component {
 	// 	})
 	// 	console.log("close the door");
 	// }
+	checkSearchbarFilled(){
+		(this.state.searchText != "") ? 
+		this.setState({searchbarFilled: true}) : 
+		this.setState({searchbarFilled: null}) ;
+	}
 
+	handleInput(){
+		debugger
+		return e=>
+			this.setState({searchText: e.currentTarget.value})
+	}
 
 
 	render() {
@@ -54,16 +66,13 @@ class Navbar extends React.Component {
 		}
 		if (this.props.currentUser){
 			loginNav = (
-				// <Link 
-			// 	to="/"
-				// 	className="logged-in-nav">
-				// 	<button 
-				// 	onClick={this.props.deleteSession} 
-				// 	>Logout</button></Link>
 
 				<div className="logged-in-nav">
 					<Dropdown />
-					<button className="fas fa-pencil-alt nav-post-box"></button>
+					<button 
+					className="fas fa-pencil-alt nav-post-box" 
+					onClick={()=>this.props.openModal2("choose-a-form")}
+					/>
 				</div>
 			)
 			// dropDownButton = (
@@ -75,17 +84,24 @@ class Navbar extends React.Component {
 			// 		</button>)
 		}
 		
+		
+		let searchbarFilled = this.props.searchbarFilled ?
+			"searchbar-filled" :
+			(null) ;
 		// debugger
-			
 		return (
 			<div className="navbar">
 				{navbarBorder}
 				<div className="left-side">
 					<Link style={{ textDecoration: 'none' }} to='/dashboard'><span className="nav-logo">d</span></Link>
-					{/* <i className="mag-glass">&#x1F50D;</i> */}
 					<i className="mag-glass"><i className="fas fa-search"></i></i>
-					{/* <i class="fas fa-search"></i> */}
-					<input className="searchbar" type="text" placeholder="Search Dreamr"></input>
+					<input 
+					className="searchbar"
+					id={searchbarFilled}
+					type="text" 
+					placeholder="Search Dreamr"
+					// onChange={this.checkSearchbarFilled()}
+					></input>
 				</div>
 				{redirectButton}
 				{loginNav}

@@ -25,6 +25,7 @@ class PostFormBar extends React.Component {
 						<button>Aa</button>
 						<span>Text</span>
 					</div>
+					<div className="gray-gradient-border"></div>
 					<div
 						className="photo-box"
 						id="post-form-button"
@@ -33,6 +34,7 @@ class PostFormBar extends React.Component {
 						<button className="fas fa-camera-retro"></button>
 						<span>Photo</span>
 					</div>
+					<div className="gray-gradient-border"></div>
 					<div
 						className="quote-box"
 						id="post-form-button"
@@ -41,6 +43,7 @@ class PostFormBar extends React.Component {
 						<button className="fas fa-quote-left"></button>
 						<span>Quote</span>
 					</div>
+					<div className="gray-gradient-border"></div>
 					<div
 						className="audio-box"
 						id="post-form-button"
@@ -49,6 +52,7 @@ class PostFormBar extends React.Component {
 						<button className="fas fa-headphones"></button>
 						<span>Audio</span>
 					</div>
+					<div className="gray-gradient-border"></div>
 					<div
 						className="video-box"
 						id="post-form-button"

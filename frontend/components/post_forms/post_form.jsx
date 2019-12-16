@@ -13,7 +13,8 @@ class PostForm extends React.Component {
 			imageFiles: null,
 			imageUrls: null,
 			tags: '',
-			errors: null
+			errors: null,
+			allowSubmit: true
 		};
 		this.ref = React.createRef();
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -109,26 +110,30 @@ class PostForm extends React.Component {
 		// 	// .then(() => this.props.history.push('/dashboard'));
 
 		// Multi Image Submit
-		e.preventDefault();
-		const formData = new FormData();
-		formData.append('post[title]', this.state.title);
-		let imageFiles = this.state.imageFiles;
-		if (imageFiles) {
-			imageFiles.forEach((image, idx)=>{
-				formData.append('post[images][]', imageFiles[idx]);
-			})
+		if (this.state.allowSubmit){	// prevents multi submit
+
+			this.setState({allowSubmit: false});			
+			e.preventDefault();
+			const formData = new FormData();
+			formData.append('post[title]', this.state.title);
+			let imageFiles = this.state.imageFiles;
+			if (imageFiles) {
+				imageFiles.forEach((image, idx)=>{
+					formData.append('post[images][]', imageFiles[idx]);
+				})
+			}
+			formData.append('post[text]', this.state.text);
+			formData.append('post[tags]', this.state.tags);
+			// debugger
+			const closeModalCB = ()=>this.props.closeModal();
+			this.props
+				.createPost(formData)
+				.then(
+					(closeModalCB),
+					(response)=>console.log(response.responseJSON)
+					);
+				// .then(() => this.props.history.push('/dashboard'));
 		}
-		formData.append('post[text]', this.state.text);
-		formData.append('post[tags]', this.state.tags);
-		// debugger
-		const closeModalCB = ()=>this.props.closeModal();
-		this.props
-			.createPost(formData)
-			.then(
-				(closeModalCB),
-				(response)=>console.log(response.responseJSON)
-				);
-			// .then(() => this.props.history.push('/dashboard'));
 	}
 
 	deletePreviewImage(idx){
@@ -283,7 +288,7 @@ class PostForm extends React.Component {
 					<div className="post-form-top-block">{currentUser.username}</div>
 						{formBlock}
 					<div className="post-form-bottom-block">
-						<button className="post-close" onClick={closeModal}>Close</button>
+						<button ref="uploadButton" className="post-close" onClick={closeModal}>Close</button>
 						<button disabled={disabled} className="post-create-post" onClick={this.handleSubmit}>
 							<span>Post</span>
 							<div className="fas fa-chevron-down"></div>

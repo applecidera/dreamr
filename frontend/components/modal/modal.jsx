@@ -2,10 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { closeModal } from '../../actions/modal_actions';
 import PostFormContainer from '../post_forms/post_form_container';
-import LogoutModal from './logout_modal'
+import LogoutModal from './logout_modal';
+import ChoosePostModal from './choose_post_modal';
 import {deleteSession} from '../../actions/session_actions';
 
-class PostModal extends React.Component {
+class Modal extends React.Component {
 	render() {
 		const { modal, closeModal } = this.props;
 
@@ -75,4 +76,4 @@ const mdp = (dispatch) => {
 	};
 };
 
-export default connect(msp, mdp)(PostModal);
+export default connect(msp, mdp)(Modal);

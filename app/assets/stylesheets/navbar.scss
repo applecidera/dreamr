@@ -31,12 +31,19 @@
 	padding: 2px;
 	width: 480px;
 	font-size: 15px;
+	color: white;
 	// z-index: 1;
 }
-
 .searchbar::placeholder {
 	color: lightgray;
 	font-size: 15px;
+}
+.searchbar:focus{
+	outline: none;
+}
+#searchbar-filled{
+	color: black;
+	background-color: white;
 }
 
 .mag-glass {
