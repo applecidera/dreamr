@@ -4,9 +4,12 @@ import Post from '../posts/post';
 import PostFormContainer from './post_form_container';
 import { fetchAllPosts } from '../../actions/post_actions';
 
-class NewText extends React.Component{
+class NewPost extends React.Component{
     constructor(props){
-        super(props);
+				super(props);
+				this.state={
+					formType: this.props.location.pathname.split('/')[2].concat("Form")
+				}
     }
 
     componentDidMount(){
@@ -22,12 +25,12 @@ class NewText extends React.Component{
 	
 
 		let featured = (<div>Featured Posts Go Here</div>);
-		
+
 		return (
             <div className="disable-filter">
                 <div className="new-post-background">
                     <div className="post-form-container-from-bar">
-                        <PostFormContainer postBarType="textForm" currentUser={currentUser}/>
+                        <PostFormContainer postBarType={this.state.formType} currentUser={currentUser}/>
                     </div>
                     <div className ="left-col">{posts}</div>
                     <div className="right-col">{featured}</div>
@@ -48,7 +51,7 @@ const mdp = (dispatch) => ({
 	fetchAllPosts: () => dispatch(fetchAllPosts())
 });
 
-export default connect(msp, mdp)(NewText);
+export default connect(msp, mdp)(NewPost);
 
 
 

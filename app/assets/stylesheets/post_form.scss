@@ -47,13 +47,13 @@
   min-height: 50px;
 }
 .large-hidden-upload-button, .small-hidden-upload-button{
-  height: 50%;
-  width: 85%;
+  width: 540px;
+  height: 200px;
   color: white;
   position: absolute;
 }
 .small-hidden-upload-button{
-  height: 10%;
+  height: 75px;
 }
 input[type=file]{
     opacity: 0;

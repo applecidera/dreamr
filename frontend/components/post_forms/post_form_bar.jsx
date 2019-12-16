@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class PostFormBar extends React.Component {
 	render() {
@@ -9,57 +9,45 @@ class PostFormBar extends React.Component {
 				{/* <img className="post-avatar" src={window.avatar} /> */}
 				<img className="post-avatar" src={currentUser.avatar} />
 				<div className="post-form-bar">
-					<NavLink style={{ textDecoration: 'none' }} to="/new/text"
+					<Link style={{ textDecoration: 'none' }} 
+						to="/new/text"
 						className="text-box"
-						id="post-form-button"
-					>
+						id="post-form-button" >
 						<button>Aa</button>
 						<span>Text</span>
-					</NavLink>
-					{/* <div
-						className="text-box"
-						id="post-form-button"
-						onClick={()=>this.props.openModal('textForm')}
-					>
-						<button>Aa</button>
-						<span>Text</span>
-					</div> */}
+					</Link>
 					<div className="gray-gradient-border"></div>
-					<div
+					<Link style={{ textDecoration: 'none' }} 
+						to="/new/image"
 						className="photo-box"
-						id="post-form-button"
-						onClick={()=>this.props.openModal('imageForm')}
-					>
+						id="post-form-button" >
 						<button className="fas fa-camera-retro"></button>
 						<span>Photo</span>
-					</div>
+					</Link>
 					<div className="gray-gradient-border"></div>
-					<div
+					<Link style={{ textDecoration: 'none' }} 
+						to="/new/quote"
 						className="quote-box"
-						id="post-form-button"
-						onClick={()=>this.props.openModal('quoteForm')}
-					>
+						id="post-form-button" >
 						<button className="fas fa-quote-left"></button>
 						<span>Quote</span>
-					</div>
+					</Link>
 					<div className="gray-gradient-border"></div>
-					<div
+					<Link style={{ textDecoration: 'none' }} 
+						to="/new/audio"
 						className="audio-box"
-						id="post-form-button"
-						onClick={()=>this.props.openModal('audioForm')}
-					>
+						id="post-form-button" >
 						<button className="fas fa-headphones"></button>
 						<span>Audio</span>
-					</div>
+					</Link>
 					<div className="gray-gradient-border"></div>
-					<div
+					<Link style={{ textDecoration: 'none' }} 
+						to="/new/video"
 						className="video-box"
-						id="post-form-button"
-						onClick={()=>this.props.openModal('videoForm')}
-					>
+						id="post-form-button" >
 						<button className="fas fa-video"></button>
 						<span>Video</span>
-					</div>
+					</Link>
 				</div>
 			</div>
 		);

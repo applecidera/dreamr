@@ -5,7 +5,7 @@ import SignupForm from './session_forms/signup_form_container';
 import LoginForm from './session_forms/login_form_container';
 import Navbar from './navbar/navbar_container';
 import Dashboard from './dashboard/dashboard_container';
-import NewText from './post_forms/new_text';
+import NewPost from './post_forms/new_post';
 import Modal from './modal/modal';
 import Modal2 from './modal/modal2';
 import { AuthRoute, ProtectedRoute, SplashRoute } from '../utils/route_utils';
@@ -17,7 +17,11 @@ const App = () => (
 		<Modal />
 		<Modal2 />
 		<Route path="/" component={Navbar} />
-		<Route exact path="/new/text" component={NewText} />
+		<Route exact path="/new/text" component={NewPost}/>
+		<Route exact path="/new/image" component={NewPost}/>
+		<Route exact path="/new/quote" component={NewPost}/>
+		<Route exact path="/new/audio" component={NewPost}/>
+		<Route exact path="/new/video" component={NewPost}/>
 		<SplashRoute  path="/" component={Splash} />
 		<SplashRoute  path="/register" component={Splash} />
 		<AuthRoute exact path="/signup" component={SignupForm} />
