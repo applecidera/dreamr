@@ -10,6 +10,7 @@ class PostForm extends React.Component {
 			postType: postType,
 			title: '',
 			text: '',
+			quote: '',
 			imageFiles: null,
 			imageUrls: null,
 			tags: '',
@@ -143,9 +144,9 @@ class PostForm extends React.Component {
 
 	render() {
 		//TODO Destructure Props Here
-		const {closeModal, currentUser, postType} = this.props;
+		const {closeModal, currentUser, postType, postBarType} = this.props;
 		const {title, text, imageFiles}=this.state;
-
+	
 		// let titleGoesHere=null;
 		// if (postType === "textForm" || postType === "quoteForm" ){
 			const titleGoesHere=(
@@ -157,9 +158,6 @@ class PostForm extends React.Component {
 		// }
 		// let imageUploadBox=null;
 		// if (postType === "imageForm"){
-			
-			// https://medium.com/@650egor/simple-drag-and-drop-file-upload-in-react-2cb409d88929
-
 			const imagePreviews = this.state.imageUrls ? 	// if
 			( this.state.imageUrls.map((imageUrl, idx)=>{
 				return (<div key={idx} className="image-preview-box">
@@ -197,17 +195,23 @@ class PostForm extends React.Component {
 		// }
 
 			
-			const placeholderText = (postType)=>{
-			switch (postType) {
+			const placeholderText = (postType, postBarType)=>{
+				debugger
+			switch (postType || postBarType) {
 				case "textForm":
+					debugger
 					return "Your text here";
 				case "imageForm":
+					debugger
 					return "Add a caption, if you like"
-				case "imageQuote":
+				case "quoteForm":
+					debugger
 					return " - Source"
 				case "audioForm":
+					debugger
 					return "Add a description, if you like"
 				case "videoForm":
+					debugger
 					return "Add a caption, if you like"
 				default:
 					return "";
@@ -229,7 +233,13 @@ class PostForm extends React.Component {
 				onChange={this.handleInput("tags")}/>
 			)
 
-
+			const quoteGoesHere=(
+				<input 
+				type="text" 
+				placeholder="&quot;Quote&quot;"
+				className="input-quote"
+				onChange={this.handleInput("quote")}/>
+			)
 
 		let formBlock;
 		switch (this.state.postType || this.props.postBarType) {
@@ -254,21 +264,27 @@ class PostForm extends React.Component {
 			case 'quoteForm':
 				formBlock = (
 					<div className = "formData">
-						
+						{quoteGoesHere}
+						{textGoesHere}
+						{tagsGoesHere}
 					</div>
 				);
 				break;
 			case 'audioForm':
 				formBlock = (
 					<div className = "formData">
-						
+						{imageUploadBox}
+						{textGoesHere}
+						{tagsGoesHere}
 					</div>
 				);
 				break;
 			case 'videoForm':
 				formBlock = (
 					<div className = "formData">
-						
+						{imageUploadBox}
+						{textGoesHere}
+						{tagsGoesHere}
 					</div>
 				);
 				break;

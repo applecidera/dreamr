@@ -14,6 +14,7 @@
 	grid-column-end: 3;
 	grid-row-start: 2;
 	grid-row-end: 3;
+	z-index: 3;
 }
 
 .post-avatar {
@@ -127,7 +128,7 @@
     // grid-template-columns: 1fr 625px 320px 1fr;
     // grid-template-rows: 100px 120px 1fr;
     background-color: rgba(26, 0, 63, 0.9);
-    z-index: 15;
+    z-index: 1;
     overflow-y: auto;
 }
 

@@ -27,15 +27,14 @@ class NewPost extends React.Component{
 		let featured = (<div>Featured Posts Go Here</div>);
 
 		return (
-            <div className="disable-filter">
                 <div className="new-post-background">
                     <div className="post-form-container-from-bar">
                         <PostFormContainer postBarType={this.state.formType} currentUser={currentUser}/>
                     </div>
+                    <div className="disable-filter"></div>
                     <div className ="left-col">{posts}</div>
                     <div className="right-col">{featured}</div>
                 </div>
-            </div>
 		);
     }
 }
