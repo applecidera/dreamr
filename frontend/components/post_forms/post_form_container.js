@@ -5,7 +5,6 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 import PostForm from './post_form';
 
 const msp = (state) => {
-  // debugger
 	return {
     postType: state.ui.modal,
     currentUser: state.session.currentUser

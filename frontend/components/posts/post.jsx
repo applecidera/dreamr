@@ -46,11 +46,6 @@ class Post extends React.Component {
 				return (<img key={idx} className="image" src={imageUrl}></img>)
 			})
 
-
-		// debugger
-
-
-
 		return (
 			<div key={post.id} className="post-container">
 				<img className="avatar" src={post.user.avatar}></img>

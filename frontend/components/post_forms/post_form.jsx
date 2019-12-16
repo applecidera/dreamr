@@ -118,10 +118,10 @@ class PostForm extends React.Component {
 			}
 			formData.append('post[text]', this.state.text);
 			formData.append('post[tags]', this.state.tags);
-			// debugger
+			
 			const closeModalCB = ()=>this.props.closeModal();
 			const rerouting = () => this.props.history.push('/dashboard');
-			// debugger
+			
 			this.props
 				.createPost(formData)
 				.then(
