@@ -17,7 +17,7 @@ class Modal extends React.Component {
 		let component;
 		let background;
 		let container;
-		// debugger
+		
 		switch (modal) {
 			case 'textForm':
 				component = <PostFormContainer postType={modal} />;

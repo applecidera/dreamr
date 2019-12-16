@@ -2,7 +2,6 @@ class Api::PostsController < ApplicationController
 
   def index
     @posts = Post.order(id: :DESC).limit(10).includes(:user)
-    # debugger
     # @posts = Posts.all.includes(:likes, :replies)
     # TODO includes to prefetch data, reduce n+1
     # render :index
@@ -19,7 +18,6 @@ class Api::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    # debugger
     if @post.save
       render :show
     else 

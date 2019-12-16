@@ -7,7 +7,7 @@ import ChoosePostModal from './choose_post_modal';
 class Modal2 extends React.Component {
 	render() {
 		const { modal2, closeModal2 } = this.props;
-		// debugger
+		
 		if (!modal2) { //! checks if UI state is null
 			return null;
 		}
@@ -15,7 +15,7 @@ class Modal2 extends React.Component {
 		let component;
 		let background;
 		let container;
-		// debugger
+		
 		switch (modal2) {
 			case 'choose-a-form':
 				component = <ChoosePostModal postType={modal2} />;

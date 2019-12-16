@@ -11,7 +11,6 @@ class Dashboard extends React.Component {
 	componentDidUpdate(prevProps){
 		if (prevProps.posts.length != this.props.posts.length){
 			this.props.fetchAllPosts();
-			// debugger
 		}
 	}
 

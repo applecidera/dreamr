@@ -24,7 +24,6 @@ class SignupForm extends React.Component {
 	}
 
 	componentDidMount() {
-		// debugger
 		this.props.clearSessionErrors();
 	}
 

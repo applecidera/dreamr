@@ -37,7 +37,7 @@ class Navbar extends React.Component {
 	}
 
 	handleInput(){
-		debugger
+
 		return e=>
 			this.setState({searchText: e.currentTarget.value})
 	}
@@ -88,7 +88,7 @@ class Navbar extends React.Component {
 		let searchbarFilled = this.props.searchbarFilled ?
 			"searchbar-filled" :
 			(null) ;
-		// debugger
+		
 		return (
 			<div className="navbar">
 				{navbarBorder}
