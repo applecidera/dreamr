@@ -11,7 +11,6 @@ const _nullSession = {
 const sessionReducer = (prevState = _nullSession, action) => {
 	Object.freeze(prevState);
 	let newState = {};
-	// debugger
 	switch (action.type) {
 		case RECEIVE_CURRENT_USER:
 			newState = {

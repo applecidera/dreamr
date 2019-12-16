@@ -72,7 +72,7 @@ class SignupForm extends React.Component {
 		if (this.state.errors) {
 			errors = <span className="errors">{this.state.errors}</span>;
 		}
-		// debugger
+		
 		return (
 			<div className="splash">
 				{/* <Link to="/login"><button className="redirect-button">Login</button></Link> */}

@@ -46,7 +46,6 @@ class LoginForm extends React.Component {
 	}
 
 	componentDidMount(){
-		// debugger
 		this.props.clearSessionErrors();
 	}
 

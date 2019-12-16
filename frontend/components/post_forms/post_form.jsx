@@ -42,7 +42,6 @@ class PostForm extends React.Component {
 			imageFileArray = imageFileArray.concat(this.state.imageFiles);
 			imageUrlArray = imageUrlArray.concat(this.state.imageUrls);
 		}
-		// debugger
 		let uploadedImages = e.currentTarget.files;
 		for (let i=0; i < uploadedImages.length; i++){
 			const file = uploadedImages[i];
