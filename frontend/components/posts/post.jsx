@@ -46,7 +46,6 @@ class Post extends React.Component {
 									</div>
 								</div>
 								</>);
-			// TODO no notes on left; reply, reblog, edit on right
 		} else {
 			topBar = (<span>{author.username}</span>); // !someone else's post
 			botBar = (<>
@@ -61,12 +60,15 @@ class Post extends React.Component {
 									</div>
 								</div>
 								</>);
-			// TODO notes on left; reply, reblog, like on right
-			// space between
 		}
+		
+		
+		let isaQuote = (post.post_type==="quote") ? ('\"') : source=null;
+		let source = (post.post_type==="quote") ? ('\u2014') : isaQuote = null;
+		// debugger
 		let titleGoesHere=null;
 		if (post.title!="")
-			titleGoesHere = (<div className="title">{post.title}</div>);
+			titleGoesHere = (<div className="title">{isaQuote}{post.title}{isaQuote}</div>);
 
 		let imagesGoesHere = null;
 		if (post.imageUrls)
@@ -75,11 +77,12 @@ class Post extends React.Component {
 			})
 
 		let textGoesHere = null;
-		let source;
-		if (post.type="quote") source="-";
 		if (post.text!="")
-			post.text=(<div className="text">{source}{post.text}</div>);
+			textGoesHere=(<div className="text">{source}{post.text}</div>);
 		
+		let tagsGoesHere = null;
+		if (post.tags!="")
+			tagsGoesHere=(<div className="tags">{post.tags}</div>);
 
 		return (
 			<div key={post.id} className="post-container">
@@ -88,8 +91,8 @@ class Post extends React.Component {
 					<div className ="post-top">{topBar}</div>
 					{titleGoesHere}
 					{imagesGoesHere}
-					{textGoeshere}
-					<div className="tags">{post.tags}</div>
+					{textGoesHere}
+					{tagsGoesHere}
 					<div className ="post-bottom">{botBar}</div>
 				</div>
 			</div>

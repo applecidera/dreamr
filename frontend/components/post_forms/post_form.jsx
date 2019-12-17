@@ -78,7 +78,7 @@ class PostForm extends React.Component {
 				post_type = "image";
 				break;
 			case "quoteForm":
-				post_type = " quote";
+				post_type = "quote";
 				break;
 			case "audioForm":
 				post_type = "audio"
@@ -92,7 +92,7 @@ class PostForm extends React.Component {
 		}
 
 		// Multi Image Submit
-		console.log(post_type);
+		
 		if (this.state.allowSubmit){	// prevents multi submit
 
 			this.setState({allowSubmit: false});			
