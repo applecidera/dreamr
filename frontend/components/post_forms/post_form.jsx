@@ -136,12 +136,12 @@ class PostForm extends React.Component {
 		// this.forceUpdate()
 		let imageUrls = this.state.imageUrls.slice();
 		let imageFiles = this.state.imageFiles.slice();
-		//TODO SPLICE INDEX, number of items
+		
 		imageUrls.splice(index,1);
 		imageFiles.splice(index,1);
-
-		if (imageUrls.length===0) imageUrls = null;
-		if (imageUrls.length===0) imageFiles = null;
+		
+		if (imageUrls && imageUrls.length===0) imageUrls = null;
+		if (imageFiles && imageFiles.length===0) imageFiles = null;
 
 		this.setState({
 			imageUrls: imageUrls,
