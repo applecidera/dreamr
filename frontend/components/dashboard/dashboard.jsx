@@ -19,17 +19,16 @@ class Dashboard extends React.Component {
 		// let postFormBar = (<div>Post Form Bar Goes Here</div>);
 		// let posts = (<div>Posts Go Here</div>);
 		
+		// TODO Recomment this back in Line 32
 		let posts = this.props.posts.map((post, idx)=>(
 			<Post key={idx} post={post} />
 		))
 	
-
-		let featured = (<div>Featured Posts Go Here</div>);
+		let featured = (<div></div>);
 		
 		return (
 			<div className="dashboard">
 				<PostFormBar />
-				{/* <div className = "post-form-bar">{postFormBar}</div> */}
 				<div className ="left-col">{posts}</div>
 				<div className="right-col">{featured}</div>
 			</div>

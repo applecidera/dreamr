@@ -26,7 +26,7 @@ const Splash = ({ component: Component, path, loggedIn }) => (
   <Route
     exact path={path}
     render={props => (
-    loggedIn ? <Redirect to="/" /> : <Component {...props} />
+    loggedIn ? <Redirect to="/dashboard" /> : <Component {...props} />
     )}
   />
 );

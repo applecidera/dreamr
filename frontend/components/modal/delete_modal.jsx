@@ -10,15 +10,12 @@ class DeleteModal extends React.Component {
 	}
 
 	deletePost(){
-		debugger
 		this.props.deletePost(this.props.postId);
-		
 		this.props.closeModal();
 	}
 
 	render() {
 		const { modal, closeModal, postId} = this.props;
-
 		if (!modal) {
 			return null;
 		}

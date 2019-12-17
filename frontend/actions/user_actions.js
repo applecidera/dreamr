@@ -7,6 +7,13 @@ export const receiveUser = (user) => ({
 	user: user
 });
 
-export const fetchUser = (user) => (dispatch) =>
-  UserApiUtils.receiveUser(user)
-  .then((user) => dispatch(receiveUser(user)));
+// export const fetchBench = id => dispatch => (
+//   APIUtil.fetchBench(id).then(payload => (
+//     dispatch(receiveBench(payload))
+//   ))
+// );
+
+export const fetchUser = (userId) => (dispatch) =>
+  UserApiUtils.fetchSingleUser(userId)
+  .then((user) =>{ 
+    return dispatch(receiveUser(user))});

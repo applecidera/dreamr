@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Post from '../posts/post';
+import Post from '../posts/post_container';
 import PostFormContainer from './post_form_container';
-import { fetchAllPosts } from '../../actions/post_actions';
 
 class NewPost extends React.Component{
     constructor(props){
@@ -17,10 +16,8 @@ class NewPost extends React.Component{
     }
 
     render() {
-        // debugger
-        const {currentUser} = this.props;
         let posts = this.props.posts.map((post, idx)=>(
-			<Post key={idx} post={post} currentUser={currentUser}/>
+			<Post key={idx} post={post} />
 		))
 	
 
@@ -29,7 +26,7 @@ class NewPost extends React.Component{
 		return (
                 <div className="new-post-background">
                     <div className="post-form-container-from-bar">
-                        <PostFormContainer postBarType={this.state.formType} currentUser={currentUser}/>
+                        <PostFormContainer postBarType={this.state.formType} />
                     </div>
                     <div className="disable-filter"></div>
                     <div className ="left-col">{posts}</div>
@@ -39,18 +36,7 @@ class NewPost extends React.Component{
     }
 }
 
-const msp = (state) => {
-	return {
-        posts: Object.values(state.entities.posts),
-        currentUser: state.session.currentUser
-	}
-};
-
-const mdp = (dispatch) => ({
-	fetchAllPosts: () => dispatch(fetchAllPosts())
-});
-
-export default connect(msp, mdp)(NewPost);
+export default NewPost;
 
 
 

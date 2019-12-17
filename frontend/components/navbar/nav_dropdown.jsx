@@ -1,6 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { deleteSession } from '../../actions/session_actions';
+import { openModal } from '../../actions/modal_actions';
 
-class Dropdown extends React.Component {
+class NavDropdown extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -25,7 +28,6 @@ class Dropdown extends React.Component {
 					<div className="dropdown-container">
 						<div className="dropdown-top">
 							<div className="account">ACCOUNT</div>
-							{/* <div className="logout-button" onClick={this.props.logout}><span>Logout</span></div> */}
 							<div className="logout-button" onClick={()=>this.props.openModal("logout")}><span>Logout</span></div>
 						</div>
 						
@@ -36,4 +38,13 @@ class Dropdown extends React.Component {
 	}
 }
 
-export default Dropdown;
+const msp = (state) => ({
+	user: state.session.currentUser
+});
+
+const mdp = (dispatch) => ({
+	logout: () => dispatch(deleteSession()),
+	openModal: (modal) => dispatch(openModal(modal))
+});
+
+export default connect(msp, mdp)(NavDropdown);

@@ -144,8 +144,11 @@
 	// height: 20px;
 	// height: 100px;
 }
-.dropdown-button:hover {
+.dropdown-button:hover, .logout-button:hover {
 	cursor: pointer;
+}
+.dropdown-top:hover, .dropdown-container:hover{
+	cursor: auto;
 }
 
 .dropdown-container{

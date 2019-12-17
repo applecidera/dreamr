@@ -50,7 +50,7 @@ class Modal extends React.Component {
 				container = 'logout-modal';
 				break;
 			case 'delete-confirmation':
-				component = <DeleteModal postId={event.target.value} />;
+				component = <DeleteModal postId={event.target.id} />;
 				background = 'logout-background';
 				container = 'logout-modal';
 				break;

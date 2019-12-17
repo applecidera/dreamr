@@ -7,7 +7,7 @@ class PostFormBar extends React.Component {
 		return (			// TODO add custom routes to create new posts
 			<div className="post-form-bar-container">
 				{/* <img className="post-avatar" src={window.avatar} /> */}
-				<img className="post-avatar" src={currentUser.avatar} />
+				<img className="post-avatar" src={window.avatar} />
 				<div className="post-form-bar">
 					<Link style={{ textDecoration: 'none' }} 
 						to="/new/text"

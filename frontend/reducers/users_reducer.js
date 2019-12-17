@@ -1,15 +1,17 @@
-// import { OPEN_MODAL, CLOSE_MODAL } from '../actions/modal_actions';
+import {RECEIVE_USER} from '../actions/user_actions';
+import {merge} from 'lodash';
 
-const usersReducer = (state = {}, action) => {
-	// switch (action.type) {
-	// 	case OPEN_MODAL:
-	// 		return action.modal;
-	// 	case CLOSE_MODAL:
-	// 		return null;
-	// 	default:
-	// 		return state;
-  // }
-  return state;
+const usersReducer = (prevState = {}, action) => {
+	let newState;
+	
+	switch(action.type){
+		case RECEIVE_USER:
+			newState = merge({}, prevState);
+			newState[action.user.id] = action.user;
+			return newState;
+		default:
+			return prevState;
+	}
 };
 
 export default usersReducer;

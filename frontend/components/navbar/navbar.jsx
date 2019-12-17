@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Dropdown from './dropdown_container';
+import NavDropdown from './nav_dropdown';
 
 class Navbar extends React.Component {
 	constructor(props){
@@ -68,7 +68,7 @@ class Navbar extends React.Component {
 			loginNav = (
 
 				<div className="logged-in-nav">
-					<Dropdown />
+					<NavDropdown />
 					<button 
 					className="fas fa-pencil-alt nav-post-box" 
 					onClick={()=>this.props.openModal2("choose-a-form")}

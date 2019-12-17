@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import { merge } from 'lodash';
 
 class PostForm extends React.Component {
 	constructor(props) {
@@ -67,8 +68,31 @@ class PostForm extends React.Component {
 	}
 	
 	handleSubmit(e) {
+		
+		let post_type;
+		switch ( this.props.postType || this.props.postBarType) {
+			case "textForm":
+				post_type = "text";
+				break;
+			case "imageForm":
+				post_type = "image";
+				break;
+			case "quoteForm":
+				post_type = " quote";
+				break;
+			case "audioForm":
+				post_type = "audio"
+				break;
+			case "videoForm":
+				post_type = "video"
+				break;
+			default:
+				post_type = "";
+				break;
+		}
 
 		// Multi Image Submit
+		console.log(post_type);
 		if (this.state.allowSubmit){	// prevents multi submit
 
 			this.setState({allowSubmit: false});			
@@ -83,10 +107,11 @@ class PostForm extends React.Component {
 			}
 			formData.append('post[text]', this.state.text);
 			formData.append('post[tags]', this.state.tags);
-			formData.append('post[post_type]', this.state.post_type);
+			formData.append('post[post_type]', post_type);
 			
 			const closeModalCB = ()=>this.props.closeModal();
-			const rerouting = () => this.props.history.push('/dashboard');
+			let rerouting;	// if created from bar, go back upon success	
+			if (this.props.postBarType)	rerouting = () => this.props.history.goBack();
 			
 			this.props
 				.createPost(formData)
@@ -99,10 +124,31 @@ class PostForm extends React.Component {
 	}
 
 	deletePreviewImage(idx){
-		let index = idx.idx
-		delete this.state.imageUrls[index]
-		delete this.state.imageFiles[index]
-		this.forceUpdate()
+		let index = idx.idx;
+		// debugger
+		// this.setState=({
+		// 	imageUrls[idx]: {},
+		// 	imageFiles[idx]: {}
+		// })
+		
+		// delete this.state.imageUrls[index]
+		// delete this.state.imageFiles[index]
+		// console.log(this.state.imageFiles);
+		// this.forceUpdate()
+		let imageUrls = this.state.imageUrls.slice();
+		let imageFiles = this.state.imageFiles.slice();
+		//TODO SPLICE INDEX, number of items
+		imageUrls.splice(index,1);
+		imageFiles.splice(index,1);
+
+		if (imageUrls.length===0) imageUrls = null;
+		if (imageUrls.length===0) imageFiles = null;
+
+		this.setState({
+			imageUrls: imageUrls,
+			imageFiles: imageFiles
+		})
+
 	}
 
 
@@ -112,6 +158,29 @@ class PostForm extends React.Component {
 		const {closeModal, currentUser, postType, postBarType} = this.props;
 		const {title, text, imageFiles}=this.state;
 	
+		// TODO Conditional Formblock Insertions
+		let placeholderText;
+
+		switch (postType || postBarType) {
+			case "textForm":
+				placeholderText = "Your text here";
+				break;
+			case "imageForm":
+				placeholderText = "Add a caption, if you like";
+				break;
+			case "quoteForm":
+				placeholderText = " - Source";
+				break;
+			case "audioForm":
+				placeholderText = "Add a description, if you like";
+				break;
+			case "videoForm":
+				placeholderText = "Add a caption, if you like"
+				break;
+			default:
+				placeholderText = "";
+				break;
+		}
 		// let titleGoesHere=null;
 		// if (postType === "textForm" || postType === "quoteForm" ){
 			const titleGoesHere=(
@@ -158,33 +227,10 @@ class PostForm extends React.Component {
 				</div>
 			)
 		// }
-
-			
-			const placeholderText = (postType, postBarType)=>{
-				// debugger
-			switch (postType || postBarType) {
-				case "textForm":
-					this.setState({post_type: "text"});
-					return "Your text here";
-				case "imageForm":
-					this.setState({post_type: "image"});
-					return "Add a caption, if you like"
-				case "quoteForm":
-					this.setState({post_type: "quote"});
-					return " - Source"
-				case "audioForm":
-					this.setState({post_type: "audio"});
-					return "Add a description, if you like"
-				case "videoForm":
-					this.setState({post_type: "video"});
-					return "Add a caption, if you like"
-				default:
-					return "";
-			}}
 			
 			const textGoesHere=(
 				<textarea cols="30" rows="4" 
-				placeholder={placeholderText(postType)}
+				placeholder={placeholderText}
 				className="input-body"
 				elastic="true"
 				onChange={this.handleInput("text")}></textarea>
@@ -206,6 +252,7 @@ class PostForm extends React.Component {
 				onChange={this.handleInput("title")}/>
 			)
 
+		// Final Building of Formblock
 		let formBlock;
 		switch (this.state.postType || this.props.postBarType) {
 			case 'textForm':
@@ -280,7 +327,7 @@ class PostForm extends React.Component {
 
 		return (
 			<>
-				<img className="avatar" />
+				<img className="avatar" src={window.avatar} />
 				<div className="post-form-box postbox">
 					<div className="post-form-top-block">{currentUser.username}</div>
 						{formBlock}
