@@ -23,7 +23,6 @@ class Modal2 extends React.Component {
 				container = 'choose-a-form-container';
 				break;
 			default:
-				console.log("you mispelled a modal");
 				return null;
 		}
 		

@@ -152,7 +152,7 @@
 }
 
 .dropdown-container{
-	height: 100px;
+	height: auto;
 	width: 240px;
 	background-color: white;
 	border-radius: 3px;
@@ -211,4 +211,23 @@
 }
 .nav-post-box:hover{
 	cursor: pointer;
+}
+
+.nav-profile-box{
+	width: 100%;
+	display: flex;
+	// margin: auto;
+	justify-content: flex-start;
+	padding: 10px;
+}
+
+.nav-avatar-image{
+	height: 37px;
+	width: 37px;
+}
+.nav-username{
+	display: flex;
+	margin-left: 10px;
+	align-self: center;
+	justify-content: start;
 }

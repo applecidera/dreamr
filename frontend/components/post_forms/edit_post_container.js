@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
-import NewPost from './new_post';
-import { fetchAllPosts } from '../../actions/post_actions';
+import EditPost from './edit_post';
+import { fetchAllPosts, updatePost } from '../../actions/post_actions';
 
 const msp = (state, ownProps) => {
 	return {
@@ -10,7 +10,8 @@ const msp = (state, ownProps) => {
 };
 
 const mdp = (dispatch) => ({
-	fetchAllPosts: () => dispatch(fetchAllPosts())
+  fetchAllPosts: () => dispatch(fetchAllPosts()),
+  updatePost: (post)=> dispatch(updatePost(post))
 });
 
-export default connect(msp, mdp)(NewPost);
+export default connect(msp, mdp)(EditPost);

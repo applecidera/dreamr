@@ -30,7 +30,10 @@ class NavDropdown extends React.Component {
 							<div className="account">ACCOUNT</div>
 							<div className="logout-button" onClick={()=>this.props.openModal("logout")}><span>Logout</span></div>
 						</div>
-						
+					<div className="nav-profile-box">
+						<img className ="nav-avatar-image"src={window.avatar} />
+						<span className="nav-username">{this.props.currentUser.username}</span>
+					</div>
 					</div>
 				)}
 			</button>
@@ -39,7 +42,7 @@ class NavDropdown extends React.Component {
 }
 
 const msp = (state) => ({
-	user: state.session.currentUser
+	currentUser: state.session.currentUser
 });
 
 const mdp = (dispatch) => ({

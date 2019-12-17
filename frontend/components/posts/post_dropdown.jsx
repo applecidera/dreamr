@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux';
 import { openModal } from '../../actions/modal_actions';
+import { Link, withRouter } from 'react-router-dom';
 
 class PostDropdown extends React.Component {
   constructor(props){
@@ -8,14 +9,22 @@ class PostDropdown extends React.Component {
     this.state = {
       open: false
     };
+    this.editThisPost = this.editThisPost.bind(this);
   }
 
   toggleDropdown() {
     this.setState({ open: !this.state.open });
   }
 
+  editThisPost(){
+    let editUrl = "/posts/".concat(this.props.postId).concat("/edit");
+    debugger
+    return () => this.props.history.push(editUrl)
+  }
+
   render() {
     const {postId} = this.props;
+    // const editUrl = "/edit/".concat(this.props.postId);
     return (
       <button
         onBlur={() => this.toggleDropdown()}
@@ -25,11 +34,17 @@ class PostDropdown extends React.Component {
         >
         {this.state.open && (
           <div className="post-cog-dropdown-container">
-            <div className="post-cog-edit-post-button">Edit</div>
+            <div 
+            className="post-cog-edit-post-button"
+            onClick={this.editThisPost}
+            // to={editUrl}
+            // style={{ textDecoration: 'none' }}
+            >Edit</div>
             <div 
             className="post-cog-delete-post-button"
             onClick={()=>this.props.openModal("delete-confirmation")}
-            id={postId}>Delete</div>
+            id={postId}
+            >Delete</div>
           </div>
         )}
       </button>

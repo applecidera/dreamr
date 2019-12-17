@@ -19,7 +19,7 @@ class DeleteModal extends React.Component {
 		if (!modal) {
 			return null;
 		}
-		console.log(postId);
+	
 		return (
 			<>
 				<label className="logout-message">Are you sure you want to delete this post?</label>

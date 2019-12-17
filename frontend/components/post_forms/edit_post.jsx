@@ -1,6 +1,6 @@
 import React from 'react';
 import Post from '../posts/post_container';
-import PostFormContainer from './post_form_container';
+import EditPostFormContainer from './edit_post_form_container';
 
 class NewPost extends React.Component{
     constructor(props){
@@ -25,7 +25,7 @@ class NewPost extends React.Component{
 		return (
                 <div className="new-post-background">
                     <div className="post-form-container-from-bar">
-                        <PostFormContainer postBarType={this.state.formType} />
+                        <EditPostFormContainer postBarType={this.state.formType} />
                     </div>
                     <div className="disable-filter"></div>
                     <div className ="left-col">{posts}</div>
@@ -35,7 +35,7 @@ class NewPost extends React.Component{
     }
 }
 
-export default NewPost;
+export default EditPost;
 
 
 
