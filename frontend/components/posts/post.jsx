@@ -71,7 +71,7 @@ class Post extends React.Component {
 			titleGoesHere = (<div className="title">{isaQuote}{post.title}{isaQuote}</div>);
 
 		let imagesGoesHere = null;
-		if (post.imageUrls)
+		if (post.imageUrls && post.post_type==="image")
 			imagesGoesHere = post.imageUrls.map((imageUrl, idx)=>{
 				return (<img 
 									key={idx} 
@@ -79,6 +79,25 @@ class Post extends React.Component {
 									src={imageUrl}
 									onClick={()=>this.props.openModal2("pop-out")}>
 									</img>)
+			})
+		
+		let audioGoesHere = null;
+		if (post.imageUrls && post.post_type==="audio")
+			audioGoesHere = post.imageUrls.map((imageUrl, idx)=>{
+				return (<div key={idx} className="audio">&#x1d11e;<audio 	
+						src={imageUrl}
+						controls>
+						</audio>&#x1d122;</div>)
+			})
+
+		let videoGoesHere = null;
+		if (post.imageUrls && post.post_type==="video")
+			videoGoesHere = post.imageUrls.map((imageUrl, idx)=>{
+				return (<div key={idx} ><video 	
+						src={imageUrl}
+						className="image" 
+						controls />
+						</div>)
 			})
 
 		let textGoesHere = null;
@@ -96,6 +115,8 @@ class Post extends React.Component {
 					<div className ="post-top">{topBar}</div>
 					{titleGoesHere}
 					{imagesGoesHere}
+					{audioGoesHere}
+					{videoGoesHere}
 					{textGoesHere}
 					{tagsGoesHere}
 					<div className ="post-bottom">{botBar}</div>
