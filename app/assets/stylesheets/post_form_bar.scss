@@ -84,46 +84,63 @@
 .text-box {
 	button{
 		color: red;
+		transition: transform 0.3s linear;
 		}
 	button:hover{
-		transform: translateY(-5px)
+
+  transform: translateY(-10px);
 	}
 }
 
 .photo-box {
 	button{
 		color: orange;
+		transition: transform 0.3s linear;
 		}
 	button:hover{
-		transform: translateY(-5px)
+
+  transform: translateY(-5px);
 	}
 }
 
 .quote-box {
 	button {
 		color: greenyellow;
+		transition: transform 0.3s linear;
 		}
 	button:hover{
-		transform: translateY(-5px)
+
+  transform: translateY(-5px);
 	}
 }
 
 .audio-box {
 	button{
 		color: blue;
+		transition: transform 0.3s linear;
 		}
 	button:hover{
-		transform: translateY(-5px)
+
+  transform: translateY(-5px);
 	}
 }
 
 .video-box {
 	button{
 		color: pink;
+		transition: transform 0.5s linear;
 		}
 	button:hover{
-		transform: translateY(-5px)
+
+  transform: translateY(-5px);
 	}
+}
+
+element {
+  transition: transform 0.5s linear;
+}
+element:hover {
+  transform: translateY(-5px);
 }
 
 // @keyframes come-down{

@@ -64,7 +64,12 @@
 .image {
 	width: 100%;
 	height: auto;
+	// transition: transform 0.1s linear;
+	// overflow: hidden;
 }
+// .image:hover{
+// 	transform: scale(1.01);
+// }
 
 .tags {
 	font-size: 13px;
@@ -103,7 +108,8 @@
 .post-icons{
     width: 100px;
     display: flex;
-    justify-content: space-around;
+		justify-content: space-around;
+		position: relative;
 }
 
 @keyframes slide-up {
@@ -151,4 +157,21 @@
 }
 .post-cog-edit-post-button:hover,.post-cog-delete-post-button:hover {
 	background-color: rgb(224, 215, 238);
+}
+
+.floating-heart{
+	position: absolute;
+	font-size: 60px;
+	opacity: 0;
+	animation: float-up 2s ease;
+}
+@keyframes float-up {
+	from{
+		opacity: 1;
+		transform: translateY(0px);
+	}
+	to{
+		opacity: 0;
+		transform: translateY(-50px);
+	}
 }

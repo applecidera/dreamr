@@ -7,8 +7,10 @@ class Post extends React.Component {
 	constructor(props){
 		super(props);
 		this.state=({
-			author: null || this.props.author
+			author: null || this.props.author,
+			liked: this.props.currentUser.likedPosts.includes(this.props.post.id)
 		})
+		this.toggleLike = this.toggleLike.bind(this);
 	}
 
 	componentDidMount(){
@@ -24,9 +26,15 @@ class Post extends React.Component {
 
 	toggleLike(){
 		const post = this.props.post;
-		(currentUser.likedPosts.includes(post.id)) ?
-		(()=>unlikePost(post.id)) :
-		(()=>likePost(post.id))
+		const currentUser = this.props.currentUser;
+		if (this.state.liked){
+			console.log("unliking");
+			this.props.unlikePost(post.id);
+			this.setState({liked: false});
+			} else {
+			console.log("liking");
+			this.props.likePost(post.id);
+			this.setState({liked: true}); }
 	}
 
 	render() {
@@ -41,15 +49,13 @@ class Post extends React.Component {
 		let likedPost;
 		let floatingHeart;
 		
-		if (currentUser){
-			if (currentUser.likedPosts.includes(post.id)) {
-				likedPost = "like far fa-heart like-heart-button";
-				floatingHeart = "fas fa-heart like-heart-button";
-			} else { // user liked the post
-				likedPost ="like far fa-heart floating-heart";
-				floatingHeart = "fas fa-heart-broken floating-heart";
-			} ; // user has not liked the post
-		}
+		if (this.state.liked) {
+			likedPost = "like fas fa-heart like-heart-button";
+			floatingHeart = "fas fa-heart floating-heart";
+		} else { // user liked the post
+			likedPost ="like far fa-heart like-heart-button";
+			floatingHeart = "fas fa-heart-broken floating-heart";
+		} ; // user has not liked the post
 		
 		if (authorId===currentUser.id){ //! post is current user's
 			topBar = (<span>{author.username}</span>);
@@ -73,7 +79,9 @@ class Post extends React.Component {
 									<div className="post-icons">
 										<button className="reply far fa-comment"></button>
 										<button className="reblog fas fa-retweet"></button>
-										<button className={likedPost}></button>
+										<button 
+										className={likedPost}
+										onClick={this.toggleLike}></button>
 										<div className={floatingHeart}></div>
 									</div>
 								</div>

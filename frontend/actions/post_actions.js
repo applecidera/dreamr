@@ -1,4 +1,5 @@
 import * as PostApiUtils from '../utils/post_api_utils';
+import * as LikeApiUtils from '../utils/like_utils';
 
 export const RECEIVE_ALL_POSTS = 'RECEIVE_ALL_POSTS';
 export const RECEIVE_POST = 'RECEIVE_POST';
@@ -39,14 +40,13 @@ export const deletePost = (postId) => (dispatch) =>{
 	return PostApiUtils.deletePost(postId).then((post) => dispatch(removePost(post.id)))
 	}
 
-export const likePost = (id) => (dispatch) => 
-	PostApiUtils.likePost(id)
+export const likePost = (postId) => (dispatch) => 
+	LikeApiUtils.likePost(postId)
   .then(post => dispatch(receivePost(post)));
 
-export const unlikePost = (id) => (dispatch) => 
-	unlikePost(id)
+export const unlikePost = (postId) => (dispatch) => 
+	LikeApiUtils.unlikePost(postId)
 	.then(post => dispatch(receivePost(post)));
 	
 
 
-	
