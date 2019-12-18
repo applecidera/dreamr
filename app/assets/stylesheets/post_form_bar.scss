@@ -82,40 +82,66 @@
 // }
 
 .text-box {
-	// grid-column: 1 / 2;
-	// roygbiv
 	button{
 		color: red;
+		}
+	button:hover{
+		transform: translateY(-5px)
 	}
 }
 
 .photo-box {
-	// grid-column: 3 / 4;
 	button{
 		color: orange;
+		}
+	button:hover{
+		transform: translateY(-5px)
 	}
 }
 
 .quote-box {
-	// grid-column: 5 / 6;
 	button {
 		color: greenyellow;
+		}
+	button:hover{
+		transform: translateY(-5px)
 	}
 }
 
 .audio-box {
-	// grid-column: 7 / 8;
 	button{
 		color: blue;
+		}
+	button:hover{
+		transform: translateY(-5px)
 	}
 }
 
 .video-box {
-	// grid-column: 9 / 10;
 	button{
 		color: pink;
+		}
+	button:hover{
+		transform: translateY(-5px)
 	}
 }
+
+// @keyframes come-down{
+// 	to{
+// 		transform: translateY(-20px);
+// 	}
+// 	from{
+// 		transform: translateY(0px);
+// 	}
+// }
+// @keyframes go-up{
+// 	to{
+// 		transform: translateY(0px);
+// 	}
+// 	from{
+// 		transform: translateY(-20px);
+// 	}
+// }
 
 .disable-filter {
     display: grid;
@@ -125,8 +151,6 @@
     bottom: 0;
     right: 0;
     left: 0;
-    // grid-template-columns: 1fr 625px 320px 1fr;
-    // grid-template-rows: 100px 120px 1fr;
     background-color: rgba(26, 0, 63, 0.9);
     z-index: 1;
     overflow-y: auto;
@@ -141,6 +165,3 @@
 	overflow: scroll;
 }
 
-.bring-me-down{
-	z-index: -99;
-}

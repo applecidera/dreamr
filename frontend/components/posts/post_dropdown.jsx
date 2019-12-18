@@ -9,22 +9,23 @@ class PostDropdown extends React.Component {
     this.state = {
       open: false
     };
-    this.editThisPost = this.editThisPost.bind(this);
+    // this.editThisPost = this.editThisPost.bind(this);
   }
 
   toggleDropdown() {
     this.setState({ open: !this.state.open });
   }
 
-  editThisPost(){
-    let editUrl = "/posts/".concat(this.props.postId).concat("/edit");
-    debugger
-    return () => this.props.history.push(editUrl)
-  }
+  // editThisPost(){
+  //   let editUrl = "/posts/".concat(this.props.postId).concat("/edit");
+  //   // debugger
+  //   return () => this.props.history.push(editUrl)
+  //   // () => this.props.history.push("/posts/".concat(this.props.postId).concat("/edit"))
+  // }
 
   render() {
     const {postId} = this.props;
-    // const editUrl = "/edit/".concat(this.props.postId);
+    const editUrl = "/edit/".concat(this.props.postId);
     return (
       <button
         onBlur={() => this.toggleDropdown()}
@@ -36,7 +37,7 @@ class PostDropdown extends React.Component {
           <div className="post-cog-dropdown-container">
             <div 
             className="post-cog-edit-post-button"
-            onClick={this.editThisPost}
+            onMouseDown={() => this.props.history.push("/posts/".concat(this.props.postId).concat("/edit"))}
             // to={editUrl}
             // style={{ textDecoration: 'none' }}
             >Edit</div>
@@ -60,5 +61,5 @@ const mdp = (dispatch)=>({
   openModal: (modal)=>dispatch(openModal(modal))
 });
 
-export default connect(msp, mdp)(PostDropdown);
+export default withRouter(connect(msp, mdp)(PostDropdown));
 

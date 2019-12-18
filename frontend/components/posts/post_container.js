@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import Post from './post';
 import { fetchUser } from '../../actions/user_actions';
+import { openModal2 } from '../../actions/modal_actions';
 
 const msp = (state, ownProps) => {
   const authorId = ownProps.post.user_id;
@@ -11,7 +12,8 @@ const msp = (state, ownProps) => {
     }
   };
 const mdp = (dispatch) => ({
-  fetchUser: (userId)=>dispatch(fetchUser(userId))
+  fetchUser: (userId)=>dispatch(fetchUser(userId)),
+  openModal2: (modal)=>dispatch(openModal2(modal))
 });
 
 export default connect(msp, mdp)(Post);

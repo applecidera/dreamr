@@ -31,7 +31,7 @@ class PostForm extends React.Component {
 	}
 
 	handleUpload(e){
-		// filesize must be under 5mb cuz im too poor to afford AWS
+		// filesize must be under 10mb cuz im too poor to afford AWS
 
 		//REVIEW Multi Upload
 
@@ -47,7 +47,7 @@ class PostForm extends React.Component {
 			const file = uploadedImages[i];
 			const fileReader = new FileReader();
 	
-			if (file.size > 5000000){
+			if (file.size > 10000000){
 				that.setState({errors: "Filesize must be under 5 Mb!"});
 			} else {
 				// TODO redo this logic with filreader url
@@ -68,7 +68,7 @@ class PostForm extends React.Component {
 	
 	handleSubmit(e) {
 		
-		let post_type;
+		let post_type = null;
 		switch ( this.props.postType || this.props.postBarType) {
 			case "textForm":
 				post_type = "text";
@@ -86,7 +86,7 @@ class PostForm extends React.Component {
 				post_type = "video"
 				break;
 			default:
-				post_type = "";
+				post_type = this.state.postType;
 				break;
 		}
 
@@ -180,17 +180,14 @@ class PostForm extends React.Component {
 				placeholderText = "";
 				break;
 		}
-		// let titleGoesHere=null;
-		// if (postType === "textForm" || postType === "quoteForm" ){
+
 			const titleGoesHere=(
 			<input 
 				type="text" 
 				placeholder="Title"
 				className="input-title"
 				onChange={this.handleInput("title")} />);
-		// }
-		// let imageUploadBox=null;
-		// if (postType === "imageForm"){
+
 			const imagePreviews = this.state.imageUrls ? 	// if
 			( this.state.imageUrls.map((imageUrl, idx)=>{
 				return (<div key={idx} className="image-preview-box">
@@ -218,6 +215,7 @@ class PostForm extends React.Component {
 						</div>
 						<input
 						type="file"
+						accept="image/*"
 						id="upload-box"
 						className={uploadImageHiddenInput}
 						onChange={this.handleUpload}
@@ -225,7 +223,80 @@ class PostForm extends React.Component {
 					</label>
 				</div>
 			)
-		// }
+
+			const videoPreviews = this.state.imageUrls ? 	// if
+			( this.state.imageUrls.map((imageUrl, idx)=>{
+				return (<div key={idx} className="image-preview-box">
+					<video controls className="image-preview" src={imageUrl} />
+					<i className="fas fa-times-circle delete-preview"
+						onClick={()=>this.deletePreviewImage({idx})}></i>
+					</div>)
+				})
+			) :	null;
+
+			const uploadVideoLabelHeight = (this.state.imageFiles != null) ? ("no-more-uploads") : ("regular-height")
+			const uploadVideoLabelText = "Upload Video!";
+			const uploadVideoHiddenInput = (this.state.imageFiles != null) ? ("no-more-uploads") : ("large-hidden-upload-button")
+			const videoUploadBox=(
+				<div className="image-upload-box">
+					{videoPreviews}
+					<label 
+					htmlFor="upload-box"
+					className="upload-label-box"
+					id={uploadVideoLabelHeight}>
+						<div className="camera-icon-text-container">
+							<div className="camera-icon fas fa-video" />
+							<div>{uploadVideoLabelText}</div>
+						</div>
+						<input
+						type="file"
+						accept="video/*"
+						id="upload-box"
+						className={uploadVideoHiddenInput}
+						onChange={this.handleUpload}
+						/>
+					</label>
+				</div>
+			)
+
+			const audioPreviews = this.state.imageUrls ? 	// if
+			( this.state.imageUrls.map((imageUrl, idx)=>{
+				return (<div key={idx} className="image-preview-box">
+					<audio
+						controls
+						// className="image-preview" 
+						src={imageUrl}>Your browser does not support this player</audio>
+					<i className="fas fa-times-circle delete-preview"
+						onClick={()=>this.deletePreviewImage({idx})}></i>
+					</div>)
+				})
+			) :	null;
+
+			const uploadAudioLabelHeight = (this.state.imageFiles != null) ? ("no-more-uploads") : ("regular-height")
+			const uploadAudioLabelText = "Upload Music!";
+			const uploadAudioHiddenInput = (this.state.imageFiles != null) ? ("no-more-uploads") : ("large-hidden-upload-button")
+			const audioUploadBox=(
+				<div className="image-upload-box">
+					{audioPreviews}
+					<label 
+					htmlFor="upload-box"
+					className="upload-label-box"
+					id={uploadAudioLabelHeight}>
+						<div className="camera-icon-text-container">
+							<div className="camera-icon fas fa-headphones" />
+							<div>{uploadAudioLabelText}</div>
+						</div>
+						<input
+						type="file"
+						accept="audio/*"
+						id="upload-box"
+						className={uploadVideoHiddenInput}
+						onChange={this.handleUpload}
+						/>
+					</label>
+				</div>
+			)
+
 			
 			const textGoesHere=(
 				<textarea cols="30" rows="4" 
@@ -284,7 +355,7 @@ class PostForm extends React.Component {
 			case 'audioForm':
 				formBlock = (
 					<div className = "formData">
-						{imageUploadBox}
+						{audioUploadBox}
 						{textGoesHere}
 						{tagsGoesHere}
 					</div>
@@ -293,7 +364,7 @@ class PostForm extends React.Component {
 			case 'videoForm':
 				formBlock = (
 					<div className = "formData">
-						{imageUploadBox}
+						{videoUploadBox}
 						{textGoesHere}
 						{tagsGoesHere}
 					</div>

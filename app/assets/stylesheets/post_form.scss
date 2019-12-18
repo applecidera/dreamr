@@ -170,3 +170,9 @@ input[type=file]{
 .input-tags:focus{
   outline: none;
 }
+
+#no-more-uploads{
+  display: none;
+  height: 0px;
+  width: 0px;
+}

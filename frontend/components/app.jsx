@@ -17,13 +17,13 @@ const App = () => (
 		
 		<Modal />
 		<Modal2 />
-		<Route path="/" component={Navbar} />
 		<Route exact path="/new/text" component={NewPost}/>
 		<Route exact path="/new/image" component={NewPost}/>
 		<Route exact path="/new/quote" component={NewPost}/>
 		<Route exact path="/new/audio" component={NewPost}/>
 		<Route exact path="/new/video" component={NewPost}/>
 		<Route exact path="/edit/:post_id" component={EditPost}/>
+		<Route path="/" component={Navbar} />
 		<SplashRoute  path="/" component={Splash} />
 		<SplashRoute  path="/register" component={Splash} />
 		<AuthRoute exact path="/signup" component={SignupForm} />

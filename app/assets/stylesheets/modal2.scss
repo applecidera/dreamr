@@ -96,3 +96,40 @@
     // animation: disappear;
     animation: cute-pop 0.5s ease-in;
 }
+
+
+.pop-out-picture-background{
+    // display: grid;
+    vertical-align: baseline;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    // grid-template-columns: 1fr 625px 320px 1fr;
+    // grid-template-rows: 100px 120px 1fr;
+    background-color: rgba(26, 0, 63, 0.9);
+    z-index: 15;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pop-out-picture-container{ 
+    display: flex;
+    width: 80vh;
+    height: auto;
+    justify-content: center;
+    margin: 0 auto;
+    animation: into-existence 0.2s ease;
+}
+
+@keyframes into-existence{
+    from{
+        width: 40vh;
+    }
+    to{
+        width: 80vh;
+    }
+}

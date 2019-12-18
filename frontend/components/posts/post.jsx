@@ -73,7 +73,12 @@ class Post extends React.Component {
 		let imagesGoesHere = null;
 		if (post.imageUrls)
 			imagesGoesHere = post.imageUrls.map((imageUrl, idx)=>{
-				return (<img key={idx} className="image" src={imageUrl}></img>)
+				return (<img 
+									key={idx} 
+									className="image" 
+									src={imageUrl}
+									onClick={()=>this.props.openModal2("pop-out")}>
+									</img>)
 			})
 
 		let textGoesHere = null;

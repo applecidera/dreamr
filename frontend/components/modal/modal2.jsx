@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { closeModal2 } from '../../actions/modal_actions';
-import PostFormContainer from '../post_forms/post_form_container';
 import ChoosePostModal from './choose_post_modal';
+import PopOutPicture from './pop_out_picture';
 
 class Modal2 extends React.Component {
 	render() {
@@ -21,6 +21,12 @@ class Modal2 extends React.Component {
 				component = <ChoosePostModal postType={modal2} />;
 				background = 'choose-a-form-background';
 				container = 'choose-a-form-container';
+				break;
+			case 'pop-out':
+				const imageUrl = event.target.src;
+				component = <PopOutPicture imageUrl = {imageUrl}/>;
+				background = 'pop-out-picture-background';
+				container = 'pop-out-picture-container';
 				break;
 			default:
 				return null;

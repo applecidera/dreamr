@@ -15,7 +15,7 @@
  */
 
  /* $pruple: rgb(26, 0, 63);
- $trans-pruple: rgba(26, 0, 63, 0.8);
+ $trans-pruple: rgba(26, 0, 63, 0.9);
  $button-color: rgb(0, 195, 255); */
 
 
@@ -25,7 +25,7 @@
    margin: 0;
    /* position: relative; */
    z-index: 1;
-   background-color: rgb(26, 0, 63);
+   background-color: rgb(30, 0, 60);
    font-family: Arial, Helvetica, sans-serif;
  }
 
