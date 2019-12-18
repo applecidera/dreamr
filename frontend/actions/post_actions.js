@@ -38,3 +38,15 @@ export const updatePost = (post) => (dispatch) =>
 export const deletePost = (postId) => (dispatch) =>{
 	return PostApiUtils.deletePost(postId).then((post) => dispatch(removePost(post.id)))
 	}
+
+export const likePost = (id) => (dispatch) => 
+	PostApiUtils.likePost(id)
+  .then(post => dispatch(receivePost(post)));
+
+export const unlikePost = (id) => (dispatch) => 
+	unlikePost(id)
+	.then(post => dispatch(receivePost(post)));
+	
+
+
+	

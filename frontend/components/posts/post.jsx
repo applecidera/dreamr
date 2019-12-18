@@ -1,5 +1,6 @@
 import React from 'react';
 import PostDropdown from './post_dropdown';
+import { likePost } from '../../actions/post_actions';
 
 class Post extends React.Component {
 
@@ -11,13 +12,21 @@ class Post extends React.Component {
 	}
 
 	componentDidMount(){
-		this.props.fetchUser(this.props.authorId);
+		if (!this.props.author)
+			this.props.fetchUser(this.props.authorId);
 	}
 
 	componentDidUpdate(oldProps,oldState){
 		if (!oldState.author && oldProps.author){
 			this.setState({author: oldProps.author})
 		}
+	}
+
+	toggleLike(){
+		const post = this.props.post;
+		(currentUser.likedPosts.includes(post.id)) ?
+		(()=>unlikePost(post.id)) :
+		(()=>likePost(post.id))
 	}
 
 	render() {
@@ -29,6 +38,18 @@ class Post extends React.Component {
 		
 		let topBar;
 		let botBar;
+		let likedPost;
+		let floatingHeart;
+		
+		if (currentUser){
+			if (currentUser.likedPosts.includes(post.id)) {
+				likedPost = "like far fa-heart like-heart-button";
+				floatingHeart = "fas fa-heart like-heart-button";
+			} else { // user liked the post
+				likedPost ="like far fa-heart floating-heart";
+				floatingHeart = "fas fa-heart-broken floating-heart";
+			} ; // user has not liked the post
+		}
 		
 		if (authorId===currentUser.id){ //! post is current user's
 			topBar = (<span>{author.username}</span>);
@@ -39,10 +60,6 @@ class Post extends React.Component {
 										<button className="reply far fa-comment"></button>
 										<button className="reblog fas fa-retweet"></button>
 										<PostDropdown postId={post.id}></PostDropdown>
-										{/* <button 
-										className="edit fas fa-cog"
-										onClick={()=>this.props.openModal("delete-confirmation")}
-										value={post.id}></button> */}
 									</div>
 								</div>
 								</>);
@@ -56,7 +73,8 @@ class Post extends React.Component {
 									<div className="post-icons">
 										<button className="reply far fa-comment"></button>
 										<button className="reblog fas fa-retweet"></button>
-										<button className="like far fa-heart"></button>
+										<button className={likedPost}></button>
+										<div className={floatingHeart}></div>
 									</div>
 								</div>
 								</>);

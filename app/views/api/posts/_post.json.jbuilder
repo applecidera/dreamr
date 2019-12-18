@@ -4,6 +4,7 @@ if post.images.attached?
 end
 
 json.authorId post.user.id
+json.likes post.likes.count
 
 # add likes as well, :created_at, :updated_at
 

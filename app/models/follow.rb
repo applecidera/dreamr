@@ -10,6 +10,14 @@
 #
 
 class Follow < ApplicationRecord
-  has_one :user
-  has_many :followers
+  belongs_to :user,
+    class_name: :User,
+    foreign_key: :user_id,
+    primary_key: :id
+
+
+  belongs_to :followers,
+    class_name: :User,
+    foreign_key: :follower_id,
+    primary_key: :id
 end

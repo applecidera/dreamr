@@ -11,23 +11,21 @@ class EditPost extends React.Component{
     }
 
     componentDidMount(){
-        // debugger
-        if (!this.state.post)
-            this.props.fetchAllPosts();
-    }
-
-    componentDidUpdate(oldProps, oldState){
-        
-        if (oldProps.post && !oldState.post){
-            this.setState({
-                post: this.props.post
-            })
+        const that = this;
+        if (!this.state.post){
+            // debugger
+            this.props.fetchAllPosts().then(
+                that.setState({post: this.props.post}));
         }
     }
 
+    // componentDidUpdate(oldProps, oldState){
+    //     debugger
+    // }
+
     render() {
         // debugger
-        if (!this.state.post) return (<div>Borked</div>);
+        if (!this.state.post) return null;
 
         const pivot = 0;
         let beforePosts;

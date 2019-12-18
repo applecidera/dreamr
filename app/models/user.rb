@@ -15,12 +15,16 @@
 class User < ApplicationRecord
   validates :username, presence: true
   validates :session_token, presence: true
-  validates :email, presence: true
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } ,presence: true
   validates :password_digest, presence: true
   validates :password, length: { minimum: 6 }, allow_nil: true
 
   has_many :posts
   has_many :follows
+  has_many :likes
+  has_many :liked_posts,
+    through: :likes,
+    source: :post
   
   after_initialize :ensure_session_token
 
