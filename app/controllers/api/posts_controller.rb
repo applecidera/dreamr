@@ -26,11 +26,11 @@ class Api::PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find(params[:id])
-    if post.update(user_params)
-      render :index
+    @post = Post.find(params[:post][:id])
+    if @post.update(post_params)
+      render :show
     else
-      render :index
+      render :show
     end
   end
 
@@ -45,4 +45,5 @@ class Api::PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :text, :tags, :user_id, :post_type, images: []) 
   end
+
 end

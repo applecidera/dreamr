@@ -165,3 +165,33 @@
 	overflow: scroll;
 }
 
+
+.edit-form-background {
+    // display: grid;
+    vertical-align: baseline;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    // grid-template-columns: 1fr 625px 320px 1fr;
+    // grid-template-rows: 100px 120px 1fr;
+    background-color: rgba(26, 0, 63, 0.9);
+    z-index: 15;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.edit-form-container{ 
+    display: grid;
+    grid-template-columns: 85px 540px;
+    margin: 0;
+    padding: 0;
+		position: absolute;
+		z-index: 16;
+    top: 25%;
+    left: 25%;
+}

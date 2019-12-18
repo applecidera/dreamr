@@ -4,15 +4,16 @@ import { Link, withRouter } from 'react-router-dom';
 class EditPostForm extends React.Component {
 	constructor(props) {
 		super(props);
-		const { postType, currentUser } = this.props;
+		const { currentUser } = this.props;
 		this.state = {
+			id: this.props.post.id,
 			user_id: currentUser.id,
-			postType: null || this.props.post_type,
-			title: '',
-			text: '',
-			imageFiles: null,
-			imageUrls: null,
-			tags: '',
+			postType: this.props.post.post_type,
+			title: this.props.post.title,
+			text: this.props.post.text,
+			imageFiles: this.props.post.imageFiles,
+			imageUrls: this.props.post.imageUrls,
+			tags: this.props.post.tags,
 			errors: null,
 			allowSubmit: true
 		};
@@ -20,11 +21,6 @@ class EditPostForm extends React.Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleUpload = this.handleUpload.bind(this);
 		this.deletePreviewImage = this.deletePreviewImage.bind(this);
-	}
-
-	componentDidMount(){
-		if (this.state.post_type = null)
-			this.props.fetchPost(this.props.postId);
 	}
 
 	handleInput(inputType){
@@ -73,33 +69,14 @@ class EditPostForm extends React.Component {
 	
 	handleSubmit(e) {
 		
-		let post_type = null;
-		switch ( this.props.postType || this.props.postBarType) {
-			case "textForm":
-				post_type = "text";
-				break;
-			case "imageForm":
-				post_type = "image";
-				break;
-			case "quoteForm":
-				post_type = "quote";
-				break;
-			case "audioForm":
-				post_type = "audio"
-				break;
-			case "videoForm":
-				post_type = "video"
-				break;
-			default:
-				post_type = this.state.postType;
-				break;
-		}
+		let post_type = this.state.postType;
 
 		// Multi Image Submit
 		
 		if (this.state.allowSubmit){	// prevents multi submit
 
-			this.setState({allowSubmit: false});			
+			this.setState({allowSubmit: false});			// toggle to disable submit
+
 			e.preventDefault();
 			const formData = new FormData();
 			formData.append('post[title]', this.state.title);
@@ -112,9 +89,10 @@ class EditPostForm extends React.Component {
 			formData.append('post[text]', this.state.text);
 			formData.append('post[tags]', this.state.tags);
 			formData.append('post[post_type]', post_type);
+			formData.append('post[id]', this.props.post.id);
 			
 			let rerouting = () => this.props.history.goBack();
-			
+			// debugger
 			this.props
 				.updatePost(formData)
 				.then(
@@ -146,26 +124,30 @@ class EditPostForm extends React.Component {
 
 
 	render() {
-		//TODO Destructure Props Here
-		const {closeModal, currentUser, postType, postBarType} = this.props;
-		const {title, text, imageFiles}=this.state;
-	
-		let placeholderText;
 
-		switch (postType || postBarType) {
-			case "textForm":
+
+		//TODO Destructure Props Here
+		const { currentUser} = this.props;
+		const {title, text, imageFiles, tags}=this.state;
+		const post_type = this.props.post.post_type;
+		let placeholderText;
+		// debugger
+		// if (!post_type) return null;
+
+		switch (post_type) {
+			case "text":
 				placeholderText = "Your text here";
 				break;
-			case "imageForm":
+			case "image":
 				placeholderText = "Add a caption, if you like";
 				break;
-			case "quoteForm":
+			case "quote":
 				placeholderText = " - Source";
 				break;
-			case "audioForm":
+			case "audio":
 				placeholderText = "Add a description, if you like";
 				break;
-			case "videoForm":
+			case "video":
 				placeholderText = "Add a caption, if you like"
 				break;
 			default:
@@ -178,6 +160,7 @@ class EditPostForm extends React.Component {
 				type="text" 
 				placeholder="Title"
 				className="input-title"
+				value={title}
 				onChange={this.handleInput("title")} />);
 
 			const imagePreviews = this.state.imageUrls ? 	// if
@@ -282,7 +265,7 @@ class EditPostForm extends React.Component {
 						type="file"
 						accept="audio/*"
 						id="upload-box"
-						className={uploadVideoHiddenInput}
+						className={uploadAudioHiddenInput}
 						onChange={this.handleUpload}
 						/>
 					</label>
@@ -295,6 +278,7 @@ class EditPostForm extends React.Component {
 				placeholder={placeholderText}
 				className="input-body"
 				elastic="true"
+				value={text}
 				onChange={this.handleInput("text")}></textarea>
 			)
 
@@ -303,6 +287,7 @@ class EditPostForm extends React.Component {
 				type="text" 
 				placeholder="#tags"
 				className="input-tags"
+				value={tags}
 				onChange={this.handleInput("tags")}/>
 			)
 
@@ -311,13 +296,15 @@ class EditPostForm extends React.Component {
 				type="text" 
 				placeholder="&quot;Quote&quot;"
 				className="input-quote"
+				value={title}
 				onChange={this.handleInput("title")}/>
 			)
 
 		// Final Building of Formblock
+		// debugger
 		let formBlock;
-		switch (this.state.postType || this.props.postBarType) {
-			case 'textForm':
+		switch (post_type) {
+			case 'text':
 				formBlock = (
 					<div className = "formData">
 						{titleGoesHere}
@@ -326,7 +313,7 @@ class EditPostForm extends React.Component {
 					</div>
 				);
 				break;
-			case 'imageForm':
+			case 'image':
 				formBlock = (
 					<div className = "formData">
 						{imageUploadBox}
@@ -335,7 +322,7 @@ class EditPostForm extends React.Component {
 					</div>
 				);
 				break;
-			case 'quoteForm':
+			case 'quote':
 				formBlock = (
 					<div className = "formData">
 						{quoteGoesHere}
@@ -344,7 +331,7 @@ class EditPostForm extends React.Component {
 					</div>
 				);
 				break;
-			case 'audioForm':
+			case 'audio':
 				formBlock = (
 					<div className = "formData">
 						{audioUploadBox}
@@ -353,7 +340,7 @@ class EditPostForm extends React.Component {
 					</div>
 				);
 				break;
-			case 'videoForm':
+			case 'video':
 				formBlock = (
 					<div className = "formData">
 						{videoUploadBox}
@@ -371,17 +358,17 @@ class EditPostForm extends React.Component {
 		let bottomBlock;
 		if (this.props.postBarType){ // Post was instantiated from post-bar
 			bottomBlock=(<div className="post-form-bottom-block">
-				<Link to="/dashboard"><button className="post-close">Close</button></Link>
+				<button className="post-close" onClick={()=>this.props.history.goBack()}>Close</button>
 				<button disabled={disabled} className="post-create-post" onClick={this.handleSubmit}>
-					<span>Post</span>
+					<span>Update</span>
 					<div className="fas fa-chevron-down"></div>
 				</button>
 			</div>)
 		} else {		// Post was instantiated from modal
 			bottomBlock=(<div className="post-form-bottom-block">
-				<button className="post-close" onClick={closeModal}>Close</button>
+				<button className="post-close" onClick={()=>this.props.history.goBack()}>Close</button>
 				<button disabled={disabled} className="post-create-post" onClick={this.handleSubmit}>
-					<span>Post</span>
+					<span>Update</span>
 					<div className="fas fa-chevron-down"></div>
 				</button>
 			</div>)

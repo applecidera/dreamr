@@ -14,9 +14,9 @@ class Post extends React.Component {
 		this.props.fetchUser(this.props.authorId);
 	}
 
-	componentDidUpdate(old1,old2){
-		if (!old2.author && old1.author){
-			this.setState({author: old1.author})
+	componentDidUpdate(oldProps,oldState){
+		if (!oldState.author && oldProps.author){
+			this.setState({author: oldProps.author})
 		}
 	}
 
@@ -87,7 +87,7 @@ class Post extends React.Component {
 				return (<div key={idx} className="audio">&#x1d11e;<audio 	
 						src={imageUrl}
 						controls>
-						</audio>&#x1d122;</div>)
+						</audio>&#9835;</div>)
 			})
 
 		let videoGoesHere = null;

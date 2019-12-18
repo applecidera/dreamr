@@ -6,7 +6,7 @@ import LoginForm from './session_forms/login_form_container';
 import Navbar from './navbar/navbar_container';
 import Dashboard from './dashboard/dashboard_container';
 import NewPost from './post_forms/new_post_container';
-import EditPost from './post_forms/edit_post_form_container';
+import EditPost from './post_forms/edit_post_container';
 import Modal from './modal/modal';
 import Modal2 from './modal/modal2';
 import { AuthRoute, ProtectedRoute, SplashRoute } from '../utils/route_utils';
@@ -22,7 +22,7 @@ const App = () => (
 		<Route exact path="/new/quote" component={NewPost}/>
 		<Route exact path="/new/audio" component={NewPost}/>
 		<Route exact path="/new/video" component={NewPost}/>
-		<Route exact path="/edit/:post_id" component={EditPost}/>
+		<Route exact path="/posts/:post_id/edit" component={EditPost}/>
 		<Route path="/" component={Navbar} />
 		<SplashRoute  path="/" component={Splash} />
 		<SplashRoute  path="/register" component={Splash} />

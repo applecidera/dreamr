@@ -57,7 +57,9 @@
 	display: flex;
 	justify-content: space-evenly;
 	font-size: 36px;
-	font-weight: bold;
+	padding: 10px 0px;
+	// font-weight: bold;
+	background-color: rgba(30, 0, 60, .25);
 }
 .image {
 	width: 100%;
