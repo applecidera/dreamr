@@ -17,7 +17,9 @@ class NewPost extends React.Component{
     }
 
     render() {
-        let posts = this.props.posts.map((post, idx)=>(
+        let posts = this.props.posts;
+		let sortedPosts = posts.reverse();
+		let showPosts = sortedPosts.map((post, idx)=>(
 			<Post key={idx} post={post} />
 		))
 	
@@ -30,7 +32,7 @@ class NewPost extends React.Component{
                         <PostFormContainer postBarType={this.state.formType} />
                     </div>
                     <div className="disable-filter"></div>
-                    <div className ="left-col">{posts}</div>
+                    <div className ="left-col">{showPosts}</div>
                     <div className="right-col">{featured}</div>
                 </div>
 		);

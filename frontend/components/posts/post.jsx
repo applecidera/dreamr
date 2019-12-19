@@ -1,6 +1,7 @@
 import React from 'react';
 import PostDropdown from './post_dropdown';
 import FloatingHeart from './floating_heart';
+import FloatingBrokenHeart from './floating_broken_heart';
 
 class Post extends React.Component {
 
@@ -11,7 +12,8 @@ class Post extends React.Component {
 			// liked: this.props.currentUser.likedPosts.includes(this.props.post.id),
 			// followed: this.props.currentUser.following.includes(this.props.post.authorId),
 			liked: false,
-			followed: false
+			followed: false,
+			opacity: false
 		})
 		this.toggleLike = this.toggleLike.bind(this);
 		this.toggleFollow = this.toggleFollow.bind(this);
@@ -38,11 +40,11 @@ class Post extends React.Component {
 		const post = this.props.post;
 		
 		if (this.state.liked){
-			console.log("unliking");
+			// console.log("unliking");
 			// this.props.unlikePost(post.id).then(this.props.fetchUser(this.props.authorId));
 			this.setState({liked: false});
 			} else {
-			console.log("liking");
+			// console.log("liking");
 			// this.props.likePost(post.id).then(this.props.fetchUser(this.props.authorId));
 			this.setState({liked: true}); }
 	}
@@ -51,16 +53,18 @@ class Post extends React.Component {
 		const post = this.props.post;
 		
 		if (this.state.followed){
-			console.log("unfollow");
+			// console.log("unfollow");
 			// this.props.unfollowPost(post.authorId);
 			this.setState({followed: false});
 			} else {
-			console.log("follow");
+			// console.log("follow");
 			// this.props.followPost(post.authorId);
 			this.setState({followed: true}); }
 	}
 
 	render() {
+
+		if (!this.state.opacity) window.setTimeout(this.setState({opacity: true}), 3000)
 
 		const {currentUser, post, authorId} = this.props;
 		let {author} = this.state;
@@ -74,11 +78,11 @@ class Post extends React.Component {
 		let followUser;
 		
 		if (this.state.liked) {
-			likedPost = "like fas fa-heart like-heart-button";
-			floatingHeart = "fas fa-heart floating-heart";
+			likedPost = "like fas fa-heart liked-heart-button";
+			floatingHeart = (<FloatingHeart visible={this.state.opacity}/>);
 		} else { // user liked the post
-			likedPost ="like far fa-heart like-heart-button";
-			floatingHeart = "fas fa-heart-broken floating-heart";
+			likedPost ="like far fa-heart not-like-heart-button";
+			floatingHeart = (<FloatingBrokenHeart visible={this.state.opacity}/>)
 		} ; // user has not liked the post
 
 		if (this.state.followed) {
@@ -112,7 +116,7 @@ class Post extends React.Component {
 										<button 
 										className={likedPost}
 										onClick={this.toggleLike}></button>
-										<FloatingHeart class={floatingHeart}/>
+										{floatingHeart}
 									</div>
 								</div>
 								</>);
@@ -164,9 +168,11 @@ class Post extends React.Component {
 		if (post.tags!="")
 			tagsGoesHere=(<div className="tags">{post.tags}</div>);
 
+		let avatar = window.avatar;
+		if (author && author.avatar != "cloud") (avatar = author.avatar)
 		return (
 			<div key={post.id} className="post-container">
-				<img className="avatar" src={window.avatar}></img>
+				<img className="avatar" src={avatar}></img>
 				<div className="postbox">
 					<div className ="post-top">{topBar}</div>
 					{titleGoesHere}

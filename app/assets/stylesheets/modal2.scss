@@ -6,7 +6,26 @@
     bottom: 0;
     right: 0;
     left: 0;
-    // grid-template-columns: 1fr 625px 320px 1fr;
+    // grid-template-columns: 1fr 625px  1fr;
+    // grid-template-rows: 100px 120px 1fr;
+    background-color: rgba(26, 0, 63, 0.9);
+    z-index: 15;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.choose-a-form-background-transition {
+    // display: grid;
+    vertical-align: baseline;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 100vh;
+    // grid-template-columns: 1fr 625px  1fr;
     // grid-template-rows: 100px 120px 1fr;
     background-color: rgba(26, 0, 63, 0.9);
     z-index: 15;
@@ -107,7 +126,7 @@
     bottom: 0;
     right: 0;
     left: 0;
-    // grid-template-columns: 1fr 625px 320px 1fr;
+    // grid-template-columns: 1fr 625px  1fr;
     // grid-template-rows: 100px 120px 1fr;
     background-color: rgba(26, 0, 63, 0.9);
     z-index: 15;
@@ -120,17 +139,55 @@
 .pop-out-picture-container{ 
     display: flex;
     max-width: 80vh;
+    max-height: 80vh;
     height: auto;
     justify-content: center;
     margin: 0 auto;
-    animation: into-existence 0.2s ease;
+    animation: into-existence 0.35s ease;
 }
 
 @keyframes into-existence{
     from{
-        width: 40vh;
+        width: 10vh;
     }
     to{
         width: 80vh;
+    }
+}
+
+
+
+.text-button-animated, .animated-text-flying{
+    background-color: red;
+    animation: zip-up  1s  ease;
+}
+.photo-button-animated, .animated-text-flying{
+    background-color: orange;
+    animation: zip-up 1s -0.1s ease;
+}
+.quote-button-animated, .animated-text-flying{
+    background-color: greenyellow;
+    animation: zip-up 1s -0.2s ease;
+}
+.audio-button-animated, .animated-text-flying{
+    background-color: blue;
+    animation: zip-up 1s -0.1s ease;
+}
+ 
+.video-button-animated, .animated-text-flying{
+    background-color: pink;
+    animation: zip-up 1s ease;
+}
+
+
+
+@keyframes zip-up {
+    from{
+        transform: translateY(0%);
+        opacity: 1;
+    }
+    to{
+        transform: translateY(-750%);
+        opacity: 0;
     }
 }

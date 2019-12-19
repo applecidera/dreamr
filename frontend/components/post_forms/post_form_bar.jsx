@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 class PostFormBar extends React.Component {
 	render() {
 		const {currentUser, postType} = this.props;
+		let avatar = (currentUser.avatar === "cloud") ? window.avatar : currentUser.avatar;
 		return (			// TODO add custom routes to create new posts
 			<div className="post-form-bar-container">
-				{/* <img className="post-avatar" src={window.avatar} /> */}
-				<img className="post-avatar" src={window.avatar} />
+				<img className="post-avatar" src={avatar} />
 				<div className="post-form-bar">
 					<Link style={{ textDecoration: 'none' }} 
 						to="/new/text"

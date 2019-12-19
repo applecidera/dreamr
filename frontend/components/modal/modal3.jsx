@@ -1,40 +1,47 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { openModal, closeModal2 } from '../../actions/modal_actions';
+import { openModal, closeModal3 } from '../../actions/modal_actions';
 import ChoosePostModal from './choose_post_modal';
 import PopOutPicture from './pop_out_picture';
 
-class Modal2 extends React.Component {
+class Modal3 extends React.Component {
+	constructor(props){
+		super(props);
+		this.transitionModals = this.transitionModals.bind(this);
+	}
+
+	transitionModals(){
+		// setTimeout(()=>this.props.closeModal(), 2000);
+		this.props.openModal('zoom-off-screen');
+		this.props.closeModal3()
+	}
+
 	render() {
-		const { modal2, closeModal2 } = this.props;
+		const { modal3, closeModal3 } = this.props;
 		
-		if (!modal2) { //! checks if UI state is null
+		if (!modal3) { //! checks if UI state is null
 			return null;
 		}
+
+		// debugger
 
 		let component;
 		let background;
 		let container;
 
-		switch (modal2) {
+		switch (modal3) {
 			case 'choose-a-form':
-				component = <ChoosePostModal postType={modal2} />;
+				component = <ChoosePostModal />;
 				background = 'choose-a-form-background';
 				container = 'choose-a-form-container';
-				break;
-			case 'pop-out':
-				const imageUrl = event.target.src;
-				component = <PopOutPicture imageUrl = {imageUrl}/>;
-				background = 'pop-out-picture-background';
-				container = 'pop-out-picture-container';
 				break;
 			default:
 				return null;
 		}
 		
-		return (		// REVIEW this is the clickable backround modal
+		return (		
 				// <div className={background} onClick={this.props.closeModal2}>
-				<div className={background} onClick={this.props.closeModal2}>
+				<div className={background} onClick={this.transitionModals}>
 					<div className={container} onClick={(e) => e.stopPropagation()}>
 						{component}
 					</div>
@@ -46,15 +53,15 @@ class Modal2 extends React.Component {
 
 const msp = (state) => {
 	return {
-		modal2: state.ui.modal2
+		modal3: state.ui.modal3
 	};
 };
 
 const mdp = (dispatch) => {
 	return {
-		closeModal2: () => dispatch(closeModal2()),
+		closeModal3: () => dispatch(closeModal3()),
 		openModal: (modal)=>dispatch(openModal(modal))
 	};
 };
 
-export default connect(msp, mdp)(Modal2);
+export default connect(msp, mdp)(Modal3);

@@ -1,61 +1,62 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { openModal, closeModal3 } from '../../actions/modal_actions';
+import { openModal, closeModal, closeModal2 } from '../../actions/modal_actions';
 
 class ChoosePostModal extends React.Component {
 	constructor(props) {
 		super(props);
 		this.transitionModal = this.transitionModal.bind(this);
+		
+	}
+
+	componentDidMount(){
+		setTimeout(()=>this.props.closeModal(), 500);
 	}
 
 	transitionModal(modal){
-		this.props.closeModal3();
+		this.props.closeModal2();
 		this.props.openModal(modal);
 	}
 
 	render() {
-		const { modal3, closeModal2 } = this.props;
+		const { modal, closeModal2 } = this.props;
 
-		if (!modal3) {
+		if (!modal) {
 			return null;
 		}
+		// debugger
 
 		return (
 			<>
 				<label htmlFor="text" className="choose-a-form-box">
 					<button 
-					onClick={()=>this.transitionModal("textForm")} 
 					id="text"
-					className="text-button">Aa</button>
-					<span>Text</span>
+					className="text-button-animated">Aa</button>
+					<span className="animated">Text</span>
 				</label>
 				<label htmlFor="photo" className="choose-a-form-box">
 				<button 
-					onClick={()=>this.transitionModal("imageForm")} 
 					id="photo"
-					className="photo-button fas fa-camera-retro"/>
-					<span>Photo</span>
+					className="photo-button-animated fas fa-camera-retro"/>
+					<span className="animated">Photo</span>
 				</label>
 				<label htmlFor="quote" className="choose-a-form-box">
 				<button 
-					onClick={()=>this.transitionModal("quoteForm")} 
 					id="quote"
-					className="quote-button fas fa-quote-left"/>
-					<span>Quote</span>
+					className="quote-button-animated fas fa-quote-left"/>
+					<span className="animated">Quote</span>
 				</label>
 				<label htmlFor="audio" className="choose-a-form-box">
 				<button 
-					onClick={()=>this.transitionModal("audioForm")} 
 					id="audio"
-					className="audio-button fas fa-headphones"/>
-					<span>Audio</span>
+					className="audio-button-animated fas fa-headphones"/>
+					<span className="animated">Audio</span>
 				</label>
 				<label htmlFor="video" className="choose-a-form-box">
 				<button 
-					onClick={()=>this.transitionModal("videoForm")} 
 					id="video"
-					className="video-button fas fa-video"/>
-					<span>Video</span>
+					className="video-button-animated fas fa-video"/>
+					<span className="animated">Video</span>
 				</label>
 			</>
 		);
@@ -64,15 +65,15 @@ class ChoosePostModal extends React.Component {
 
 const msp = (state) => {
 	return {
-		modal2: state.ui.modal2,
-		modal3: state.ui.modal3
+		modal: state.ui.modal
 	};
 };
 
 const mdp = (dispatch) => {
 	return {
-		closeModal3: () => dispatch(closeModal3()),
-		openModal: (modal)=>dispatch(openModal(modal))
+		closeModal2: () => dispatch(closeModal2()),
+		openModal: (modal)=>dispatch(openModal(modal)),
+		closeModal: ()=>dispatch(closeModal())
 	};
 };
 

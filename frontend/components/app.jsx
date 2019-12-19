@@ -9,6 +9,7 @@ import NewPost from './post_forms/new_post_container';
 import EditPost from './post_forms/edit_post_container';
 import Modal from './modal/modal';
 import Modal2 from './modal/modal2';
+import Modal3 from './modal/modal3';
 import { AuthRoute, ProtectedRoute, SplashRoute } from '../utils/route_utils';
 
 
@@ -17,6 +18,7 @@ const App = () => (
 		
 		<Modal />
 		<Modal2 />
+		<Modal3 />
 		<Route exact path="/new/text" component={NewPost}/>
 		<Route exact path="/new/image" component={NewPost}/>
 		<Route exact path="/new/quote" component={NewPost}/>

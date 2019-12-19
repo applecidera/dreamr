@@ -4,6 +4,7 @@ import { closeModal } from '../../actions/modal_actions';
 import PostFormContainer from '../post_forms/post_form_container';
 import LogoutModal from './logout_modal';
 import DeleteModal from '../modal/delete_modal';
+import ChoosePostModalTransition from './choose_post_modal_transition';
 import {deleteSession} from '../../actions/session_actions';
 
 class Modal extends React.Component {
@@ -53,6 +54,11 @@ class Modal extends React.Component {
 				component = <DeleteModal postId={event.target.id} />;
 				background = 'logout-background';
 				container = 'logout-modal';
+				break;
+			case 'zoom-off-screen':
+				component = <ChoosePostModalTransition postType={modal} />;
+				background = 'choose-a-form-background-transition';
+				container = 'choose-a-form-container';
 				break;
 			default:
 				return null;

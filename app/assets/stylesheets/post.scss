@@ -170,6 +170,13 @@
 	width: 24px;
 	height: 24px;
 }
+.reply:hover, .reblog:hover, .like:hover {
+	cursor: pointer;
+}
+
+.liked-heart-button{
+	color: red;
+}
 
 .reply:focus, .reblog:focus, .like:focus {
 	outline: none;
@@ -180,31 +187,54 @@
 	font-size: 24px;
 	right: 0px;
 	opacity: 0;
-	// animation: float-up 2s ease;
+	animation: float-up 1s ease;
+	pointer-events: none;
+	color: red;
+}
+.floating-broken-heart{
+	position: absolute;
+	font-size: 24px;
+	right: 0px;
+	opacity: 0;
+	animation: float-up 1s ease;
 	pointer-events: none;
 }
-// @keyframes float-up {
-// 	from{
-// 		opacity: 1;
-// 		transform: translateY(0px);
-// 		display: block;
-// 	}
-// 	to{
-// 		opacity: 0;
-// 		transform: translateY(-50px);
-// 		display: none;
-// 	}
-// }
+@keyframes float-up {
+	from{
+		opacity: 1;
+		transform: translateY(0px);
+		display: block;
+	}
+	to{
+		opacity: 0;
+		transform: translateY(-50px);
+		display: none;
+	}
+}
 
 .follow-toggle-button{
 	margin-left: 10px;
 	font-size: 13px;
 }
-
+.follow-toggle-button:hover{
+	cursor: pointer;
+}
 .unfollow-button{
 	color: gray;
 }
 
 .follow-button{
 	color: rgb(0, 182, 182);
+}
+
+@keyframes blip {
+	0%{
+
+	}
+	50%{
+
+	}
+	100%{
+
+	}
 }

@@ -71,7 +71,7 @@ class Navbar extends React.Component {
 					<NavDropdown />
 					<button 
 					className="fas fa-pencil-alt nav-post-box" 
-					onClick={()=>this.props.openModal2("choose-a-form")}
+					onClick={()=>this.props.openModal3("choose-a-form")}
 					/>
 				</div>
 			)

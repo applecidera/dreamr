@@ -47,4 +47,13 @@
 img{
   max-width: 100%;
   height: auto;
+  object-fit: scale-down;
+}
+
+#invisible{
+  opacity: 0;
+}
+
+#visible{
+  opacity: 1;
 }

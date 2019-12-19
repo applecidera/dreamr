@@ -13,8 +13,13 @@ class FloatingHeart extends React.Component{
   }
 
   render() {
+    let visible;
+    visible = (this.props.visible) ? "visible" : "invisible";
     return (
-      <div className = "fas fa-heart floating-heart">
+      <div 
+      className = "fas fa-heart-broken floating-broken-heart"
+      // id={visible}
+      >
       </div>
     )
   }

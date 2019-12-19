@@ -20,7 +20,8 @@ class SignupForm extends React.Component {
 			password: 'demo-user-ftw'
 		};
 
-		this.props.createSession(demoUser).then(() => this.props.history.push('/dashboard'));
+		this.props.createSession(demoUser)
+		.then(() => this.props.history.push('/dashboard'));
 	}
 
 	componentDidMount() {
