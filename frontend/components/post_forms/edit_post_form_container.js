@@ -15,8 +15,7 @@ const msp = (state, ownProps) => {
 
 const mdp = (dispatch) => {
 	return {
-		updatePost: (post) => dispatch(updatePost(post))
-	};
+		updatePost: (post) => dispatch(updatePost(post)) };
 };
 
 export default withRouter(connect(msp, mdp)(EditPostForm));

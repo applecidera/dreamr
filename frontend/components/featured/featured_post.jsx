@@ -1,63 +1,39 @@
 import React from 'react';
-import PostDropdown from './post_dropdown';
-import FloatingHeart from './floating_heart';
+import FloatingHeart from '../posts/floating_heart';
 
-class Post extends React.Component {
+class FeaturedPost extends React.Component {
 
 	constructor(props){
 		super(props);
 		this.state=({
 			author: null || this.props.author,
-			// liked: this.props.currentUser.likedPosts.includes(this.props.post.id),
-			// followed: this.props.currentUser.following.includes(this.props.post.authorId),
-			liked: false,
-			followed: false
+			liked: this.props.currentUser.likedPosts.includes(this.props.post.id)
 		})
 		this.toggleLike = this.toggleLike.bind(this);
-		this.toggleFollow = this.toggleFollow.bind(this);
 	}
 
 	componentDidMount(){
 		if (!this.props.author)
 			this.props.fetchUser(this.props.authorId);
-
-		// debugger
 	}
 
 	componentDidUpdate(oldProps,oldState){
 		if (!oldState.author && oldProps.author){
-			this.setState({
-				author: oldProps.author
-				// liked: this.props.currentUser.likedPosts.includes(this.props.post.id),
-				// followed: this.props.currentUser.following.includes(this.props.post.authorId),
-			})
+			this.setState({author: oldProps.author})
 		}
 	}
 
 	toggleLike(){
 		const post = this.props.post;
-		
+		const currentUser = this.props.currentUser;
 		if (this.state.liked){
 			console.log("unliking");
-			// this.props.unlikePost(post.id).then(this.props.fetchUser(this.props.authorId));
+			this.props.unlikePost(post.id);
 			this.setState({liked: false});
 			} else {
 			console.log("liking");
-			// this.props.likePost(post.id).then(this.props.fetchUser(this.props.authorId));
+			this.props.likePost(post.id);
 			this.setState({liked: true}); }
-	}
-
-	toggleFollow(){
-		const post = this.props.post;
-		
-		if (this.state.followed){
-			console.log("unfollow");
-			// this.props.unfollowPost(post.authorId);
-			this.setState({followed: false});
-			} else {
-			console.log("follow");
-			// this.props.followPost(post.authorId);
-			this.setState({followed: true}); }
 	}
 
 	render() {
@@ -71,7 +47,6 @@ class Post extends React.Component {
 		let botBar;
 		let likedPost;
 		let floatingHeart;
-		let followUser;
 		
 		if (this.state.liked) {
 			likedPost = "like fas fa-heart like-heart-button";
@@ -80,12 +55,6 @@ class Post extends React.Component {
 			likedPost ="like far fa-heart like-heart-button";
 			floatingHeart = "fas fa-heart-broken floating-heart";
 		} ; // user has not liked the post
-
-		if (this.state.followed) {
-			followUser = (<div onClick={this.toggleFollow} className="unfollow-button follow-toggle-button">Unfollow</div>)
-		} else {
-			followUser = (<div onClick={this.toggleFollow} className="follow-button follow-toggle-button">Follow</div>)
-		};
 		
 		if (authorId===currentUser.id){ //! post is current user's
 			topBar = (<span>{author.username}</span>);
@@ -100,7 +69,7 @@ class Post extends React.Component {
 								</div>
 								</>);
 		} else {
-			topBar = (<><span>{author.username}</span>{followUser}</>); // !someone else's post
+			topBar = (<span>{author.username}</span>); // !someone else's post
 			botBar = (<>
 								<div className="post-bottom-left">
 									<span>Karma</span>
@@ -182,4 +151,4 @@ class Post extends React.Component {
 	}
 }
 
-export default Post;
+export default FeaturedPost;

@@ -15,7 +15,8 @@ class EditPostForm extends React.Component {
 			imageUrls: this.props.post.imageUrls,
 			tags: this.props.post.tags,
 			errors: null,
-			allowSubmit: true
+			allowSubmit: true,
+			purgeImages: []
 		};
 		this.ref = React.createRef();
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -104,10 +105,10 @@ class EditPostForm extends React.Component {
 
 	deletePreviewImage(idx){
 		let index = idx.idx;
-
+	
 		let imageUrls = this.state.imageUrls.slice();
 		let imageFiles = this.state.imageFiles.slice();
-		
+		// debugger	
 		imageUrls.splice(index,1);
 		imageFiles.splice(index,1);
 		

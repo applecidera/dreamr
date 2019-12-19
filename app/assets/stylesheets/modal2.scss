@@ -91,6 +91,7 @@
     // animation: disappear;
     animation: cute-pop 0.5s -0.1s ease-in;
 }
+
 .video-button{
     background-color: pink;
     // animation: disappear;
@@ -118,7 +119,7 @@
 
 .pop-out-picture-container{ 
     display: flex;
-    width: 80vh;
+    max-width: 80vh;
     height: auto;
     justify-content: center;
     margin: 0 auto;

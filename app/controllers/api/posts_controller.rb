@@ -26,7 +26,17 @@ class Api::PostsController < ApplicationController
   end
 
   def update
+    #ActiveStorage::Attachment.find(params[:id])
+
     @post = Post.find(params[:post][:id])
+    # debugger
+    # real_images = []
+    # post_params[:images].each do |maybe_image|
+    #   if maybe_image.class == String 
+      
+    #   end
+      
+    # end
     if @post.update(post_params)
       render :show
     else

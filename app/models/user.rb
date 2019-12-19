@@ -20,11 +20,32 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 }, allow_nil: true
 
   has_many :posts
-  has_many :follows
   has_many :likes
+  
   has_many :liked_posts,
     through: :likes,
     source: :post
+
+  has_many :follows,
+    class_name: :Follow,
+    primary_key: :id,
+    foreign_key: :follower
+
+  has_many :following,
+    through: :follows,
+    source: :user
+
+  has_many :fans,
+    class_name: :Follow,
+    primary_key: :id,
+    foreign_key: :user
+    
+
+  has_many :followers,
+    through: :fans,
+    source: :follower
+
+  
   
   after_initialize :ensure_session_token
 

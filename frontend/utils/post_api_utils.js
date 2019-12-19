@@ -24,6 +24,7 @@ export const updatePost = (post) =>
 		method: 'PATCH',
 		url: `/api/posts/${post.id}`,
 		data: post,
+		id: post.id,
 		contentType: false,
 		processData: false
 	});

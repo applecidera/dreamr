@@ -134,6 +134,7 @@ class PostForm extends React.Component {
 		// delete this.state.imageFiles[index]
 		// console.log(this.state.imageFiles);
 		// this.forceUpdate()
+		
 		let imageUrls = this.state.imageUrls.slice();
 		let imageFiles = this.state.imageFiles.slice();
 		
