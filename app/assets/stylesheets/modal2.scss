@@ -33,6 +33,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    animation: zip-up 4s ease;
 }
 
 .choose-a-form-container{ 
@@ -143,7 +144,7 @@
     height: auto;
     justify-content: center;
     margin: 0 auto;
-    animation: into-existence 0.35s ease;
+    animation: into-existence 0.35s ease-out;
 }
 
 @keyframes into-existence{
@@ -157,27 +158,38 @@
 
 
 
-.text-button-animated, .animated-text-flying{
+.text-button-animated{
     background-color: red;
     animation: zip-up  1s  ease;
 }
-.photo-button-animated, .animated-text-flying{
+.photo-button-animated{
     background-color: orange;
     animation: zip-up 1s -0.1s ease;
 }
-.quote-button-animated, .animated-text-flying{
+.quote-button-animated{
     background-color: greenyellow;
     animation: zip-up 1s -0.2s ease;
 }
-.audio-button-animated, .animated-text-flying{
+.audio-button-animated{
     background-color: blue;
     animation: zip-up 1s -0.1s ease;
 }
  
-.video-button-animated, .animated-text-flying{
+.video-button-animated{
     background-color: pink;
     animation: zip-up 1s ease;
 }
+
+ .animated-text-flying1{
+     animation: zip-up-text 1s ease;
+ }
+ .animated-text-flying2{
+     animation: zip-up-text 1s -0.1s ease;
+ }
+ .animated-text-flying3{
+     animation: zip-up-text 1s -0.2s ease;
+ }
+ 
 
 
 
@@ -188,6 +200,16 @@
     }
     to{
         transform: translateY(-750%);
+        opacity: 0;
+    }
+}
+@keyframes zip-up-text {
+    from{
+        transform: translateY(0%);
+        opacity: 1;
+    }
+    to{
+        transform: translateY(-3000%);
         opacity: 0;
     }
 }

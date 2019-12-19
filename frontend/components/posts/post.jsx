@@ -9,7 +9,7 @@ class Post extends React.Component {
 		super(props);
 		this.state=({
 			author: null || this.props.author,
-			// liked: this.props.currentUser.likedPosts.includes(this.props.post.id),
+			liked: this.props.currentUser.likedPosts.includes(this.props.post.id),
 			// followed: this.props.currentUser.following.includes(this.props.post.authorId),
 			liked: false,
 			followed: false,
@@ -29,8 +29,8 @@ class Post extends React.Component {
 	componentDidUpdate(oldProps,oldState){
 		if (!oldState.author && oldProps.author){
 			this.setState({
-				author: oldProps.author
-				// liked: this.props.currentUser.likedPosts.includes(this.props.post.id),
+				author: oldProps.author,
+				liked: this.props.currentUser.likedPosts.includes(this.props.post.id),
 				// followed: this.props.currentUser.following.includes(this.props.post.authorId),
 			})
 		}
@@ -41,11 +41,11 @@ class Post extends React.Component {
 		
 		if (this.state.liked){
 			// console.log("unliking");
-			// this.props.unlikePost(post.id).then(this.props.fetchUser(this.props.authorId));
+			this.props.unlikePost(post.id).then(this.props.fetchUser(this.props.authorId));
 			this.setState({liked: false});
 			} else {
 			// console.log("liking");
-			// this.props.likePost(post.id).then(this.props.fetchUser(this.props.authorId));
+			this.props.likePost(post.id).then(this.props.fetchUser(this.props.authorId));
 			this.setState({liked: true}); }
 	}
 

@@ -32,31 +32,31 @@ class ChoosePostModal extends React.Component {
 					<button 
 					id="text"
 					className="text-button-animated">Aa</button>
-					<span className="animated">Text</span>
+					<span className="animated-text-flying1">Text</span>
 				</label>
 				<label htmlFor="photo" className="choose-a-form-box">
 				<button 
 					id="photo"
 					className="photo-button-animated fas fa-camera-retro"/>
-					<span className="animated">Photo</span>
+					<span className="animated-text-flying2">Photo</span>
 				</label>
 				<label htmlFor="quote" className="choose-a-form-box">
 				<button 
 					id="quote"
 					className="quote-button-animated fas fa-quote-left"/>
-					<span className="animated">Quote</span>
+					<span className="animated-text-flying3">Quote</span>
 				</label>
 				<label htmlFor="audio" className="choose-a-form-box">
 				<button 
 					id="audio"
 					className="audio-button-animated fas fa-headphones"/>
-					<span className="animated">Audio</span>
+					<span className="animated-text-flying2">Audio</span>
 				</label>
 				<label htmlFor="video" className="choose-a-form-box">
 				<button 
 					id="video"
 					className="video-button-animated fas fa-video"/>
-					<span className="animated">Video</span>
+					<span className="animated-text-flying1">Video</span>
 				</label>
 			</>
 		);

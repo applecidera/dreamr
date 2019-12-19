@@ -28,4 +28,4 @@ export const followUser = (userId) => (dispatch) =>
 
 export const unfollowUser = (userId) => (dispatch) => 
 	FollowApiUtils.unfollowUser(userId)
-	.then(follow => dispatch(receiveFollow(follow)));
+	.then(follow => dispatch(removeFollow(follow)));
