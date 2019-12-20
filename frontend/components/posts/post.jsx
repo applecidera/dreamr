@@ -41,11 +41,11 @@ class Post extends React.Component {
 		
 		if (this.state.liked){
 			// console.log("unliking");
-			this.props.unlikePost(post.id).then(this.props.fetchUser(this.props.authorId));
+			// this.props.unlikePost(post.id).then(this.props.fetchUser(this.props.authorId));
 			this.setState({liked: false});
 			} else {
 			// console.log("liking");
-			this.props.likePost(post.id).then(this.props.fetchUser(this.props.authorId));
+			// this.props.likePost(post.id).then(this.props.fetchUser(this.props.authorId));
 			this.setState({liked: true}); }
 	}
 

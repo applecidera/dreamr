@@ -26,17 +26,8 @@ class Api::PostsController < ApplicationController
   end
 
   def update
-    #ActiveStorage::Attachment.find(params[:id])
-
     @post = Post.find(params[:post][:id])
-    # debugger
-    # real_images = []
-    # post_params[:images].each do |maybe_image|
-    #   if maybe_image.class == String 
-      
-    #   end
-      
-    # end
+
     if @post.update(post_params)
       render :show
     else
@@ -47,6 +38,15 @@ class Api::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
+    render :show
+  end
+
+  def delete_attachment
+    debugger
+    @image = ActiveStorage::Blob.find_signed(params[:id])
+    debugger
+    @image.purge_later
+    debugger
     render :show
   end
 

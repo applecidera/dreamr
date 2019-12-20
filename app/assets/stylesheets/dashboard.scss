@@ -6,6 +6,9 @@
 	width: 100%;
 	overflow: scroll;
 }
+.dashboard::-webkit-scrollbar {
+	display: none;
+}
 
 .post-form-bar-container{
 	grid-column-start: 2;

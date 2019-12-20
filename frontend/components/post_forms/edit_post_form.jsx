@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
+
 class EditPostForm extends React.Component {
 	constructor(props) {
 		super(props);
@@ -71,6 +72,7 @@ class EditPostForm extends React.Component {
 	handleSubmit(e) {
 		
 		let post_type = this.state.postType;
+		let that=this;
 
 		// Multi Image Submit
 		
@@ -82,9 +84,11 @@ class EditPostForm extends React.Component {
 			const formData = new FormData();
 			formData.append('post[title]', this.state.title);
 			let imageFiles = this.state.imageFiles;
+			
 			if (imageFiles) {
 				imageFiles.forEach((image, idx)=>{
-					formData.append('post[images][]', imageFiles[idx]);
+					if (typeof image != 'number')
+						formData.append('post[images][]', imageFiles[idx]);
 				})
 			}
 			formData.append('post[text]', this.state.text);
@@ -93,7 +97,15 @@ class EditPostForm extends React.Component {
 			formData.append('post[id]', this.props.post.id);
 			
 			let rerouting = () => this.props.history.goBack();
+			// TODO iterate through purge Blobs, create custom deletion route, call delete on each blob with ID
 			// debugger
+			// if (this.state.purgeImages != []){
+			// 	for (let i=0; i < this.state.purgeImages.length; i++) {
+			// 		let id = this.state.purgeImages[i];
+			// 		// debugger
+			// 		this.props.deleteAttachment(id);
+			// 	}
+			// }
 			this.props
 				.updatePost(formData)
 				.then(
@@ -108,17 +120,26 @@ class EditPostForm extends React.Component {
 	
 		let imageUrls = this.state.imageUrls.slice();
 		let imageFiles = this.state.imageFiles.slice();
+		let purgeImages = this.state.purgeImages.slice();
 		// debugger	
 		imageUrls.splice(index,1);
-		imageFiles.splice(index,1);
+		
+		purgeImages=purgeImages.concat(imageFiles.splice(index,1));
 		
 		if (imageUrls && imageUrls.length===0) imageUrls = null;
 		if (imageFiles && imageFiles.length===0) imageFiles = null;
+		// debugger
 
 		this.setState({
 			imageUrls: imageUrls,
-			imageFiles: imageFiles
+			imageFiles: imageFiles,
+			purgeImages: purgeImages
 		})
+
+		// this.setState({
+		// 	imageUrls: null,
+		// 	imageFiles: null,
+		// })
 
 	}
 
@@ -132,8 +153,6 @@ class EditPostForm extends React.Component {
 		const {title, text, imageFiles, tags}=this.state;
 		const post_type = this.props.post.post_type;
 		let placeholderText;
-		// debugger
-		// if (!post_type) return null;
 
 		switch (post_type) {
 			case "text":

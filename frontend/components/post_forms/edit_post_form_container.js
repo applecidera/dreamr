@@ -4,6 +4,7 @@ import { updatePost } from '../../actions/post_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import { Link, withRouter } from 'react-router-dom';
 import EditPostForm from './edit_post_form';
+import { deleteAttachment } from '../../utils/post_api_utils';
 
 const msp = (state, ownProps) => {
 	// debugger
@@ -15,7 +16,9 @@ const msp = (state, ownProps) => {
 
 const mdp = (dispatch) => {
 	return {
-		updatePost: (post) => dispatch(updatePost(post)) };
+		updatePost: (post) => dispatch(updatePost(post)),
+		deleteAttachment: (blobId)=> dispatch(deleteAttachment(blobId))
+	}
 };
 
 export default withRouter(connect(msp, mdp)(EditPostForm));

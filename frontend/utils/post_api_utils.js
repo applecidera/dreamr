@@ -19,6 +19,13 @@ export const createPost = (post) =>
 		processData: false
 	});
 
+export const deleteAttachment = (id)=>
+	$.ajax({
+		method: "DELETE",
+		url: `/api/posts/${id}/delete_attachment`
+	})
+	
+
 export const updatePost = (post) =>
 	$.ajax({
 		method: 'PATCH',
