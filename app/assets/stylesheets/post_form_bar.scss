@@ -201,10 +201,15 @@ element:hover {
 .edit-form-container {
 	display: grid;
 	grid-template-columns: 85px 540px;
-	margin: 0;
-	padding: 0;
+	padding: 0.5rem;
+	margin-top: -200px;
+	// padding: 0;
+	grid-column-start: 2;
+	grid-column-end: 3;
+	// grid-row-start: 2;
+	// grid-row-end: 3;
 	position: absolute;
 	z-index: 16;
-	top: 20%;
-	left: 20%;
+	top: 50%;
+	// left: 20%;
 }
