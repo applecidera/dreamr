@@ -6,15 +6,6 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 }
-.splash1{
-	display: flex;
-	background-image: asset-data-url("dream7.jpeg");
-	height: 100vh;
-	scroll-snap-align: start;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-}
 
 .content {
 	display: flex;
@@ -164,4 +155,26 @@
 
 .master-snap-container{
 	scroll-snap-type: y mandatory;
+}
+
+.splash1{
+	display: flex;
+	background-image: asset-data-url("dream7.jpeg");
+	height: 100vh;
+	scroll-snap-align: start;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.splash2{
+	height: 100vh;
+	scroll-snap-align: start;
+	background-color: blueviolet;
+}
+
+.splash3{
+	height: 100vh;
+	scroll-snap-align: start;
+	background-color: darkblue;
 }

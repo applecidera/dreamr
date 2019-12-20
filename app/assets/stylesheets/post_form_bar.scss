@@ -172,23 +172,23 @@ element:hover {
 
 .edit-form-background {
 	display: grid;
-	vertical-align: baseline;
+	// vertical-align: baseline;
 	position: fixed;
 	top: 0;
 	bottom: 0;
 	right: 0;
 	left: 0;
 	// grid-template-columns: 1fr 625px 320px 1fr;
-	// grid-template-columns: 1fr 625px 1fr;
+	grid-template-columns: 1fr 625px 1fr;
 	// grid-template-rows: 100px 120px 1fr;
-	grid-template-columns: 1fr 3fr 1fr;
+	// grid-template-columns: 1fr 3fr 1fr;
 	grid-template-rows: 1fr 2fr 1fr;
 	background-color: rgba(26, 0, 63, 0.9);
 	z-index: 15;
 	overflow-y: auto;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	// display: flex;
+	// flex-direction: column;
+	// justify-content: center;
 }
 
 	// display: grid;

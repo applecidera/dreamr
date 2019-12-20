@@ -27,7 +27,7 @@
    z-index: 1;
    background-color: rgb(30, 0, 60);
    font-family: Arial, Helvetica, sans-serif;
-   /* overflow-y: hidden; */
+   overflow-y: hidden;
    overflow-x: hidden;
  }
 

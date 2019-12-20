@@ -30,6 +30,14 @@
 	// background-color: rgba($color: #ffc400, $alpha: 0.5);
 	width: 625px;
 }
+.left-col-2 {
+	grid-column-start: 3;
+	grid-column-end: 4;
+	grid-row-start: 3;
+	grid-row-end: 4;
+	// background-color: rgba($color: #ffc400, $alpha: 0.5);
+	width: 625px;
+}
 
 .right-col {
 	grid-column-start: 3;
