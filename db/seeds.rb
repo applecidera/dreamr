@@ -11,14 +11,14 @@ User.destroy_all
 Post.destroy_all
 
 #USERS
-user1 = User.create(username: "demo-user", password: "demo-user-ftw", email: "demo@user.com")
+user1 = User.create(username: "demo-user", password: "demo-user-ftw", email: "demo@user.com", avatar: "cloud")
 user2 = User.create(username: "ash_ketchum", password: "123123123", email: "pokemon@master.com", avatar: Faker::Avatar.image)
 user3 = User.create(username: "admin", password: "123123123", email: "very_secure@password.com", avatar: Faker::Avatar.image)
 user4 = User.create(username: "ron_weasley", password: "123123123", email: "very_secure1@password.com", avatar: Faker::Avatar.image)
 user5 = User.create(username: "hermione_granger", password: "123123123", email: "very_secure2@password.com", avatar: Faker::Avatar.image)
-user6 = User.create(username: "edelgard von hresvelg", password: "123123123", email: "very_secure3@password.com", avatar: Faker::Avatar.image)
-user7 = User.create(username: "calvin", password: "hobbes", email: "123123123", avatar: Faker::Avatar.image)
-user8 = User.create(username: "hobbes", password: "calvin", email: "123123123", avatar: Faker::Avatar.image) 
+user6 = User.create(username: "edelgard_von_hresvelg", password: "123123123", email: "very_secure3@password.com", avatar: Faker::Avatar.image)
+user7 = User.create(username: "calvin", password: "123123123", email: "1231ds23123@gmail.com", avatar: Faker::Avatar.image)
+user8 = User.create(username: "hobbes", password: "123123123", email: "12as3123123@gmail.com", avatar: Faker::Avatar.image) 
 
 # POSTS
 user2.posts.create(title: "Your Limitation",text: "It's only your imagination", post_type: "quote")
