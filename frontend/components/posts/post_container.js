@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Post from './post';
 import { fetchUser } from '../../actions/user_actions';
-import { openModal2 } from '../../actions/modal_actions';
+import { openModal } from '../../actions/modal_actions';
 import { likePost, unlikePost, followPost, unfollowPost } from '../../actions/post_actions';
 
 const msp = (state, ownProps) => {
@@ -14,7 +14,7 @@ const msp = (state, ownProps) => {
   };
 const mdp = (dispatch) => ({
   fetchUser: (userId)=>dispatch(fetchUser(userId)),
-  openModal2: (modal)=>dispatch(openModal2(modal)),
+  openModal: (modal)=>dispatch(openModal(modal)),
   likePost: (postId)=>dispatch(likePost(postId)),
   unlikePost: (postId)=>dispatch(unlikePost(postId)),
   followPost: (userId)=>dispatch(followPost(userId)),

@@ -11,7 +11,6 @@ class Modal3 extends React.Component {
 	}
 
 	transitionModals(){
-		// setTimeout(()=>this.props.closeModal(), 2000);
 		this.props.openModal('zoom-off-screen');
 		this.props.closeModal3()
 	}

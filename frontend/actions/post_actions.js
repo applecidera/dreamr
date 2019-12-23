@@ -1,5 +1,5 @@
 import * as PostApiUtils from '../utils/post_api_utils';
-import * as LikeApiUtils from '../utils/like_utils';
+import * as LikeApiUtils from '../utils/like_api_utils';
 
 
 export const RECEIVE_ALL_POSTS = 'RECEIVE_ALL_POSTS';

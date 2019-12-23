@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { openModal, closeModal3 } from '../../actions/modal_actions';
+import { openModal, closeModal } from '../../actions/modal_actions';
 
 class ChoosePostModal extends React.Component {
 	constructor(props) {
@@ -9,14 +9,14 @@ class ChoosePostModal extends React.Component {
 	}
 
 	transitionModal(modal){
-		this.props.closeModal3();
+		this.props.closeModal();
 		this.props.openModal(modal);
 	}
 
 	render() {
-		const { modal3, closeModal2 } = this.props;
+		const { modal, closeModal } = this.props;
 
-		if (!modal3) {
+		if (!modal) {
 			return null;
 		}
 
@@ -64,14 +64,13 @@ class ChoosePostModal extends React.Component {
 
 const msp = (state) => {
 	return {
-		modal2: state.ui.modal2,
-		modal3: state.ui.modal3
+		modal: state.ui.modal
 	};
 };
 
 const mdp = (dispatch) => {
 	return {
-		closeModal3: () => dispatch(closeModal3()),
+		closeModal: () => dispatch(closeModal()),
 		openModal: (modal)=>dispatch(openModal(modal))
 	};
 };

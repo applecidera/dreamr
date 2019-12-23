@@ -6,7 +6,7 @@ class Api::FollowsController < ApplicationController
     if @follow.save 
       @user = @follow.user
       @follower = @follow.follower
-      render 'api/posts/show'
+      render './api/posts/show'
     else
       render json: @follow.errors.full_messages, status: 401
     end
@@ -19,6 +19,6 @@ class Api::FollowsController < ApplicationController
     @user = @follow.user
     @follower = @follow.follower
     @follow.destroy
-    render 'api/posts/show'
+    render './api/posts/show'
   end
 end

@@ -9,19 +9,20 @@ const likesReducer = (prevState = {}, action) => {
 	Object.freeze(prevState);
 	let newState = {};
 	switch (action.type) {
-		default:
-			return prevState;
 		case RECEIVE_ALL_LIKES:
-			newState = merge({}, prevState, action.likes);
+			debugger
+			newState = merge({}, prevState, action.likedPosts);
 			return newState;
 		case RECEIVE_LIKE:
 			newState = merge({}, prevState);
-			newState[action.like.id] = action.like;
+			newState[action.like.id] = action.likedPost;
 			return newState;
 		case REMOVE_LIKE:
 			newState = merge({}, prevState);
-			delete newState[action.likeId];
+			delete newState[action.likedPost];
 			return newState;
+		default:
+			return prevState;
 	}
 };
 

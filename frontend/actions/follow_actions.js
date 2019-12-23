@@ -1,7 +1,7 @@
 export const RECEIVE_ALL_FOLLOWS = "RECEIVE_ALL_FOLLOWS"
 export const RECEIVE_FOLLOW = "RECEIVE_FOLLOW"
 export const REMOVE_FOLLOW = "REMOVE_FOLLOW"
-import * as FollowApiUtils from '../utils/follow_utils';
+import * as FollowApiUtils from '../utils/follow_api_utils';
 
 export const receiveAllFollows = (follows) => ({
 	type: RECEIVE_ALL_FOLLOWS,

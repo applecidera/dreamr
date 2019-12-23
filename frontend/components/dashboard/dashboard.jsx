@@ -7,16 +7,17 @@ import PostFormBar from '../post_forms/post_form_bar_container';
 class Dashboard extends React.Component {
 	constructor(props){
 		super(props);
-		this.state={
-			featured: (this.props.posts) 
-			? this.props.posts[Math.floor(Math.random() * this.props.posts.length)]
-			: null
-		}
+		// this.state={
+		// 	featured: (this.props.posts) 
+		// 	? this.props.posts[Math.floor(Math.random() * this.props.posts.length)]
+		// 	: null
+		// }
 	}
 
 	componentDidMount(){
-		if (this.props.posts.length < 2)
+		if (this.props.posts.length < 2){
 			this.props.fetchAllPosts();
+		}
 	}
 
 	componentDidUpdate(prevProps){

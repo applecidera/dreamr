@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { closeModal2 } from '../../actions/modal_actions';
+import { closeModal } from '../../actions/modal_actions';
 
 class PopOutPicture extends React.Component {
 	constructor(props) {
@@ -8,9 +8,9 @@ class PopOutPicture extends React.Component {
 	}
 
 	render() {
-		const { modal2, imageUrl } = this.props;
+		const { modal, imageUrl } = this.props;
 
-		if (!modal2) {
+		if (!modal) {
 			return null;
 		}
 
@@ -26,13 +26,13 @@ class PopOutPicture extends React.Component {
 
 const msp = (state) => {
 	return {
-		modal2: state.ui.modal2
+		modal: state.ui.modal
 	};
 };
 
 const mdp = (dispatch) => {
 	return {
-		closeModal2: () => dispatch(closeModal2()),
+		closeModal: () => dispatch(closeModal()),
 		openModal: (modal)=>dispatch(openModal(modal))
 	};
 };

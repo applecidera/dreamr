@@ -26,12 +26,12 @@ class Post extends React.Component {
 		// debugger
 	}
 
-	componentDidUpdate(oldProps,oldState){
-		if (!oldState.author && oldProps.author){
+	componentDidUpdate(prevState){
+		// if (!oldState.author && oldProps.author){
+		if (this.props.author && !prevState.author){
 			this.setState({
-				author: oldProps.author,
+				author: this.props.author,
 				liked: this.props.currentUser.likedPosts.includes(this.props.post.id),
-				// followed: this.props.currentUser.following.includes(this.props.post.authorId),
 			})
 		}
 	}
@@ -137,7 +137,7 @@ class Post extends React.Component {
 									key={idx} 
 									className="image" 
 									src={imageUrl}
-									onClick={()=>this.props.openModal2("pop-out")}>
+									onClick={()=>this.props.openModal("pop-out")}>
 									</img>)
 			})
 		
