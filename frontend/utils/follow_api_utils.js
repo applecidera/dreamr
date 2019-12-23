@@ -6,9 +6,9 @@ export const fetchAllFollows = () => (
   })
 )
 
-export const receiveFollow = () => (
+export const receiveFollow = (id) => (
   $.ajax({
-    url: '/api/follows',
+    url: `/api/follows/${id}`,
     method: "GET"
   })
 )

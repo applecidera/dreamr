@@ -9,10 +9,8 @@ class Post extends React.Component {
 		super(props);
 		this.state=({
 			author: null || this.props.author,
-			// liked: this.props.currentUser.likedPosts.includes(this.props.post.id),
-			// followed: this.props.currentUser.following.includes(this.props.post.authorId),
 			liked: false || this.props.liked,
-			followed: false,
+			followed: false || this.props.followed,
 			opacity: false
 		})
 		this.toggleLike = this.toggleLike.bind(this);
@@ -27,16 +25,15 @@ class Post extends React.Component {
 	componentDidUpdate(prevState){
 		// if (!oldState.author && oldProps.author){
 		if (this.props.author && !prevState.author){
-			this.setState({
-				author: this.props.author,
-				liked: this.props.currentUser.likedPosts.includes(this.props.post.id),
-			})
+			this.setState({author: this.props.author})
 		}
 
 		if (this.props.liked != prevState.liked){
-			this.setState({
-				liked: this.props.liked
-			});
+			this.setState({liked: this.props.liked});
+		}
+
+		if (this.props.followed != prevState.followed){
+			this.setState({followed: this.props.followed});
 		}
 	}
 
@@ -61,12 +58,13 @@ class Post extends React.Component {
 		
 		if (this.state.followed){
 			// console.log("unfollow");
-			// this.props.unfollowPost(post.authorId);
-			this.setState({followed: false});
+			this.props.unfollowUser(post.authorId);
+			// this.setState({followed: false});
 			} else {
 			// console.log("follow");
-			// this.props.followPost(post.authorId);
-			this.setState({followed: true}); }
+			this.props.followUser(post.authorId);
+			// this.setState({followed: true})
+		}
 	}
 
 	render() {

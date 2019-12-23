@@ -1,7 +1,7 @@
 class Api::FollowsController < ApplicationController
 
   def index
-    @follows = Follow.where(user_id: current_user.id)
+    @follows = Follow.where(follower_id: current_user.id)
   end
 
   def show

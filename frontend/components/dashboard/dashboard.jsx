@@ -18,6 +18,7 @@ class Dashboard extends React.Component {
 		if (this.props.posts.length < 2){
 			this.props.fetchAllPosts();
 			this.props.fetchAllLikes();
+			this.props.fetchAllFollows();
 		}
 	}
 
