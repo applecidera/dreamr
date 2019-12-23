@@ -13,9 +13,9 @@ export const receiveFollow = (follow) => ({
 	follow
 });
 
-export const removeFollow = (followId) => ({
+export const removeFollow = (follow) => ({
 	type: REMOVE_FOLLOW,
-	followId
+	follow
 });
 
 export const fetchAllFollows = () => dispatch =>
@@ -24,7 +24,7 @@ export const fetchAllFollows = () => dispatch =>
 
 export const followUser = (userId) => (dispatch) => 
 	FollowApiUtils.followUser(userId)
-  .then(follow => dispatch(receiveFollow(follow)));
+  	.then(follow => dispatch(receiveFollow(follow)));
 
 export const unfollowUser = (userId) => (dispatch) => 
 	FollowApiUtils.unfollowUser(userId)

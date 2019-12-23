@@ -9,9 +9,9 @@ class Post extends React.Component {
 		super(props);
 		this.state=({
 			author: null || this.props.author,
-			liked: this.props.currentUser.likedPosts.includes(this.props.post.id),
+			// liked: this.props.currentUser.likedPosts.includes(this.props.post.id),
 			// followed: this.props.currentUser.following.includes(this.props.post.authorId),
-			liked: false,
+			liked: false || this.props.liked,
 			followed: false,
 			opacity: false
 		})
@@ -22,8 +22,6 @@ class Post extends React.Component {
 	componentDidMount(){
 		if (!this.props.author)
 			this.props.fetchUser(this.props.authorId);
-
-		// debugger
 	}
 
 	componentDidUpdate(prevState){
@@ -34,6 +32,12 @@ class Post extends React.Component {
 				liked: this.props.currentUser.likedPosts.includes(this.props.post.id),
 			})
 		}
+
+		if (this.props.liked != prevState.liked){
+			this.setState({
+				liked: this.props.liked
+			});
+		}
 	}
 
 	toggleLike(){
@@ -42,11 +46,14 @@ class Post extends React.Component {
 		if (this.state.liked){
 			// console.log("unliking");
 			// this.props.unlikePost(post.id).then(this.props.fetchUser(this.props.authorId));
-			this.setState({liked: false});
+			this.props.unlikePost(post.id);
+			// this.setState({liked: false});
 			} else {
 			// console.log("liking");
 			// this.props.likePost(post.id).then(this.props.fetchUser(this.props.authorId));
-			this.setState({liked: true}); }
+			this.props.likePost(post.id);
+			// this.setState({liked: true}); 
+		}
 	}
 
 	toggleFollow(){

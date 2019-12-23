@@ -10,16 +10,15 @@ const likesReducer = (prevState = {}, action) => {
 	let newState = {};
 	switch (action.type) {
 		case RECEIVE_ALL_LIKES:
-			debugger
-			newState = merge({}, prevState, action.likedPosts);
+			newState = merge({}, prevState, action.likes);
 			return newState;
 		case RECEIVE_LIKE:
 			newState = merge({}, prevState);
-			newState[action.like.id] = action.likedPost;
+			newState[action.like.id] = action.like;
 			return newState;
 		case REMOVE_LIKE:
 			newState = merge({}, prevState);
-			delete newState[action.likedPost];
+			delete newState[action.like.id];
 			return newState;
 		default:
 			return prevState;

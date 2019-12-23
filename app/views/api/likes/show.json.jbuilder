@@ -1,1 +1,4 @@
-json.likedPost @like.post_id
+
+#json.set! @like.id do
+    json.extract! @like, :id, :post_id
+#end

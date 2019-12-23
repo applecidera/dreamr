@@ -4,7 +4,7 @@ export const REMOVE_LIKE = "REMOVE_LIKE"
 import * as LikeApiUtils from '../utils/like_api_utils';
 
 export const receiveAllLikes = (likes) => ({
-	type: RECEIVE_ALL_FOLLOWS,
+	type: RECEIVE_ALL_LIKES,
 	likes
 });
 
@@ -22,10 +22,12 @@ export const fetchAllLikes = () => dispatch =>
   LikeApiUtils.fetchAllLikes()
   .then(likes => dispatch(receiveAllLikes(likes)))
 
-export const likePost = (postId) => (dispatch) => 
-	LikeApiUtils.likePost(postId)
-  .then(like => dispatch(receiveLike(like)));
+export const likePost = (postId) => (dispatch) => {
+	LikeApiUtils.likePost(postId).then((like)=>dispatch(receiveLike(like)))
+}
+	
 
-export const unlikePost = (postId) => (dispatch) => 
+export const unlikePost = (postId) => (dispatch) => {
 	LikeApiUtils.unlikePost(postId)
-	.then(like => dispatch(removeLike(like)));
+  	.then((like)=>dispatch(removeLike(like)));
+}

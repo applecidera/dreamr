@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import Dashboard from './dashboard';
 import { fetchAllPosts } from '../../actions/post_actions';
+import { fetchAllLikes } from '../../actions/like_actions';
 
 const msp = (state) => {
 	return {
@@ -9,7 +10,8 @@ const msp = (state) => {
 };
 
 const mdp = (dispatch) => ({
-	fetchAllPosts: () => dispatch(fetchAllPosts())
+	fetchAllPosts: () => dispatch(fetchAllPosts()),
+	fetchAllLikes: () => dispatch(fetchAllLikes())
 });
 
 export default connect(msp, mdp)(Dashboard);

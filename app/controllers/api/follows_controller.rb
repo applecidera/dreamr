@@ -1,4 +1,13 @@
 class Api::FollowsController < ApplicationController
+
+  def index
+    @follows = Follow.where(user_id: current_user.id)
+  end
+
+  def show
+    @follow = Follow.find_by(params[:id])
+  end
+
   def create
     @follow = Follow.new
     @follow.follower_id = current_user.id
@@ -6,7 +15,7 @@ class Api::FollowsController < ApplicationController
     if @follow.save 
       @user = @follow.user
       @follower = @follow.follower
-      render './api/posts/show'
+      render :show
     else
       render json: @follow.errors.full_messages, status: 401
     end
@@ -19,6 +28,6 @@ class Api::FollowsController < ApplicationController
     @user = @follow.user
     @follower = @follow.follower
     @follow.destroy
-    render './api/posts/show'
+    render :show
   end
 end

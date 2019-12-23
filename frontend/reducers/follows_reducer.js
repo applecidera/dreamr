@@ -9,8 +9,6 @@ const followsReducer = (prevState = {}, action) => {
 	Object.freeze(prevState);
 	let newState = {};
 	switch (action.type) {
-		default:
-			return prevState;
 		case RECEIVE_ALL_FOLLOWS:
 			newState = merge({}, prevState, action.follows);
 			return newState;
@@ -22,6 +20,8 @@ const followsReducer = (prevState = {}, action) => {
 			newState = merge({}, prevState);
 			delete newState[action.followId];
 			return newState;
+		default:
+			return prevState;
 	}
 };
 

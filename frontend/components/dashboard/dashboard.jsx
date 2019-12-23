@@ -17,12 +17,13 @@ class Dashboard extends React.Component {
 	componentDidMount(){
 		if (this.props.posts.length < 2){
 			this.props.fetchAllPosts();
+			this.props.fetchAllLikes();
 		}
 	}
 
 	componentDidUpdate(prevProps){
 		if (prevProps.posts.length != this.props.posts.length){
-			this.props.fetchAllPosts()
+			this.props.fetchAllPosts();
 		}
 	}
 
