@@ -1,5 +1,14 @@
 class Api::UsersController < ApplicationController
   
+  def index
+    if params[:filters] != ""
+      searchQuery = "%" + params[:filters] + "%"
+    else
+      searchQuery = nil
+    end
+    @users = User.where("username LIKE ?", searchQuery)
+  end
+
   def create
     @user = User.new(user_params)
     @user.avatar = "cloud"
