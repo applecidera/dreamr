@@ -15,7 +15,7 @@ class UserPeek extends React.Component{
             myPosts.push(post)
         }
     })
-    
+    let avatar = (this.props.peekedUser.avatar === "cloud") ? window.avatar : this.props.peekedUser.avatar;
     let sortedPosts = myPosts.reverse();
     let showPosts = sortedPosts.map((post, idx)=>(
         <PostPeek key={idx} post={post} />
@@ -23,7 +23,7 @@ class UserPeek extends React.Component{
     
         return (<>
             <div className="user-peek-top">
-                <img src={this.props.peekedUser.avatar}/>
+                <img src={avatar}/>
                 <div className="side-peek-username">{this.props.peekedUser.username}</div>
                 {/* <h3>Author Id is {this.props.authorId}</h3> */}
             </div>
