@@ -1,0 +1,31 @@
+.post-peek-container {
+	display: grid;
+	grid-template-columns: 540px;
+    padding: 0.5rem;
+    margin-left: 15px;
+}
+
+.postbox-peek {
+	grid-column: 2, 3;
+	display: grid;
+	grid-template-rows: 30px 1fr;
+	background-color: white;
+    border-radius: 3px;
+    border: 1px solid lightgray;
+}
+
+.user-peek-top{
+    width: 100%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    img{
+        height: 96px;
+        width: 96px;
+        background-color: rgba(26, 0, 63, 0.9);
+        border-radius: 3px;
+    }
+}

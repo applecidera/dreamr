@@ -1,7 +1,7 @@
 class Api::PostsController < ApplicationController
 
   def index
-    @posts = Post.order(id: :DESC).limit(10).includes(:user)
+    @posts = Post.order(id: :DESC).includes(:user)
     # @posts = Posts.all.includes(:likes, :replies)
     # TODO includes to prefetch data reduce n+1
     

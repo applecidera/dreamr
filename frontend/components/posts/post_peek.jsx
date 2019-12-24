@@ -3,7 +3,7 @@ import PostDropdown from './post_dropdown';
 import FloatingHeart from './floating_heart';
 import FloatingBrokenHeart from './floating_broken_heart';
 
-class Post extends React.Component {
+class PostPeek extends React.Component {
 
 	constructor(props){
 		super(props);
@@ -98,7 +98,7 @@ class Post extends React.Component {
 								</div>
 								</>);
 		} else {
-			topBar = (<><span onClick={()=>this.props.openModal("user-peek")} id={this.props.authorId}>{author.username}</span>{followUser}</>); // !someone else's post
+			topBar = (<><span>{author.username}</span>{followUser}</>); // !someone else's post
 			botBar = (<>
 								<div className="post-bottom-left">
 									<span>Karma</span>
@@ -165,12 +165,8 @@ class Post extends React.Component {
 		let avatar = window.avatar;
 		if (author && author.avatar != "cloud") (avatar = author.avatar)
 		return (
-			<div key={post.id} className="post-container">
-				<img className="avatar" 
-				src={avatar}
-				onClick={()=>this.props.openModal("user-peek")} 
-				id={this.props.authorId}></img>
-				<div className="postbox">
+			<div key={post.id} className="post-peek-container">
+				<div className="postbox-peek">
 					<div className ="post-top">{topBar}</div>
 					{titleGoesHere}
 					{imagesGoesHere}
@@ -185,4 +181,4 @@ class Post extends React.Component {
 	}
 }
 
-export default Post;
+export default PostPeek;

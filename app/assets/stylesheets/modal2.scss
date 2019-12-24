@@ -224,6 +224,7 @@
     grid-template-columns: 1fr 580px;
     background-color: rgba(26, 0, 63, 0.9);
     z-index: 15;
+    overflow-y: auto;
 }
 
 .user-peek-container{
