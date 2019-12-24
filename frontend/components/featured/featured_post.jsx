@@ -90,7 +90,7 @@ class FeaturedPost extends React.Component {
 		
 		let isaQuote = (post.post_type==="quote") ? ('\"') : source=null;
 		let source = (post.post_type==="quote") ? ('\u2014') : isaQuote = null;
-		// debugger
+		
 		let titleGoesHere=null;
 		if (post.title!="")
 			titleGoesHere = (<div className="title">{isaQuote}{post.title}{isaQuote}</div>);

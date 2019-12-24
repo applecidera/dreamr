@@ -7,7 +7,6 @@ import EditPostForm from './edit_post_form';
 import { deleteAttachment } from '../../utils/post_api_utils';
 
 const msp = (state, ownProps) => {
-	// debugger
 	return {
 		currentUser: state.session.currentUser,
 		post: ownProps.post

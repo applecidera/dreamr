@@ -13,6 +13,9 @@
 	position: sticky;
 	top: 70px;
 }
+.avatar:hover{
+	cursor: pointer;
+}
 
 .postbox {
 	grid-column: 2, 3;
@@ -37,6 +40,9 @@
 		justify-content: center;
 		font-weight: bold;
 	}
+}
+.post-top span:hover{
+	cursor: pointer;
 }
 
 .title {

@@ -22,8 +22,6 @@ class Modal3 extends React.Component {
 			return null;
 		}
 
-		// debugger
-
 		let component;
 		let background;
 		let container;

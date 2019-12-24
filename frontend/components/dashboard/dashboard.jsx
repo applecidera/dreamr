@@ -34,7 +34,6 @@ class Dashboard extends React.Component {
 		// 	this.setState({featured: this.props.posts[Math.floor(Math.random() * this.props.posts.length)]})
 		// 	featured = (<FeaturedPost post={this.state.featured}/>);
 		// } 
-		// debugger
 		
 		// let postFormBar = (<div>Post Form Bar Goes Here</div>);
 		// let posts = (<div>Posts Go Here</div>);

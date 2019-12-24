@@ -7,6 +7,7 @@ import DeleteModal from '../modal/delete_modal';
 import ChoosePostModalTransition from './choose_post_modal_transition';
 import ChoosePostModal from './choose_post_modal';
 import PopOutPicture from './pop_out_picture';
+import UserPeek from './user_peek';
 import {deleteSession} from '../../actions/session_actions';
 
 class Modal extends React.Component {
@@ -93,6 +94,12 @@ class Modal extends React.Component {
 				component = <PopOutPicture imageUrl = {imageUrl}/>;
 				background = 'pop-out-picture-background';
 				container = 'pop-out-picture-container';
+				clickEffect = closeModal;
+				break;
+			case 'user-peek':
+				component = <UserPeek authorId={event.target.id}/>;
+				background = 'user-peek-background';
+				container = 'user-peek-container';
 				clickEffect = closeModal;
 				break;
 			default:

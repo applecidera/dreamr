@@ -109,7 +109,7 @@ class Post extends React.Component {
 								</div>
 								</>);
 		} else {
-			topBar = (<><span>{author.username}</span>{followUser}</>); // !someone else's post
+			topBar = (<><span onClick={()=>this.props.openModal("user-peek")} id={this.props.authorId}>{author.username}</span>{followUser}</>); // !someone else's post
 			botBar = (<>
 								<div className="post-bottom-left">
 									<span>Karma</span>
@@ -130,7 +130,7 @@ class Post extends React.Component {
 		
 		let isaQuote = (post.post_type==="quote") ? ('\"') : source=null;
 		let source = (post.post_type==="quote") ? ('\u2014') : isaQuote = null;
-		// debugger
+		
 		let titleGoesHere=null;
 		if (post.title!="")
 			titleGoesHere = (<div className="title">{isaQuote}{post.title}{isaQuote}</div>);
@@ -177,7 +177,10 @@ class Post extends React.Component {
 		if (author && author.avatar != "cloud") (avatar = author.avatar)
 		return (
 			<div key={post.id} className="post-container">
-				<img className="avatar" src={avatar}></img>
+				<img className="avatar" 
+				src={avatar}
+				onClick={()=>this.props.openModal("user-peek")} 
+				id={this.props.authorId}></img>
 				<div className="postbox">
 					<div className ="post-top">{topBar}</div>
 					{titleGoesHere}

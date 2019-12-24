@@ -11,7 +11,6 @@ class NewPost extends React.Component{
     }
 
     componentDidMount(){
-        // debugger
         if (this.props.posts.length===0)
             this.props.fetchAllPosts();
     }

@@ -26,15 +26,16 @@ export const deleteAttachment = (id)=>
 	})
 	
 
-export const updatePost = (post) =>
-	$.ajax({
-		method: 'PATCH',
-		url: `/api/posts/${post.id}`,
+export const updatePost = (post) =>{
+	return $.ajax({
+		method: 'PUT',
+		url: `/api/posts/${post.get("post[id]")}`,
 		data: post,
-		id: post.id,
+		id: post.get("post[id]"),
 		contentType: false,
 		processData: false
 	});
+}
 
 export const deletePost = (postId) => {
 	return $.ajax({ 

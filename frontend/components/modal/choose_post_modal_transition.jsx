@@ -24,7 +24,6 @@ class ChoosePostModal extends React.Component {
 		if (!modal) {
 			return null;
 		}
-		// debugger
 
 		return (
 			<>

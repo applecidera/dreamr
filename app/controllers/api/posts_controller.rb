@@ -26,9 +26,10 @@ class Api::PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find(params[:post][:id])
-
-    if @post.update(post_params)
+    @post = Post.find(params[:id])
+    
+    if (@post && @post.update(post_params))
+      #@post.images.purge if post_params[:purge_images]
       render :show
     else
       render :show
@@ -42,18 +43,15 @@ class Api::PostsController < ApplicationController
   end
 
   def delete_attachment
-    debugger
     @image = ActiveStorage::Blob.find_signed(params[:id])
-    debugger
     @image.purge_later
-    debugger
     render :show
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:title, :text, :tags, :user_id, :post_type, images: []) 
+    params.require(:post).permit(:title, :text, :tags, :post_type, images: []) 
   end
 
 end

@@ -17,7 +17,7 @@ class EditPostForm extends React.Component {
 			tags: this.props.post.tags,
 			errors: null,
 			allowSubmit: true,
-			purgeImages: []
+			purgeImages: false
 		};
 		this.ref = React.createRef();
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -95,6 +95,7 @@ class EditPostForm extends React.Component {
 			formData.append('post[tags]', this.state.tags);
 			formData.append('post[post_type]', post_type);
 			formData.append('post[id]', this.props.post.id);
+			// formData.append('post[purge_images]', this.state.purgeImages);
 			
 			let rerouting = () => this.props.history.goBack();
 			// TODO iterate through purge Blobs, create custom deletion route, call delete on each blob with ID
@@ -121,14 +122,14 @@ class EditPostForm extends React.Component {
 		let imageUrls = this.state.imageUrls.slice();
 		let imageFiles = this.state.imageFiles.slice();
 		let purgeImages = this.state.purgeImages.slice();
-		// debugger	
+		
 		imageUrls.splice(index,1);
 		
 		purgeImages=purgeImages.concat(imageFiles.splice(index,1));
 		
 		if (imageUrls && imageUrls.length===0) imageUrls = null;
 		if (imageFiles && imageFiles.length===0) imageFiles = null;
-		// debugger
+		
 
 		this.setState({
 			imageUrls: imageUrls,
@@ -137,8 +138,9 @@ class EditPostForm extends React.Component {
 		})
 
 		// this.setState({
-		// 	imageUrls: null,
+		// 	purgeImages: true,
 		// 	imageFiles: null,
+		// 	imageUrls: null
 		// })
 
 	}

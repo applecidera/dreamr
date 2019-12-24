@@ -11,42 +11,31 @@ class Navbar extends React.Component {
 			searchText: "",
 			searchbarFilled: null
 		}
-		this.checkSearchbarFilled=this.checkSearchbarFilled.bind(this);
-		// this.openDropdown = this.openDropdown.bind(this);
-		// this.closeDropdown = this.closeDropdown.bind(this);
 	}
 
-	// openDropdown(){
-	// 	this.setState=({
-	// 		open: true
-	// 	})
-	// 	console.log("open the door");
-	// }
-
-	// closeDropdown(){
-		
-	// 	this.setState=({
-	// 		open: false
-	// 	})
-	// 	console.log("close the door");
-	// }
-	checkSearchbarFilled(){
-		(this.state.searchText != "") ? 
-		this.setState({searchbarFilled: true}) : 
-		this.setState({searchbarFilled: null}) ;
+	handleInput(e){
+		return e=>{
+			this.setState({
+				searchText: e.currentTarget.value,
+				searchbarFilled: true
+			});
+		}
 	}
 
-	handleInput(){
-
-		return e=>
-			this.setState({searchText: e.currentTarget.value})
+	reset(e){
+		return e=>{
+			this.setState({
+				searchbarFilled: false
+			})
+		}
 	}
 
 
 	render() {
+		
 		let redirectButton = (<></>);
 		let loginNav = (<></>);
-		// let dropDownButton = (<></>);
+		
 		let navbarBorder = (<></>);
 		
 		if (this.props.location.pathname === '/signup'){
@@ -75,17 +64,10 @@ class Navbar extends React.Component {
 					/>
 				</div>
 			)
-			// dropDownButton = (
-			// 	<button 
-			// 		className="dropdown-button" 
-			// 		onBlur={this.closeDropdown} 
-			// 		onFocus={this.openDropdown}><i 
-			// 		className="fas fa-user-alt"></i>
-			// 		</button>)
 		}
 		
 		
-		let searchbarFilled = this.props.searchbarFilled ?
+		let searchbarFilled = this.state.searchbarFilled ?
 			"searchbar-filled" :
 			(null) ;
 		
@@ -94,14 +76,20 @@ class Navbar extends React.Component {
 				{navbarBorder}
 				<div className="left-side">
 					<Link style={{ textDecoration: 'none' }} to='/dashboard'><span className="nav-logo">d</span></Link>
-					<i className="mag-glass"><i className="fas fa-search"></i></i>
-					<input 
-					className="searchbar"
-					id={searchbarFilled}
-					type="text" 
-					placeholder="Search Dreamr"
-					// onChange={this.checkSearchbarFilled()}
-					></input>
+					{/* <div className="entire-search-bar" > */}
+						<div className="mag-glass" id={searchbarFilled}>
+							<span className="fas fa-search" id={searchbarFilled}></span>
+						</div>
+						<input 
+						className="searchbar"
+						type="text" 
+						placeholder="Search Dreamr"
+						id={searchbarFilled}
+						onChange={this.handleInput()}
+						onClick={this.handleInput()}
+						onBlur={this.reset()}
+						></input>
+					{/* </div> */}
 				</div>
 				{redirectButton}
 				{loginNav}
