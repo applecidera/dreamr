@@ -65,6 +65,12 @@
 	font-size: 15px;
 }
 
+.search-result-list{
+	background-color: red;
+	z-index: 5;
+	position: absolute;
+}
+
 .nav-logo {
 	text-decoration: none;
 	margin: 0;
@@ -109,6 +115,7 @@
 	display: flex;
 	grid-column: 2/3;
 	height: 70%;
+	position: relative;
 }
 
 .redirect {

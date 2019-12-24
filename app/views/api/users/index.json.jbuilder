@@ -1,9 +1,9 @@
-if @users.length > 0
+# if @users 
     @users.each do |user|
         json.set! user.id do
-            json.partial! "api/users/user", user: user
+            json.extract! user, :id, :username, :email, :avatar
         end
     end
-else
-    json.null!
-end
+# else
+    # json.nothing
+# end

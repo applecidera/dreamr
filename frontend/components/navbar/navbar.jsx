@@ -12,6 +12,11 @@ class Navbar extends React.Component {
 			searchbarFilled: null,
 			searchResult: null
 		}
+
+		this.searchForContent = this.searchForContent.bind(this);
+		this.handleInput = this.handleInput.bind(this);
+		this.reset = this.reset.bind(this);
+		this.setState = this.setState.bind(this);
 	}
 
 	componentDidUpdate(prevState){
@@ -22,18 +27,20 @@ class Navbar extends React.Component {
 		}
 	}
 
-	handleInput(e){
-		
-		return e=>{
-			this.setState({
-				searchText: e.currentTarget.value,
-				searchbarFilled: true
-			});
+	handleInput(event){	
+		this.setState({
+			searchText: event.currentTarget.value,
+			searchbarFilled: true
+		});
+		if (this.state.searchText != ""){
+			console.log(this.state.searchText);
+			const queryString = this.state.searchText;
+			this.props.searchForContent(queryString);
 		}
 	}
 
-	reset(that){
-		that.props.clearSearchList();
+	reset(){
+		this.props.clearSearchList();
 		return e=>{
 			this.setState({
 				searchbarFilled: false
@@ -42,8 +49,12 @@ class Navbar extends React.Component {
 	}
 
 	searchForContent(){
-		const queryString = this.state.searchText;
-		this.props.searchForContent(queryString);
+		debugger
+		if (this.state.searchText != ""){
+			console.log(this.state.searchText);
+			const queryString = this.state.searchText;
+			this.props.searchForContent(queryString);
+		}
 	}
 
 	render() {
@@ -51,18 +62,7 @@ class Navbar extends React.Component {
 		let redirectButton = (<></>);
 		let loginNav = (<></>);
 		let navbarBorder = (<></>);
-		let searchResult = (this.state.searchResult) ? 
-		(
-			<ul>
-			this.state.searchResult.map((result)=>(
-				<li 
-					id={result.id} 
-					onClick={this.props.openModal("user-peek")}>{result.username}</li>
-			))
-			</ul>
-		) : 
-		(<></>) ;
-		
+
 		if (this.props.location.pathname === '/signup'){
 			redirectButton = (
 				<Link to="/login" className="redirect"><button>Login</button></Link>
@@ -76,7 +76,7 @@ class Navbar extends React.Component {
 		if ((this.props.location.pathname != '/login') && 
 		(this.props.location.pathname != '/signup') && 
 		(this.props.location.pathname != '/')){
-			navbarBorder = (<div className="grey-line"></div>);
+			navbarBorder = (<div className="grey-l*ine"></div>);
 		}
 		if (this.props.currentUser){
 			loginNav = (
@@ -94,6 +94,19 @@ class Navbar extends React.Component {
 		let searchbarFilled = this.state.searchbarFilled ?
 			"searchbar-filled" :
 			(null) ;
+
+		let searchResult = (this.state.searchResult) ? 
+		(
+			this.state.searchResult.map((result)=>(
+				<li 
+				id={result.id} 
+				key = {result.id}
+				onClick={()=>this.props.openModal("user-peek")}>
+					{result.username}
+				</li>
+			))
+		) : 
+		(<></>) ;
 		
 		return (
 			<div className="navbar">
@@ -108,11 +121,15 @@ class Navbar extends React.Component {
 						type="text" 
 						placeholder="Search Dreamr"
 						id={searchbarFilled}
-						onChange={e=> {this.handleInput(e);this.searchForContent()}}
-						onFocus={this.handleInput()}
-						onBlur={()=>this.reset(that)}
+						// onChange={e=> {this.handleInput(e);this.searchForContent()}}
+						onChange={this.handleInput}
+						// onKeyDown={this.searchForContent}
+						onFocus={this.handleInput}
+						onBlur={()=>this.reset()}
 						></input>
-						{searchResult}
+						<ul className="search-result-list">
+							{searchResult}
+						</ul>
 				</div>
 				{redirectButton}
 				{loginNav}

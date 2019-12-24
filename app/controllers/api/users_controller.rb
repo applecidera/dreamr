@@ -1,12 +1,14 @@
 class Api::UsersController < ApplicationController
   
   def index
-    if params[:filters] != ""
+    # if params[:filters] != ""
       searchQuery = "%" + params[:filters] + "%"
-    else
-      searchQuery = nil
-    end
-    @users = User.where("username LIKE ?", searchQuery)
+      @users = User.where("username LIKE ?", searchQuery).limit(3)
+    # else
+      # searchQuery = nil
+      # @users = nil
+    # end
+    
   end
 
   def create
