@@ -45,7 +45,6 @@ class UserPeek extends React.Component{
             <div className="user-peek-top">
                 <img src={avatar}/>
                 <div className="side-peek-username">{this.props.peekedUser.username}</div>
-                {/* <h3>Author Id is {this.props.authorId}</h3> */}
             </div>
             <div>{showPosts}</div>
             </>

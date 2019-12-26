@@ -86,7 +86,7 @@ class Post extends React.Component {
 		};
 		
 		if (authorId===currentUser.id){ //! post is current user's
-			topBar = (<span>{author.username}</span>);
+			topBar = (<span onClick={()=>this.props.openModal("user-peek")} id={this.props.authorId}>{author.username}</span>);
 			botBar = (<>
 								<div></div>
 								<div className="post-bottom-right">
@@ -164,6 +164,9 @@ class Post extends React.Component {
 
 		let avatar = window.avatar;
 		if (author && author.avatar != "cloud") (avatar = author.avatar)
+
+		// let avatarClickable = (authorId!=currentUser.id) ? (()=>this.props.openModal("user-peek")) : ( ()=>{} );
+
 		return (
 			<div key={post.id} className="post-container">
 				<img className="avatar" 
