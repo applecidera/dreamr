@@ -32,7 +32,7 @@ Dreamr empowers its users with:
 * ways to explore and expierence the dreams of others
 * the ability to modify and curate their own dreams
 
-Since posts can be a multitude of content types, conditionals had to be included within each post to ensure that the correct formatting would occure, utlimately resulting in a seamless experience for the end-user.
+Since posts can be a multitude of content types, conditionals had to be included within each post to ensure that the correct formatting would occur, utlimately resulting in a seamless experience for the end-user.
 ```
 return (
   <div key={post.id} className="post-container">
@@ -53,7 +53,7 @@ return (
 Content types not associated with a post are not rendered whereas proper content is then formatted and inserted into a post-block.
 
 
-Animations were added to facilitate user experience
+Methods to create posts including animations were added to facilitate user experience 
 
 <img src="https://raw.githubusercontent.com/applecidera/Dreamr/master/app/assets/images/zip-up.gif" />
 ---
@@ -77,6 +77,4 @@ Dreamr is created with:
 ---
 
 ### Todos
-* implement ways to follow other users and like their dreams
-* implement a search feature to quickly and easily look up users
 * implement a reply feature that allows users to leave replies on each others dreams
