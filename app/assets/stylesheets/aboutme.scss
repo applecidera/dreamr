@@ -1,0 +1,102 @@
+.about-me {
+	width: 100%;
+  display: flex;
+  justify-content: space-around;
+		div {
+			width: 64px;
+			height: 64px;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			text-align: center;
+			span {
+				width: 100px;
+				margin-left: -15px;
+			}
+		}
+}
+.aboutme-img {
+	object-fit: fill;
+	width: 100%;
+}
+
+.github {
+  transition: all 0.5s linear;
+  margin-top: 20px;
+  outline: none;
+}
+.github:hover {
+	cursor: pointer;
+  animation: dance 1s alternate ease-in-out infinite;
+  outline: none;
+}
+.github:focus{
+  outline: none;
+}
+
+.angel-list {
+	transition: all 1s linear;
+	background-color: rgba($color: white, $alpha: .2);
+	padding: 5px;
+	border: 1px solid rgba($color: white, $alpha: .5);
+	border-radius: 10px;
+	img {
+		transform: scale(0.9) translateY(10px);
+  }
+  margin-bottom: 20px;
+}
+.angel-list:hover {
+	cursor: pointer;
+	transform: scale(0.8);
+  animation: spin 3s ease-in-out alternate infinite;
+  outline: none;
+	img {
+		transform: scale(0.9) translateY(10px);
+	}
+}
+
+.linked-in {
+  transition: all 3s ease-in-out;
+  margin-top: 20px;
+}
+.linked-in:hover {
+	cursor: pointer;
+  animation: rotate 3s forwards ease-in-out infinite;
+  outline: none;
+}
+
+@keyframes dance {
+	0% {
+		transform: rotate(0.0turn);
+	}
+	50% {
+		transform: rotate(-0.05turn);
+	}
+	100% {
+		transform: rotate(0.05turn);
+	}
+}
+
+@keyframes spin{
+	0% {
+		transform: rotateY(0deg);
+	}
+	50% {
+		transform: rotateY(180deg);
+	}
+	100% {
+		transform: rotateY(360deg);
+	}
+}
+
+@keyframes rotate{
+	0% {
+		transform: rotate(0turn) rotateX(0deg);
+	}
+	50% {
+		transform: rotate(0.5turn) rotateX(180deg);
+	}
+	100% {
+		transform: rotate(1turn) rotateX(360deg);
+	}
+}
