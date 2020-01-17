@@ -16,8 +16,9 @@ class NavDropdown extends React.Component {
 	}
 
 	render() {
-		const {currentUser} = this.props;
-		let avatar = (currentUser.avatar === "cloud") ? window.avatar : currentUser.avatar;
+		const { currentUser } = this.props;
+		let avatar =
+			currentUser.avatar === 'cloud' ? window.avatar : currentUser.avatar;
 		return (
 			<button
 				onBlur={() => this.toggleDropdown()}
@@ -30,12 +31,38 @@ class NavDropdown extends React.Component {
 					<div className="dropdown-container">
 						<div className="dropdown-top">
 							<div className="account">ACCOUNT</div>
-							<div className="logout-button" onClick={()=>this.props.openModal("logout")}><span>Logout</span></div>
+							<div
+								className="logout-button"
+								onClick={() => this.props.openModal('logout')}
+							>
+								<span>Logout</span>
+							</div>
 						</div>
-					<div className="nav-profile-box">
-						<img className ="nav-avatar-image" src={avatar} />
-						<span className="nav-username">{this.props.currentUser.username}</span>
-					</div>
+						<div className="nav-profile-box">
+							<img className="nav-avatar-image" src={avatar} />
+							<span className="nav-username">
+								{this.props.currentUser.username}
+							</span>
+						</div>
+						<div className="about-me">
+							{/* <a target="_blank" href="https://github.com/applecidera/dreamr"> */}
+								<div className="github" onClick={()=>window.location.href="https://github.com/applecidera/dreamr"}>
+									<img className="aboutme-img" src="https://raw.githubusercontent.com/applecidera/convergence/master/src/assets/github_logo.png" />
+									<span>GitHub</span>
+								</div>
+							{/* </a> */}
+							{/* <a target="_blank" href="https://angel.co/andrew-lee-184?public_profile=1"> */}
+								<div className="angel-list" onClick={()=>window.location.href="https://angel.co/andrew-lee-184?public_profile=1"}>
+									<img className="aboutme-img" src="https://raw.githubusercontent.com/applecidera/convergence/master/src/assets/angellist_logo.png" />
+								<span>AngelList</span>
+							</div>
+							{/* </a> */}
+							{/* <a target="_blank" href="https://www.linkedin.com/in/andrew-lee-1301a619b/"> */}
+							<div className="linked-in" onClick={()=>window.location.href="https://www.linkedin.com/in/andrew-lee-1301a619b/"}>
+								<img className="aboutme-img" src="https://raw.githubusercontent.com/applecidera/convergence/master/src/assets/LI-In-Bug.png" />
+								<span>Linked-In</span></div>
+							{/* </a> */}
+						</div>
 					</div>
 				)}
 			</button>

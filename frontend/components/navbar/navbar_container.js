@@ -3,6 +3,7 @@ import { deleteSession } from '../../actions/session_actions';
 import Navbar from './navbar';
 import { openModal } from '../../actions/modal_actions';
 import { fetchAllUsers} from '../../actions/user_actions';
+import { withRouter } from 'react-router-dom';
 
 const clearSearchList = () => ({
 	type: "CLEAR_SEARCH_LIST"
@@ -25,4 +26,4 @@ const mdp = (dispatch) => {
 	};
 };
 
-export default connect(msp, mdp)(Navbar);
+export default withRouter(connect(msp, mdp)(Navbar));
