@@ -2,13 +2,8 @@
 # Dreamr
 
   <a href="https://dreamr-app.herokuapp.com/#/">
-    <img src="https://raw.githubusercontent.com/applecidera/Dreamr/master/app/assets/images/dreamr.png">
+    <img src="https://raw.githubusercontent.com/applecidera/dreamr/master/app/assets/images/dreamr_splash.PNG">
   </a>
-
-*Show off your dreams.*
-
-
-*Experience others.*
 
 ---
 
@@ -31,6 +26,8 @@ Dreamr empowers its users with:
 * interactive and intuitive ways to create and share dreams
 * ways to explore and expierence the dreams of others
 * the ability to modify and curate their own dreams
+
+<img src="https://raw.githubusercontent.com/applecidera/Dreamr/master/app/assets/images/post_type.gif" />
 
 Since posts can be a multitude of content types, conditionals had to be included within each post to ensure that the correct formatting would occur, utlimately resulting in a seamless experience for the end-user.
 ```
