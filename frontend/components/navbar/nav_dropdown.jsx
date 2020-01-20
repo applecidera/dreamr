@@ -46,19 +46,19 @@ class NavDropdown extends React.Component {
 						</div>
 						<div className="about-me">
 							{/* <a target="_blank" href="https://github.com/applecidera/dreamr"> */}
-								<div className="github" onClick={()=>window.location.href="https://github.com/applecidera/dreamr"}>
+								<div className="github" onClick={()=>window.open("https://github.com/applecidera/dreamr", "_blank")}>
 									<img className="aboutme-img" src="https://raw.githubusercontent.com/applecidera/convergence/master/src/assets/github_logo.png" />
 									<span>GitHub</span>
 								</div>
 							{/* </a> */}
 							{/* <a target="_blank" href="https://angel.co/andrew-lee-184?public_profile=1"> */}
-								<div className="angel-list" onClick={()=>window.location.href="https://angel.co/andrew-lee-184?public_profile=1"}>
+								<div className="angel-list" onClick={()=>window.open("https://angel.co/andrew-lee-184?public_profile=1", "_blank")}>
 									<img className="aboutme-img" src="https://raw.githubusercontent.com/applecidera/convergence/master/src/assets/angellist_logo.png" />
 								<span>AngelList</span>
 							</div>
 							{/* </a> */}
 							{/* <a target="_blank" href="https://www.linkedin.com/in/andrew-lee-1301a619b/"> */}
-							<div className="linked-in" onClick={()=>window.location.href="https://www.linkedin.com/in/andrew-lee-1301a619b/"}>
+							<div className="linked-in" onClick={()=>window.open("https://www.linkedin.com/in/andrew-lee-1301a619b/", "_blank")}>
 								<img className="aboutme-img" src="https://raw.githubusercontent.com/applecidera/convergence/master/src/assets/LI-In-Bug.png" />
 								<span>Linked-In</span></div>
 							{/* </a> */}
