@@ -19,6 +19,17 @@ class NavDropdown extends React.Component {
 		const { currentUser } = this.props;
 		let avatar =
 			currentUser.avatar === 'cloud' ? window.avatar : currentUser.avatar;
+
+		let portfolioSite =
+			this.props.currentUser.username === 'demo-user' ? (
+				<span className="nav-username clickable" onClick={() =>
+									window.open(
+										'https://applecidera.github.io/',
+										'_blank'
+									)}>Andrew Lee</span>
+			) : (
+				<span className="nav-username">{this.props.currentUser.username}</span>
+			);
 		return (
 			<button
 				onBlur={() => this.toggleDropdown()}
@@ -40,28 +51,51 @@ class NavDropdown extends React.Component {
 						</div>
 						<div className="nav-profile-box">
 							<img className="nav-avatar-image" src={avatar} />
-							<span className="nav-username">
-								{this.props.currentUser.username}
-							</span>
+							{portfolioSite}
 						</div>
 						<div className="about-me">
-							{/* <a target="_blank" href="https://github.com/applecidera/dreamr"> */}
-								<div className="github" onClick={()=>window.open("https://github.com/applecidera/dreamr", "_blank")}>
-									<img className="aboutme-img" src="https://raw.githubusercontent.com/applecidera/convergence/master/src/assets/github_logo.png" />
-									<span>GitHub</span>
-								</div>
-							{/* </a> */}
-							{/* <a target="_blank" href="https://angel.co/andrew-lee-184?public_profile=1"> */}
-								<div className="angel-list" onClick={()=>window.open("https://angel.co/andrew-lee-184?public_profile=1", "_blank")}>
-									<img className="aboutme-img" src="https://raw.githubusercontent.com/applecidera/convergence/master/src/assets/angellist_logo.png" />
+							<div
+								className="github"
+								onClick={() =>
+									window.open(
+										'https://github.com/applecidera/dreamr',
+										'_blank'
+									)}
+							>
+								<img
+									className="aboutme-img"
+									src="https://raw.githubusercontent.com/applecidera/convergence/master/src/assets/github_logo.png"
+								/>
+								<span>GitHub</span>
+							</div>
+							<div
+								className="angel-list"
+								onClick={() =>
+									window.open(
+										'https://angel.co/andrew-lee-184?public_profile=1',
+										'_blank'
+									)}
+							>
+								<img
+									className="aboutme-img"
+									src="https://raw.githubusercontent.com/applecidera/convergence/master/src/assets/angellist_logo.png"
+								/>
 								<span>AngelList</span>
 							</div>
-							{/* </a> */}
-							{/* <a target="_blank" href="https://www.linkedin.com/in/andrew-lee-1301a619b/"> */}
-							<div className="linked-in" onClick={()=>window.open("https://www.linkedin.com/in/andrew-lee-1301a619b/", "_blank")}>
-								<img className="aboutme-img" src="https://raw.githubusercontent.com/applecidera/convergence/master/src/assets/LI-In-Bug.png" />
-								<span>Linked-In</span></div>
-							{/* </a> */}
+							<div
+								className="linked-in"
+								onClick={() =>
+									window.open(
+										'https://www.linkedin.com/in/andrew-lee-1301a619b/',
+										'_blank'
+									)}
+							>
+								<img
+									className="aboutme-img"
+									src="https://raw.githubusercontent.com/applecidera/convergence/master/src/assets/LI-In-Bug.png"
+								/>
+								<span>Linked-In</span>
+							</div>
 						</div>
 					</div>
 				)}
